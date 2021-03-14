@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="A self-study introduction to Dyalog APL">
+        <meta name="description" content="Assessment materials for Dyalog APL">
       
       
       
@@ -16,7 +16,7 @@
     
     
       
-        <title>Dfns and assignment - APL Course</title>
+        <title>Problem Set 3: Selecting from Lists - APL Course - Assessment</title>
       
     
     
@@ -40,8 +40,6 @@
     
       <link rel="stylesheet" href="../style/main.css">
     
-      <link rel="stylesheet" href="../style/quickstart.css">
-    
     
       
     
@@ -64,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#dfns-and-assignment" class="md-skip">
+        <a href="#problem-set-3-selecting-from-lists" class="md-skip">
           Skip to content
         </a>
       
@@ -77,7 +75,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
-    <a href=".." title="APL Course" class="md-header-nav__button md-logo" aria-label="APL Course">
+    <a href=".." title="APL Course - Assessment" class="md-header-nav__button md-logo" aria-label="APL Course - Assessment">
       
   <img src="../img/dyalog-white.svg" alt="logo">
 
@@ -89,48 +87,18 @@
       <div class="md-header-nav__ellipsis">
         <div class="md-header-nav__topic">
           <span class="md-ellipsis">
-            APL Course
+            APL Course - Assessment
           </span>
         </div>
         <div class="md-header-nav__topic">
           <span class="md-ellipsis">
             
-              Dfns and assignment
+              Problem Set 3: Selecting from Lists
             
           </span>
         </div>
       </div>
     </div>
-    
-      <label class="md-header-nav__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-      </label>
-      
-<div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
-      <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-      </label>
-      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-      </button>
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
     
     
       <div class="md-header-nav__source">
@@ -141,7 +109,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    rikedyp/APLCourse
+    GitHub
   </div>
 </a>
       </div>
@@ -159,7 +127,9 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -169,12 +139,12 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="APL Course" class="md-nav__button md-logo" aria-label="APL Course">
+    <a href=".." title="APL Course - Assessment" class="md-nav__button md-logo" aria-label="APL Course - Assessment">
       
   <img src="../img/dyalog-white.svg" alt="logo">
 
     </a>
-    APL Course
+    APL Course - Assessment
   </label>
   
     <div class="md-nav__source">
@@ -185,7 +155,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
-    rikedyp/APLCourse
+    GitHub
   </div>
 </a>
     </div>
@@ -201,22 +171,7 @@
   
     <li class="md-nav__item">
       <a href=".." class="md-nav__link">
-        About
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../First%20steps/" class="md-nav__link">
-        First Steps
+        Home
       </a>
     </li>
   
@@ -231,7 +186,22 @@
   
     <li class="md-nav__item">
       <a href="../Problem%20set%201/" class="md-nav__link">
-        Problem set 1
+        Problem Set 1: First steps
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Problem%20set%202/" class="md-nav__link">
+        Problem Set 2: Dfns and Assignment
       </a>
     </li>
   
@@ -253,66 +223,10 @@
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          <span class="md-nav__icon md-icon"></span>
-          
-            <a href="./" class="md-nav__link md-nav__link--active"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            Dfns and assignment
-          </a>
-        </label>
-      
       <a href="./" class="md-nav__link md-nav__link--active">
-        Dfns and assignment
+        Problem Set 3: Selecting from Lists
       </a>
       
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#dfns" class="md-nav__link">
-    Dfns
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#assignment" class="md-nav__link">
-    Assignment
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Problem%20set%202/" class="md-nav__link">
-        Problem set 2
-      </a>
     </li>
   
 
@@ -325,7 +239,9 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -334,28 +250,6 @@
   
     
   
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#dfns" class="md-nav__link">
-    Dfns
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#assignment" class="md-nav__link">
-    Assignment
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -367,47 +261,70 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/rikedyp/APLCourse/edit/master/docs/Dfns.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/rikedyp/APLCourse/edit/master/docs/Problem set 3.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="dfns-and-assignment">Dfns and assignment</h1>
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/A8xNTh8_F9g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-
-<h2 id="dfns">Dfns</h2>
-<p>A dfn (pronounced "<em>dee-fun</em>" with a very short "u" sound) is a way of writing functions in APL. It starts and ends with curly braces <code>{}</code>, has a right argument with <code>⍵</code> (omega) and an optional left argument <code>⍺</code>.</p>
-<pre><code class="language-APL">      3{⍺}5      ⍝ ⍺ is the (optional) left argument
-3     
-      {⍵}'apl'   ⍝ ⍵ is the right argument
-apl      
-      {⍺}5       ⍝ Calling a dyadic function monadically results in an error
-VALUE ERROR
-      {⍺}5
-      ∧            
-      3{⍵}       ⍝ Calling a function without a right argument results in an error
-SYNTAX ERROR: Missing right argument
-      3{⍵}
-       ∧
+                <h1 id="problem-set-3-selecting-from-lists">Problem Set 3: Selecting from Lists</h1>
+<ol>
+<li>
+<p>Simple Simon Says Select These Elements</p>
+<ol>
+<li>
+<p>Write a function to get even numbers from a numeric list.</p>
+<pre><code>      Even ⍳10
+2 4 6 8 10
+      Even 1 17 19 22 32 15  
+22 32
 </code></pre>
-<h2 id="assignment">Assignment</h2>
-<p>Names are assigned with the left arrow <code>←</code>. We say "name gets [function or array]".</p>
-<pre><code class="language-APL">      one←1      
-      three←3      
-      equals←=      
-      plus←+      
-      four←4      
-      four equals one plus three   ⍝ 1 means true, 0 means false
-1
+</li>
+<li>
+<p>Write a function to get numbers which are divisible by <code>5</code> from a numeric list. </p>
+<pre><code>      Div5 ⍳50
+5 10 15 20 25 30 35 40 45 50
+      Div5 12 13 15 20 19 55 16
+15 20 55
 </code></pre>
-<p>We can use a name in the same line in which it is defined. In production code it is best to avoid this unless an expression is very short.</p>
-<pre><code class="language-APL">      ⍝ Squared numbers divided by the sum of squares 
-
-      squared÷+/squared←¯1 0 1 2*2 
-0.1666666667 0 0.1666666667 0.6666666667`
+</li>
+<li>
+<p>Write a function to get numbers which are divisible by <code>⍺</code> from a numeric list. </p>
+<pre><code>      3 Div ⍳30
+3 6 9 12 15 18 21 24 27 30
+      7 Div 11 17 21 42 18 7 0 70
+21 42 7 0 70
 </code></pre>
+</li>
+</ol>
+</li>
+<li>
+<p>Without without<br />
+    Write a dfn which doesn't use <code>⍺~⍵</code> to remove spaces from a text vector. </p>
+<pre><code>      NoSpace'here is some text'
+hereissometext
+      NoSpace'there   are   more   spaces   here'
+therearemorespaceshere
+</code></pre>
+</li>
+<li>
+<p>Where without Where<br />
+    Write a dfn which doesn't use <code>⍸</code> to find the indices of <code>1</code>s in a boolean vector.</p>
+<pre><code>      Where 0 1 0 1 0 0 1 
+2 4 7
+</code></pre>
+</li>
+<li>
+<p>sdrawkcab s'taht woN</p>
+<p>Write a dfn without using <code>⌽</code> which reverses its right argument. </p>
+<pre><code>      Reverse 'Some characters'
+sretcarahc emoS
+      Reverse ⍳10
+10 9 8 7 6 5 4 3 2 1
+</code></pre>
+</li>
+</ol>
+                
+                  
                 
               
               
@@ -426,7 +343,7 @@ SYNTAX ERROR: Missing right argument
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../Problem%20set%201/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../Problem%20set%202/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -435,25 +352,11 @@ SYNTAX ERROR: Missing right argument
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Problem set 1
+                Problem Set 2: Dfns and Assignment
               </div>
             </div>
           </a>
         
-        
-          <a href="../Problem%20set%202/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-footer-nav__title">
-              <div class="md-ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                Problem set 2
-              </div>
-            </div>
-            <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-            </div>
-          </a>
         
       </nav>
     </div>
