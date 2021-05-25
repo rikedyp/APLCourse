@@ -1,0 +1,525 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A self-study introduction to Dyalog APL">
+      
+      
+      
+      
+        <link rel="canonical" href="https://dyalog.com/Workspaces/">
+      
+      <link rel="shortcut icon" href="../img/favicon-32.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.8">
+    
+    
+      
+        <title>Workspace basics - APL Course</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.cb6bc1d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.39b8e14a.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../style/main.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#workspace-basics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://dyalog.com" title="APL Course" class="md-header-nav__button md-logo" aria-label="APL Course">
+      
+  <img src="../img/dyalog-white.svg" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            APL Course
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Workspace basics
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://dyalog.com" title="APL Course" class="md-nav__button md-logo" aria-label="APL Course">
+      
+  <img src="../img/dyalog-white.svg" alt="logo">
+
+    </a>
+    APL Course
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../First-steps/" class="md-nav__link">
+        First Steps
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Dfns/" class="md-nav__link">
+        Dfns and Assignment
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Selecting-from-lists/" class="md-nav__link">
+        Selecting from Lists
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Outer-product/" class="md-nav__link">
+        The Outer Product
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Shape-Reshape/" class="md-nav__link">
+        Shape Reshape
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Array-model/" class="md-nav__link">
+        The Array Model
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#whats-a-workspace" class="md-nav__link">
+    What's a workspace?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-functions" class="md-nav__link">
+    System functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#namespaces" class="md-nav__link">
+    Namespaces
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mutable-objects" class="md-nav__link">
+    Mutable objects
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#saving-and-loading" class="md-nav__link">
+    Saving and loading
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tasks" class="md-nav__link">
+    Tasks
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="workspace-basics">Workspace basics</h1>
+<p>We sure have made a lot of functions so far and we've typed many expressions into our <a href="https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop"><abbr title="Read Evaluate Print Loop">REPL</abbr></a>. There seem to be a few variables in our workspace as well. We should save them somewhere for later.</p>
+<h3 id="whats-a-workspace">What's a workspace?</h3>
+<p>If you have been using Dyalog, the <em>session log</em> is the page with all of your input and output so far. You can scroll up the session log (with a mouse or using the <code>Page Up</code> key) and see everything you have done so far).</p>
+<p>A workspace is a collection of names. We can obtain some lists of names using <a target="_blank" href="http://help.dyalog.com/latest/#Language/System%20Commands/Introduction.htm?Highlight=System%20commands"><strong>system commands</strong></a>.</p>
+<ul>
+<li>Functions</li>
+</ul>
+<pre><code class="language-APL">      )fns    ⍝ Functions
+      )vars   ⍝ Variables (arrays)    
+</code></pre>
+<p>These commands have the special <code>)COMMAND</code> syntax, and are only used when interacting with the session. They return no result and cannot be used programmatically; they cannot be used in a function.</p>
+<h3 id="system-functions">System functions</h3>
+<p>The <em>session</em> is sometimes used to refer to the interactive mode of operation (AKA <em>calculator mode</em> AKA <em>immediate execution mode</em>), in contrast to <em>under program control</em>, which is when something happens as the result of a line in a program/function. </p>
+<p>For example:</p>
+<pre><code class="language-APL">      myvar ← 2×⍳3   ⍝ Declare a variable in the session
+      )erase myvar   ⍝ Use a system command to erase the variable
+</code></pre>
+<p>If we try to use a system command inside a function, it won't work.</p>
+<pre><code class="language-APL">      ]dinput        ⍝ The ]DInput user command lets us write mult-line dfns in the session
+                     ⍝ Alternatively, press Shift+Enter with the cursor | on a name
+      multifn←{
+        ⍝ These statements are executed &quot;under program control&quot;
+        ⎕←5+5
+        var ← 2+2    ⍝ This variable only exists when this function is running
+        )erase var   ⍝ This won't work
+      }
+</code></pre>
+<p><strong>System functions</strong> are functions of the form <code>⎕FUNCTION</code> and <em>do</em> return a result. Some have shy results which can be used by subsequent functions, or printed to the session output with <code>⎕←</code>.</p>
+<pre><code class="language-APL"> multifn←{
+    ⍝ These statements are executed &quot;under program control&quot;
+    ⎕←5+5
+    var ← 2+2    ⍝ This variable only exists when this function is running
+    ⎕EX var      ⍝ This will work
+}
+</code></pre>
+<p>The Name List <code>⎕NL</code> function lists names.</p>
+<pre><code class="language-APL">      ⎕NL 2    ⍝ List variables as a text matrix
+      ⎕NL 3    ⍝ List functions
+      ⎕NL-⍳9   ⍝ List all names as a nested vector of character vectors
+</code></pre>
+<h3 id="namespaces">Namespaces</h3>
+<p>If nested arrays are arrays inside arrays; <strong>namespaces</strong> are a bit like a workspace within a workspace. They are <strong>objects</strong> which contain collections of names, and these names can be listed as before, but using the dot <code>.</code> syntax from <a target="_blank" href="https://cs.stackexchange.com/questions/89031/what-is-the-origin-of-dot-notation">object-oriented</a> programming.</p>
+<pre><code class="language-APL">      )ns ns         ⍝ Create an empty namespace called ns
+      ns.var←1 2 3   ⍝ Create a variable in ns called var
+      ns.fn←{⍺,⍵}    ⍝ Create a function in ns called fn
+      ⎕nl-9          ⍝ List the names of objects in the current namespace
+┌──┐
+│ns│
+└──┘
+      ns.⎕nl-⍳9      ⍝ List all names in ns
+┌──┬───┐
+│fn│var│
+└──┴───┘
+      )cs ns         ⍝ Change into ns
+      ⎕this.⎕nl-⍳9   ⍝ The current namespace is ⎕THIS
+┌──┬───┐
+│fn│var│
+└──┴───┘
+      #.⎕nl-⍳9       ⍝ The root namespace is #
+┌──┐
+│ns│
+└──┘
+</code></pre>
+<h3 id="mutable-objects">Mutable objects</h3>
+<p>Variables are pass-by-value. This means that if one name is used to assign another name, changes to the first name are not reflected in the second name.</p>
+<pre><code class="language-APL">      var1←1 2 3
+      var2←var1     ⍝ The value of var1 is assigned to var2
+      var1←var1+6   ⍝ The value of var2 is changed
+      ⎕←var2          ⍝ var2 retains the previous value
+1 2 3
+</code></pre>
+<p>Namespaces are objects and are pass-by-reference. All names which are assigned a reference can be used to refer to the original object.</p>
+<pre><code class="language-APL">      )ns ns1
+#.ns1
+      ns1.name←'Bob'
+      ns2←ns1
+      ns2.name←'Steve'
+      ⎕←ns1.name
+Steve
+</code></pre>
+<h3 id="saving-and-loading">Saving and loading</h3>
+<p>There is one more type of system-thing to mention, although you have seen the <code>]box</code> one before. Commands which begin with a right-square-bracket <code>]</code> are called <a target="_blank" href="">User Commands</a>. These are also only used while interacting with the session, but you can customise them and create your own.</p>
+<p>Dyalog webinar: <a target="_blank" href="https://dyalog.tv/Webinar/?v=LWJzRGrOC3k">Creating and Managing your own User Commands</a></p>
+<p>The example below shows how to save and load a workspace.</p>
+<pre><code class="language-APL">      ]cd /tmp
+      )save MyFirstWS
+      )clear
+      )load MyFirstWS
+</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>While we recommend using <a href="github.com/dyalog/link">]Link</a> to develop and maintain a new APL application due to the benefits of using modern <abbr title="Source Code Manager">SCM</abbr> systems, workspaces continue to be a supported mechanism not only for some users to maintain their code base but also for:</p>
+<ul>
+<li><strong>Distribution:</strong> For large applications, it will be inconvenient or undesirable to ship large collections of source files that are loaded at startup. The use of workspaces as a mechanism for the distribution of packaged collections of code and data is expected to continue.</li>
+<li><strong>Crash Analysis:</strong> When an application fails, it is often useful to save the workspace, complete with execution stack, code and data, for subsequent analysis and sometimes resumption of execution. Dyalog will continue to support this, although we may gradually impose some restrictions, for example requiring the same version and variant of the interpreter in order to resume execution of a saved workspace.</li>
+<li><strong>Pausing work:</strong> In many ways, this is similar to crash analysis: sometimes you need to shut down your machine in the middle of things and resume later, but you don't want to be forced to start from scratch because you have created an interesting scenario with data in the workspace. Saving a workspace allows you to do this.</li>
+</ul>
+<p>With the exception of the scenarios mentioned above, Link is intended to make it unnecessary to save workspaces. All source code changes that you make while editing or tracing your code should immediately end up in text files and be managed using an <abbr title="Source Code Manager">SCM</abbr>. The normal workflow is to start each APL session by loading the code into the workspace from source directories. You might want to save a "stub" workspace that contains a very small amount of code that loads everything else from text source, but from version 18.0 of Dyalog APL you can now <a href="/GettingStarted/Setup.md">easily set that up using text files as well</a>, rendering workspaces obsolete as part of your normal development workflow.</p>
+</div>
+<h2 id="tasks">Tasks</h2>
+<ol>
+<li>In terms of array rank, what type of array is a namespace?</li>
+<li>What is the rank of <code>⎕NL x</code> for any scalar or vector <code>x</code>?</li>
+<li>What is the rank of <code>⎕NL -x</code> for any scalar or vector <code>x</code>?</li>
+<li>Save Your Work<ol>
+<li>Use <code>]cd</code> to change to a directory on your machine where you would like to save your work</li>
+<li>Use <code>)wsid WSName</code> to change the name of your active workspace</li>
+<li>Use <code>)save</code> to save your workspace</li>
+<li>Use <code>)clear</code> to clear your workspace</li>
+<li>Create a new namespace called 'Day1'</li>
+<li>Use <code>Day1.⎕CY'WSName'</code> to copy the contents of your saved workspace into the <code>Day1</code> namespace</li>
+<li>Now <code>)save</code> again</li>
+</ol>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class='language-APL'>⎕SAVE</code> will overwrite any existing workspace file without asking first. Use <code class='language-APL'>)SAVE</code> when saving workspaces.</p>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.18f0862e.min.js"></script>
+      <script src="../assets/javascripts/bundle.994580cf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: ['navigation.instant'],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.9c0e82ba.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

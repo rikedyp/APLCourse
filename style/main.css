@@ -3,8 +3,8 @@
 	src: local("APL385 Unicode"), url("../assets/apl385.ttf");
 }
 .language-APL {
-	font-family: APL;
-	line-height: 1.2em;
+	font-family: APL!important;
+	line-height: 1.2em!important;
 }
 code {
 	font-family: APL;
@@ -19,10 +19,6 @@ code {
 		height: 1.8rem!important;
 	}
 }
-/* Stretch content width */
-.md-grid {
-  max-width: initial;
-}
 /* Custom colors */
 :root {
 	--md-primary-fg-color: #ED7F00;
@@ -31,7 +27,7 @@ code {
 }
 /* Code copy only input (see CONTRIBUTING.md) */
 pre + pre > button, pre + hr {
-    display: none;
+    display: none!important;
 }
 pre > code {
     padding-bottom: 1em!important;

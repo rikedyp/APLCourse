@@ -1,0 +1,523 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A self-study introduction to Dyalog APL">
+      
+      
+      
+      
+        <link rel="canonical" href="https://dyalog.com/Data/">
+      
+      <link rel="shortcut icon" href="../img/favicon-32.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.8">
+    
+    
+      
+        <title>Data Input/Output - APL Course</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.cb6bc1d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.39b8e14a.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../style/main.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#data-inputoutput" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://dyalog.com" title="APL Course" class="md-header-nav__button md-logo" aria-label="APL Course">
+      
+  <img src="../img/dyalog-white.svg" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            APL Course
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Data Input/Output
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://dyalog.com" title="APL Course" class="md-nav__button md-logo" aria-label="APL Course">
+      
+  <img src="../img/dyalog-white.svg" alt="logo">
+
+    </a>
+    APL Course
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../First-steps/" class="md-nav__link">
+        First Steps
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Dfns/" class="md-nav__link">
+        Dfns and Assignment
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Selecting-from-lists/" class="md-nav__link">
+        Selecting from Lists
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Outer-product/" class="md-nav__link">
+        The Outer Product
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Shape-Reshape/" class="md-nav__link">
+        Shape Reshape
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Array-model/" class="md-nav__link">
+        The Array Model
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#hello-world" class="md-nav__link">
+    Hello, World!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#back-2-school-4-maths" class="md-nav__link">
+    Back 2 School 4 Maths
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-functions" class="md-nav__link">
+    System Functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#native-files" class="md-nav__link">
+    Native Files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#text-files" class="md-nav__link">
+    Text Files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indian-summer" class="md-nav__link">
+    Indian Summer
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="data-inputoutput">Data Input/Output</h1>
+<p>Although we have <a href="http://help.dyalog.com/latest/#Language/System Functions/io.htm"><code>⎕IO</code></a>, IO in APL can still refer to input/output.</p>
+<h3 id="hello-world">Hello, World!</h3>
+<p>If you have seen any kind of computer programming before, you are probably aware of a quite famous program called <a href="https://en.wikipedia.org/wiki/%22Hello,_World!%22_program">"Hello, World!"</a>.</p>
+<p>Here it is in APL:</p>
+<pre><code class="language-APL">      ⎕←'Hello, World!'
+</code></pre>
+<p>If you have learned programming before, maybe it is strange to have gotten so far in an introductory tutorial without meeting the language's "print" function. </p>
+<p>{% include note.html content="By default, non-assignment expressions output results to the session log. We strongly recommend using <code class='language-APL'>⎕←</code> when you deliberately intend for an expression to print to the session log. You are then able to search for print statements for easier debugging." %}</p>
+<h3 id="back-2-school-4-maths">Back 2 School 4 Maths</h3>
+<p>The function <code>Test</code> will ask the user <code>n</code> single-digit arithmetic questions, and return the number of correct answers.</p>
+<pre><code class="language-APL">     ∇ points←Test n;answer;solution          
+[1]    points←0                               
+[2]    :While n&gt;0                             
+[3]        solution←⍎⎕←⍕(?10),('+-×÷'[?4]),?10
+[4]        answer←⎕                           
+[5]        points+←answer≡solution            
+[6]        n-←1                               
+[7]    :EndWhile                              
+[8]    ⎕←'You scored',points,'points'         
+     ∇  
+
+      Test 3
+</code></pre>
+<p>Examine the <code>Test</code> function and try it out. Which line asks for user input?</p>
+<p>{% include note.html content="The <code class='language-APL'>∇</code> del representation of the <code class='language-APL'>Test</code> function above is the <em>vector representation</em> result of <code class='language-APL'>⎕VR'Test'</code> which can be copied and pasted directly into the session." %}</p>
+<p>You will see that it is quite possible to cheat the <code>Test</code> function by entering the same expression that it asks. To be even more sly, simply move the text cursor with the up arrow to the printed problem statement and press <code>Enter</code>.</p>
+<p>To ameliorate this, we can <em>verify and fix input</em> with <code>⎕VFI</code>. Also note the use of <em>quote-quad</em> <code>⍞</code>. </p>
+<pre><code class="language-APL">     ∇ points←Test2 n;answer;input;solution;valid
+[1]    points←0                                  
+[2]    :While n&gt;0                                
+[3]        solution←⍎⎕←⍕(?10),('+-×÷'[?4]),?10   
+[4]        input←⍞                               
+[5]        (valid answer)←⎕VFI input             
+[6]        answer←valid/answer                   
+[7]        points+←answer≡,solution              
+[8]        n-←1                                  
+[9]    :EndWhile                                 
+[10]   ⎕←'You scored',points,'points'            
+     ∇  
+
+      Test2 3
+</code></pre>
+<h3 id="system-functions">System Functions</h3>
+<p>So <code>⎕</code> and <code>⍞</code> can be used for input and output. However, there are also the so-called <a href="https://aplwiki.com/wiki/Quad_name"><em>quad-names</em></a> which all have a name beginning with <code>⎕</code>.</p>
+<p>Some quad-names are constants, such as <code>⎕A</code>, <code>⎕D</code> and <code>⎕AV</code>. Others are <a href="http://help.dyalog.com/18.0/#Language/System%20Functions/Summary%20Tables/System%20Functions%20Categorised.htm"><em>system-functions</em></a>, many of which are similar to system command counterparts.</p>
+<table>
+<thead>
+<tr>
+<th>System Command</th>
+<th>System Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>)SAVE /path/to/WorkspaceFile</code></td>
+<td><code>⎕SAVE'/path/to/WorkspaceFile'</code></td>
+</tr>
+<tr>
+<td><code>)LOAD /path/to/WorkspaceFile</code></td>
+<td><code>⎕LOAD'/path/to/WorkspaceFile'</code></td>
+</tr>
+<tr>
+<td><code>)ERASE name</code></td>
+<td><code>⎕EX'name'</code></td>
+</tr>
+</tbody>
+</table>
+<p>In contrast to the system commands, which can only be used in the interactive session, system-functions can be used in a function (A.K.A. <em>under program control</em>).</p>
+<h3 id="native-files">Native Files</h3>
+<p>The term "Native Files" refers to any type of file on a hard disk. These can be text or media files, or even executable files.</p>
+<p>{% include note.html content="This section requires some particular files which can be downloaded from <a href='https://github.com/rikedyp/APLWorkshop/data'>https://github.com/rikedyp/APLWorkshop/data</a>" %}</p>
+<p>As a simple example, here we tie the file <strong>words.txt</strong>, read the data and store it in a variable, and finally untie the file.</p>
+<pre><code class="language-APL">      tn←'data/words.txt'⎕NTIE 0 
+      words←(⎕UCS 10)(≠⊆⊢)⎕NREAD tn 80 ¯1
+      ⎕NUNTIE tn ⋄ ⎕EX'tn'
+</code></pre>
+<h3 id="text-files">Text Files</h3>
+<p>Generally the <code>⎕N...</code> family of system functions are for reading and writing <em>native files</em> as described in the documentation. <code>⎕NGET</code> and <code>⎕NPUT</code> are useful for reading and writing text files without having to tie and untie them.</p>
+<pre><code class="language-APL">      (⊂words)⎕NPUT'data/words.txt'                      ⍝ Write words to a unicode text file
+      (content encoding newline)←⎕NGET'data/words.txt'   ⍝ Read words from a unicode text file
+      words←(⎕UCS newline)((~∊⍨)⊆⊢)content               ⍝ Split words on each new line 
+</code></pre>
+<p>Dyalog has some system functions for dealing with some popular file types. These are <code>⎕CSV</code>, <code>⎕XML</code> and <code>⎕JSON</code>. <code>⎕XML</code> and <code>⎕JSON</code> are particularly useful for communicating via the internet and with web browsers.</p>
+<h3 id="indian-summer">Indian Summer</h3>
+<p><code>'IndiaRainfall.csv'</code> is a file of <a href="https://simple.wikipedia.org/wiki/Comma-separated_values">comma separated values</a>. It is adapted from <code>'IndiaRainfallSource.csv'</code> to remove incomplete records.</p>
+<p>The <a href="http://www.imd.gov.in/">India Meteorological Department(IMD)</a> has shared this dataset under <a href="https://data.gov.in/government-open-data-license-india">Govt. Open Data License - India</a>. It can be downloaded from <a href="https://www.kaggle.com/rajanand/rainfall-in-india">the Kaggle data science website</a> but is also part of the <a href="">GitHub repository for this course</a>.</p>
+<p>The data contains the total measured monthly rain fall in millimeters for <code>30</code> regions in India from the years <code>1915</code> to <code>2015</code> inclusive.</p>
+<ol>
+<li>
+<p>Load the data into the workspace</p>
+<p>By default, <code>⎕CSV</code> will load all fields as text data:</p>
+<p><code>APL      
+  ⎕←3↑1 2↓⎕CSV'data/IndiaRainfall.csv'</code></p>
+<p>With the following parameters, <code>⎕CSV</code> will try to interpret all fields as numeric, and fall back to text if this fails. It will also import the first line as a separate array:</p>
+<p><code>APL
+  (raindata header)←⎕CSV'data/IndiaRainfall.csv' ⍬ 4 1
+  ⎕←3↑0 2↓raindata</code></p>
+</li>
+<li>
+<p>What was the total rainfall in Punjab in 1995?</p>
+</li>
+<li>Which month in which region had the highest rainfall?</li>
+<li>Use a least squares linear fit to estimate the total rainfall in all 30 regions in 2018</li>
+<li>Use a least squares linear fit to estimate the total rainfall in Pubjab in 2018
+    <details markdown="1">
+      <summary>Hint:</summary>
+      No one would expect you to derive an expression for the least squares linear fit with little APL experience. If you have done it, kudos to you. The expression <code>Mv(⊢⌹1,∘⍪⊣)Nv</code> from <a href="https://aplcart.info/?q=linear%20regression#">APLcart</a> will compute coefficients of a least squares linear fit given a vector of X values <code>Mv</code> and a vector of Y values <code>Nv</code>.
+    </details></li>
+<li>Inspect the data in <strong>IndiaRainfallSource.csv</strong> to see how close the true values were to your estimates. Were they within your standard error?
+    <details markdown="1">
+      <summary>Hint:</summary>
+      If the error <code>e</code> is a vector of the differences between Y values predicted by the linear fit and the actual Y values &nbsp;<img src="../img/linfiterror.svg">, then an estimate for the variance is given by &nbsp;<img src="../img/linfitvar.svg"> where the standard deviation (standard error) is <code>s</code>.
+    </details></li>
+</ol>
+<hr />
+<p><strong>Fun facts</strong><br />
+If you are not very familiar with the workings of modern software, you might be surprised to see how accessible file types are. Many text editors might try to open a wide range of files by interpreting their data as text. In the audio editing program <a href="https://www.audacityteam.org/">Audacity</a>, native files can be inspected and manipulated as <a href="https://en.wikipedia.org/wiki/Waveform">audio waveforms</a>. These are a couple of techniques used in an art style called <a href="https://en.wikipedia.org/wiki/Databending">databending</a>.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.18f0862e.min.js"></script>
+      <script src="../assets/javascripts/bundle.994580cf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: ['navigation.instant'],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.9c0e82ba.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

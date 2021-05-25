@@ -11,14 +11,14 @@
       
       
       
-        <link rel="canonical" href="https://dyalog.com/Problem%20set%201/">
+        <link rel="canonical" href="https://dyalog.com/First-steps/">
       
       <link rel="shortcut icon" href="../img/favicon-32.png">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.8">
     
     
       
-        <title>Problem Set 1: First Steps - APL Course</title>
+        <title>First Steps - APL Course</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#problem-set-1-first-steps" class="md-skip">
+        <a href="#first-steps" class="md-skip">
           Skip to content
         </a>
       
@@ -95,7 +95,7 @@
         <div class="md-header-nav__topic">
           <span class="md-ellipsis">
             
-              Problem Set 1: First Steps
+              First Steps
             
           </span>
         </div>
@@ -187,11 +187,77 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../First-steps/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          First Steps
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         First Steps
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#singleton-extension" class="md-nav__link">
+    Singleton extension
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-reduction-operator" class="md-nav__link">
+    The reduction operator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-index-generator" class="md-nav__link">
+    The index generator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#order-of-execution" class="md-nav__link">
+    Order of execution
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problem-set-1" class="md-nav__link">
+    Problem Set 1
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -289,6 +355,49 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#singleton-extension" class="md-nav__link">
+    Singleton extension
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-reduction-operator" class="md-nav__link">
+    The reduction operator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-index-generator" class="md-nav__link">
+    The index generator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#order-of-execution" class="md-nav__link">
+    Order of execution
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problem-set-1" class="md-nav__link">
+    Problem Set 1
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -300,7 +409,85 @@
               
                 
                 
-                <h1 id="problem-set-1-first-steps">Problem Set 1: First Steps</h1>
+                <h1 id="first-steps">First Steps</h1>
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/b9T3PdYW5v0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<p>It is easy to add lists of numbers together</p>
+<pre><code class="language-APL">      1 2 3 + 4 5 6
+</code></pre>
+<pre><code>5 7 9
+</code></pre>
+<p>Negative numbers are written with a high minus <code>¯</code> to differentiate between negation <code>¯3 = -3</code> and literal negative numbers</p>
+<pre><code class="language-APL">      1 2 3 - 1 0 ¯1
+</code></pre>
+<pre><code>0 2 4
+</code></pre>
+<h2 id="singleton-extension">Singleton extension</h2>
+<p>Dyadic functions (functions with two input arguments, one on the left and one on the right) can map between a single value and an array of values.</p>
+<pre><code class="language-APL">      3 × 1 10 100
+</code></pre>
+<pre><code>3 30 300
+</code></pre>
+<hr />
+<pre><code class="language-APL">      3 = 1 2 3 4 5
+</code></pre>
+<pre><code>0 0 1 0 0
+</code></pre>
+<h2 id="the-reduction-operator">The reduction operator</h2>
+<p>Adding a list of numbers <em>could</em> become very tedious...</p>
+<pre><code class="language-APL">      1+2+3+4+5+6+7+8+9+10+11+12+13+14+15
+</code></pre>
+<pre><code>120
+</code></pre>
+<p>The reduce operator <code>F/</code> inserts the function <code>F</code> to its left between parts of the right argument array.</p>
+<pre><code class="language-APL">      +/1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
+</code></pre>
+<pre><code>120
+</code></pre>
+<h2 id="the-index-generator">The index generator</h2>
+<p>The index generator <code>⍳⍵</code> generates integers up to the integer right argument <code>⍵</code></p>
+<pre><code class="language-APL">      ⍳10
+</code></pre>
+<pre><code>1 2 3 4 5 6 7 8 9 10
+</code></pre>
+<p>So we can do an arithmetic sum as follows</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Traditional Mathematical Notation (<abbr title="Traditional Mathematical Notation">TMN</abbr>)</strong></td>
+<td><strong>APL</strong></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\sum_{n=1}^N n\)</span></td>
+<td><code>+/⍳N</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="order-of-execution">Order of execution</h2>
+<p>Infix (dyadic) functions have a <strong>short</strong> <em>left</em> scope and <strong>long</strong> <em>right</em> scope. </p>
+<pre><code class="language-APL">      10×⍳2+5
+</code></pre>
+<pre><code>10 20 30 40 50 60 70
+</code></pre>
+<p>The expresssion above is "ten <em>times</em> the indices from 1 to <em>two plus five</em>, or in short: "ten times iota two plus five". We can make it clearer using (superfluous) <strong>parentheses</strong> <code>()</code>.</p>
+<pre><code class="language-APL">      10×(⍳(2+5))
+</code></pre>
+<pre><code>10 20 30 40 50 60 70
+</code></pre>
+<p>Of course, we can change the order of execution using different parentheses.</p>
+<pre><code class="language-APL">      (10×⍳2)+5
+</code></pre>
+<pre><code>15 25
+</code></pre>
+<h2 id="problem-set-1">Problem Set 1</h2>
 <ol>
 <li>
 <p>A Mathematical Notation</p>
@@ -433,6 +620,41 @@
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href=".." class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                About
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../Dfns/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Dfns and Assignment
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
