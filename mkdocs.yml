@@ -2,6 +2,10 @@ site_name: APL Course
 site_description: A self-study introduction to Dyalog APL
 docs_dir: docs/
 site_url: https://dyalog.com
+extra_javascript:
+  - javascripts/config.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 theme:
   name: material
   favicon: 'img/favicon-32.png'
@@ -18,10 +22,6 @@ markdown_extensions:
   - abbr
 extra_css:
   - style/main.css
-extra_javascript:
-  - javascripts/config.js
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 nav:
   - About: index.md
   - First Steps: First-steps.md
@@ -37,7 +37,9 @@ nav:
   - Namespaces and other objects: Namespaces.md
   - Getting Help: Help.md
   - User-defined functions: Ufns.md
+  - For loops and if statements: Flow-control.md
   - Operators: Operators.md
+  - Scans and reductions: Scan-Reduce.md
   - Error handling basics: Errors.md
   - Data IO: Data.md
   - Code IO: Code.md
@@ -45,6 +47,6 @@ nav:
   - External interfaces: Interfaces.md
   - Historical quirks: Quirks.md
   - The call stack: Stack.md
-  - Error trapping and signalling: Error trapping and signalling.md
-  - Interpreter internals: Implementation.md
+  - Error trapping and signalling: Error-trapping-and-signalling.md
+  - Interpreter internals: implementation.md
   - Further reading: Reading.md
