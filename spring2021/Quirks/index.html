@@ -383,7 +383,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Flow-control/" class="md-nav__link">
+      <a href="../Flow-control.md" class="md-nav__link">
         For loops and if statements
       </a>
     </li>
@@ -413,7 +413,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Scan-Reduce/" class="md-nav__link">
+      <a href="../Scan-Reduce.md" class="md-nav__link">
         Scans and reductions
       </a>
     </li>
@@ -549,40 +549,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#portable-defaults" class="md-nav__link">
-    Portable defaults
-  </a>
-  
-    <nav class="md-nav" aria-label="Portable defaults">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#migration-level" class="md-nav__link">
-    Migration Level
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#index-origin" class="md-nav__link">
-    Index Origin
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#refactoring" class="md-nav__link">
-    Refactoring
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -614,7 +580,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Error-trapping-and-signalling/" class="md-nav__link">
+      <a href="../Error-trapping-and-signalling.md" class="md-nav__link">
         Error trapping and signalling
       </a>
     </li>
@@ -686,40 +652,6 @@
         <li class="md-nav__item">
   <a href="#the-axis-operator" class="md-nav__link">
     The Axis Operator
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#portable-defaults" class="md-nav__link">
-    Portable defaults
-  </a>
-  
-    <nav class="md-nav" aria-label="Portable defaults">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#migration-level" class="md-nav__link">
-    Migration Level
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#index-origin" class="md-nav__link">
-    Index Origin
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#refactoring" class="md-nav__link">
-    Refactoring
   </a>
   
 </li>
@@ -824,24 +756,6 @@
 </details>
 
 <p>Knowledge of the axis operator is required for anyone maintaining code which uses it, and it should be used to retain style unless all uses are to be replaced systematically with the rank operator. In any case, some people feel it provides pleasant <a href="https://www.quora.com/What-is-syntactic-sugar-in-programming-languages">syntactic sugar</a> over the equivalent expressions which use rank and transpose.</p>
-<h2 id="portable-defaults">Portable defaults</h2>
-<p>All <a href="">system functions and variables</a> have default values. However, to guarantee that your code will run correctly when copied into other users' code bases, it is a good idea to set some of these values at the top level of the namespaces or functions which constitute the entry points of your application.</p>
-<p>It is common to see <code>(⎕ML ⎕IO)←1</code> or similar at the top of production functions and scripted namespaces.</p>
-<h3 id="migration-level">Migration Level</h3>
-<p>The <a href="/System variables">system variable</a> <code>⎕ML</code> ("<em>quad-em-ell</em>") specifies a "migration level" in order to allow code bases from other APL systems to work unmodified in Dyalog. By default, this is set to 1. However, to ens</p>
-<h3 id="index-origin">Index Origin</h3>
-<p>Due to its origin as a notational tool for teaching, arrays are indexed starting from 1 by default. However, some users are accustomed or find it convenient for indexing to start from 0 instead. In this way, it can be considered an "offset from the beginning of the array" rather than an <a href="https://en.wikipedia.org/wiki/Ordinal_numeral">ordinal</a> index.</p>
-<p>Dyalog provides a way to choose whether arrays are indexed starting from zero or one:</p>
-<pre><code class="language-APL">      'ABCD'[1]
-A
-      ⎕IO←0      ⍝ Quad eye-oh gets zero
-      'ABCD'[1]
-B
-</code></pre>
-<p>APLers all agree that it would be better if there was only one option for <code>⎕IO</code>, but none of them can agree on what it should be.</p>
-<p>The author is sure that saying "the zero-th element" is incorrect. The <em>first</em> element may be labelled 0, but it is still the first element.</p>
-<h2 id="refactoring">Refactoring</h2>
-<p>It is usually best to continue code in the style in which you find it. This can include continuing. However, if an important part of the code base has become very difficult to reason about and debug, it might be worth your time to refactor it using more modern constructs and practices. This is referred to as "paying down technical debt", as the debt is accrued when the original author wrote code which makes it difficult, and therefore takes more time and money, to maintain. After paying the technical debt, it is hoped that future maintenance is far less resource intensive - so it is always a tradeoff between spending time now to make code nicer for the future, or spending time later wondering how this thing even works.</p>
 <hr />
 <ol>
 <li><a id="hopl4" href="https://dl.acm.org/doi/pdf/10.1145/3386319#%5B%7B%22num%22%3A1037%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22Fit%22%7D%5D">Hui, R.K. and Kromberg, M.J., 2020. APL Since 1978. Proceedings of the ACM on Programming Languages. <strong>Section 3.1</strong></a></li>

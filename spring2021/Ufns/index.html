@@ -415,13 +415,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#nested-functions" class="md-nav__link">
-    Nested functions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#which-style-to-use" class="md-nav__link">
     Which style to use?
   </a>
@@ -450,19 +443,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#activities" class="md-nav__link">
-    Activities
-  </a>
-  
-    <nav class="md-nav" aria-label="Activities">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   <a href="#which-style-again" class="md-nav__link">
     Which style again?
@@ -480,6 +460,13 @@
           <li class="md-nav__item">
   <a href="#marking-tests" class="md-nav__link">
     Marking Tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tasks" class="md-nav__link">
+    Tasks
   </a>
   
 </li>
@@ -505,7 +492,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Flow-control/" class="md-nav__link">
+      <a href="../Flow-control.md" class="md-nav__link">
         For loops and if statements
       </a>
     </li>
@@ -535,7 +522,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Scan-Reduce/" class="md-nav__link">
+      <a href="../Scan-Reduce.md" class="md-nav__link">
         Scans and reductions
       </a>
     </li>
@@ -655,7 +642,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Error-trapping-and-signalling/" class="md-nav__link">
+      <a href="../Error-trapping-and-signalling.md" class="md-nav__link">
         Error trapping and signalling
       </a>
     </li>
@@ -732,13 +719,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#nested-functions" class="md-nav__link">
-    Nested functions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#which-style-to-use" class="md-nav__link">
     Which style to use?
   </a>
@@ -767,19 +747,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#activities" class="md-nav__link">
-    Activities
-  </a>
-  
-    <nav class="md-nav" aria-label="Activities">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   <a href="#which-style-again" class="md-nav__link">
     Which style again?
@@ -797,6 +764,13 @@
           <li class="md-nav__item">
   <a href="#marking-tests" class="md-nav__link">
     Marking Tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tasks" class="md-nav__link">
+    Tasks
   </a>
   
 </li>
@@ -820,14 +794,13 @@
                 
                 
                 <h1 id="user-defined-functions">User defined functions</h1>
-<p>This is a fairly brief introduction, and there are exercises at the end of this section to help solidify your understanding, but there is also <a href="https://mastering.dyalog.com/User-Defined-Functions.html">a more extensive treatment of user-defined functions in the book Mastering Dyalog APL</a>.</p>
 <h2 id="the-three-function-styles">The Three Function Styles</h2>
 <p>So far, we have been reading and writing <a href="https://aplwiki.com/wiki/Dfn">dfns</a>. </p>
 <pre><code class="language-APL">         3 {⍺+⍵} 5              ⍝ Left argument ⍺, right argument ⍵
            {⍵&gt;0:⍵,∇ ⍵-1 ⋄ ⍵}5   ⍝ Guard is : (colon). The function itself is ∇ (del)
       Fn ← {⍺⍵}                 ⍝ We can give functions names
 </code></pre>
-<p>It is also possible to name functions which do not explicity refer to their arguments. This is called <a href="https://aplwiki.com/wiki/Tacit_programming">tacit</a> or <em>point-free</em> programming.</p>
+<p>It is also possible to name functions without explicitly referring to their arguments. This is called <a href="https://aplwiki.com/wiki/Tacit_programming">tacit</a> or <em>point-free</em> programming.</p>
 <pre><code class="language-APL">      Plus ← +
       IndicesTo ← ⍳
       _Reduce ← /      
@@ -840,23 +813,16 @@
       3 (+,-) 5             ⍝ Plus and minus
       ','(≠⊆⊢)'some,text'   ⍝ Split on commas
 </code></pre>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Small unnamed dfns and tacit functions expand your vocabulary. One of my favourites is the "split by delimiter" train <code class="language-APL">(≠⊆⊢)</code>. It looks like a beat-up face <a href="https://en.wikipedia.org/wiki/Emoticon#Japanese_style_(kaomoji)">kaomoji</a>. A similar phrase which can take multiple delimiters can be found on <a href="https://aplcart.info/?q=split%20text#">aplcart.info</a>.</p>
-</div>
+<p>{% include note.html content='Small unnamed dfns and tacit functions expand your vocabulary. One of my favourites is the "split by delimiter" train <code class="language-APL">(≠⊆⊢)</code>. It looks like a beat-up face <a href="https://en.wikipedia.org/wiki/Emoticon#Japanese_style_(kaomoji)">kaomoji</a>. A similar phrase which can take multiple delimiters can be found on <a href="https://aplcart.info/?q=split%20text#">aplcart.info</a>.' %}</p>
 <h2 id="traditional-functions">Traditional functions</h2>
-<p>todo: - Tradfns can have locals on multiple lines</p>
-<p>Dyalog is a modern APL implementation. Since early APL implementations there has been a way of defining functions with a header line and named arguments and results. Since the introduction of dfns, functions of the original style are called <em>traditional functions</em> or <a href="https://aplwiki.com/wiki/Defined_function"><em>tradfns</em></a>.</p>
+<p>Dyalog is a modern APL implementation. Since the first APL implementations there has been a way of defining functions with a header line and named arguments and results. Since the introduction of dfns, functions of the original style are called <em>traditional functions</em> or <a href="https://aplwiki.com/wiki/Defined_function"><em>tradfns</em></a>.</p>
 <pre><code class="language-APL">      Mean ← +⌿÷≢         ⍝ A 3-train (fork) for the arithmetic mean
       Mean ← {(+⌿⍵)÷≢⍵}   ⍝ A dfn for the arithmetic mean
       ∇ m ← Mean a        ⍝ A tradfn for the arithmetic mean
         m ← (+⌿a) ÷ ≢a
       ∇
 </code></pre>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Copy and paste everything between (and including) the two <code class='language-APL'>∇</code> <em>del</em> symbols into the session, and press <code class='language-APL'>Enter</code>, to define a tradfn in your workspace. <br><br>Using <code class='language-APL'>Shift+Enter</code> with the cursor on a name will bring up an editor window for that named thing.</p>
-</div>
+<p>{% include note.html content="Copy and paste everything between (and including) the two <code class='language-APL'>∇</code> <em>del</em> symbols into the session, and press <code class='language-APL'>Enter</code>, to define a tradfn in your workspace. <br><br>Using <code class='language-APL'>Shift+Enter</code> with the cursor on a name will bring up an editor window for that named thing." %}</p>
 <p>A tradfn header reflects the calling syntax of the function. </p>
 <pre><code class="language-APL">     ∇ {result}←{optional}TradFn argument;local1;local2
 [1]    :If 0=⎕NC'optional'                             
@@ -880,24 +846,6 @@
 <p><code>T</code> is a function which takes no arguments, returns no results and has no effects.</p>
 <p>Results in <code>{}</code> curly braces do not print to the session by default, but can be passed to arguments. To ease debugging and write functions with predictable behaviour, it is generally best not to use shy results.</p>
 <p>Optional left arguments are a little awkward in tradfns. The dfn equivalent is a little nicer looking: <code>{⍺←'default' ⋄ ⍺,⍵}</code>.</p>
-<h2 id="nested-functions">Nested functions</h2>
-<p>It is possible to define functions inside some other functions.</p>
-<ul>
-<li>Tacit functions can only include other user-defined functions by name
-    <pre><code class="language-APL">      Sort ← {(⊂⍋⍵)⌷⍵}
-      CSI ← Sort⍥⎕C   ⍝ Case-insensitive sort</code></pre></li>
-<li>Dfns can contain tacit definitions and dfn definitions, as well as any named user-defined functions
-    <pre><code class="language-APL"> SortedMeans ← {
-    Sort ← {(⊂⍋⍵)⌷⍵}
-    Mean ← +⌿÷1⌈≢
-    Sort Mean¨⍵
-}</code></pre></li>
-<li>Tradfns can contain tacit definitions, dfn definitions and any named user-defined functions
-    <pre><code class="language-APL"> result←SortedMeans vectors;Mean;Sort
- Sort←{(⊂⍋⍵)⌷⍵}
- Mean←+⌿÷1⌈≢
- result←Sort Mean¨vectors</code></pre></li>
-</ul>
 <h2 id="which-style-to-use">Which style to use?</h2>
 <p>While usage of different function styles varies throughout many applications, I suggest these non-prescriptive guidelines, from <a href="https://abrudz.github.io/style/">Adám's APL Style Guide</a>, for production code. When maintaining others' code, it is best to try to continue in the already established style.</p>
 <h4 id="dfns">Dfns</h4>
@@ -931,10 +879,7 @@
 <p>Best used as program control and for dealing with system interactions. The use of control structures can make procedural tasks easier to debug. For example, if an error occurs during a loop or iteration.</p>
 <pre><code class="language-APL">      ¯5{i←⍺+⍳⍵ ⋄ i÷i-2}10   ⍝ A single line function cannot be traced through
 </code></pre>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Use <code class='language-APL'>Ctrl+Enter</code> to step through a multiline function. You can then use <code class='language-APL'>Shift+Enter</code> to edit the function during execution and <code class='language-APL'>Esc</code> to save your changes to the function and continue execution.</p>
-</div>
+<p>{% include note.html content="💡 Use <code class='language-APL'>Ctrl+Enter</code> to step through a multiline function. You can then use <code class='language-APL'>Shift+Enter</code> to edit the function during execution and <code class='language-APL'>Esc</code> to save your changes to the function and continue execution." %}</p>
 <pre><code class="language-APL">    ∇  r←a MultiLineError o;i
 [1]    :For i :In a+⍳o       
 [2]        r←i+3             
@@ -942,7 +887,6 @@
 [4]    :EndFor               
     ∇    
 </code></pre>
-<h2 id="activities">Activities</h2>
 <h3 id="which-style-again">Which style again?</h3>
 <ol>
 <li>Which of the following function styles can have multiple lines?<ol>
@@ -1015,8 +959,10 @@ For each score in scores:
 <pre><code class="language-APL">      :If :OrIf :AndIf :ElseIf :Else :EndIf
       :For :In :EndFor
       :While :EndWhile
-      :Repeat :Until :Return
+      :Repeat :Until      
 </code></pre>
+<p>Exit from a loop before it is finished using the <code>:Return</code> keyword.</p>
+<h3 id="tasks">Tasks</h3>
 <ol>
 <li>
 <p>Translate the pseudocode above into a <strong>tradfn</strong> called <code>Grade2</code> using control stuctures.</p>
@@ -1063,13 +1009,13 @@ For each score in scores:
         </a>
       
       
-        <a href="../Flow-control/" class="md-footer__link md-footer__link--next" rel="next">
+        <a href="../Operators/" class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              For loops and if statements
+              Operators
             </div>
           </div>
           <div class="md-footer__button md-icon">

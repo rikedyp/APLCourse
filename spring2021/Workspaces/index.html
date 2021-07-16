@@ -356,13 +356,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#to-do" class="md-nav__link">
-    To do
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#whats-a-workspace" class="md-nav__link">
     What's a workspace?
   </a>
@@ -377,6 +370,20 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#namespaces" class="md-nav__link">
+    Namespaces
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mutable-objects" class="md-nav__link">
+    Mutable objects
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#saving-and-loading" class="md-nav__link">
     Saving and loading
   </a>
@@ -384,8 +391,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#activities" class="md-nav__link">
-    Activities
+  <a href="#tasks" class="md-nav__link">
+    Tasks
   </a>
   
 </li>
@@ -451,7 +458,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Flow-control/" class="md-nav__link">
+      <a href="../Flow-control.md" class="md-nav__link">
         For loops and if statements
       </a>
     </li>
@@ -481,7 +488,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Scan-Reduce/" class="md-nav__link">
+      <a href="../Scan-Reduce.md" class="md-nav__link">
         Scans and reductions
       </a>
     </li>
@@ -601,7 +608,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Error-trapping-and-signalling/" class="md-nav__link">
+      <a href="../Error-trapping-and-signalling.md" class="md-nav__link">
         Error trapping and signalling
       </a>
     </li>
@@ -664,13 +671,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#to-do" class="md-nav__link">
-    To do
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#whats-a-workspace" class="md-nav__link">
     What's a workspace?
   </a>
@@ -685,6 +685,20 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#namespaces" class="md-nav__link">
+    Namespaces
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mutable-objects" class="md-nav__link">
+    Mutable objects
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#saving-and-loading" class="md-nav__link">
     Saving and loading
   </a>
@@ -692,8 +706,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#activities" class="md-nav__link">
-    Activities
+  <a href="#tasks" class="md-nav__link">
+    Tasks
   </a>
   
 </li>
@@ -713,42 +727,33 @@
                 
                 <h1 id="workspace-basics">Workspace basics</h1>
 <p>We sure have made a lot of functions so far and we've typed many expressions into our <a href="https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop"><abbr title="Read Evaluate Print Loop">REPL</abbr></a>. There seem to be a few variables in our workspace as well. We should save them somewhere for later.</p>
-<h2 id="to-do">To do</h2>
-<p>todo:</p>
+<h3 id="whats-a-workspace">What's a workspace?</h3>
+<p>If you have been using Dyalog, the <em>session log</em> is the page with all of your input and output so far. You can scroll up the session log (with a mouse or using the <code>Page Up</code> key) and see everything you have done so far).</p>
+<p>A workspace is a collection of names. We can obtain some lists of names using <a target="_blank" href="http://help.dyalog.com/latest/#Language/System%20Commands/Introduction.htm?Highlight=System%20commands"><strong>system commands</strong></a>.</p>
 <ul>
-<li><code>]Locate</code></li>
-<li><code>]Names</code></li>
+<li>Functions</li>
 </ul>
-<h2 id="whats-a-workspace">What's a workspace?</h2>
-<p>If you have been using Dyalog, the <strong>session log</strong> is the page with all of your input and output so far. You can scroll up the session log (with a mouse or using the <kbd>Page Up</kbd> key) and see everything you have done so far.</p>
-<p>A <strong>workspace</strong> is a collection of names. We can obtain some lists of names using <a target="_blank" href="http://help.dyalog.com/latest/#Language/System%20Commands/Introduction.htm?Highlight=System%20commands"><strong>system commands</strong></a>.</p>
 <pre><code class="language-APL">      )fns    ⍝ Functions
-      )vars   ⍝ Variables (arrays)
+      )vars   ⍝ Variables (arrays)    
 </code></pre>
 <p>These commands have the special <code>)COMMAND</code> syntax, and are only used when interacting with the session. They return no result and cannot be used programmatically; they cannot be used in a function.</p>
-<h2 id="system-functions">System functions</h2>
-<p>The <em>session</em> is sometimes used to refer to the interactive mode of operation (also known as <em>calculator mode</em> also known as <em>immediate execution mode</em>), in contrast to <em>under program control</em>, which is when something happens as the result of a line in a program/function. </p>
+<h3 id="system-functions">System functions</h3>
+<p>The <em>session</em> is sometimes used to refer to the interactive mode of operation (AKA <em>calculator mode</em> AKA <em>immediate execution mode</em>), in contrast to <em>under program control</em>, which is when something happens as the result of a line in a program/function. </p>
 <p>For example:</p>
 <pre><code class="language-APL">      myvar ← 2×⍳3   ⍝ Declare a variable in the session
       )erase myvar   ⍝ Use a system command to erase the variable
 </code></pre>
 <p>If we try to use a system command inside a function, it won't work.</p>
-<pre><code class="language-APL">                     ⍝ The ]DInput user command lets us write mult-line dfns in the session
-      ]dinput        ⍝ Alternatively, press Shift+Enter with the cursor | on a name
-      MultiFn←{      ⍝ A multi-line dfn
-                     ⍝ These statements are executed &quot;under program control&quot;
+<pre><code class="language-APL">      ]dinput        ⍝ The ]DInput user command lets us write mult-line dfns in the session
+                     ⍝ Alternatively, press Shift+Enter with the cursor | on a name
+      multifn←{
+        ⍝ These statements are executed &quot;under program control&quot;
         ⎕←5+5
         var ← 2+2    ⍝ This variable only exists when this function is running
         )erase var   ⍝ This won't work
       }
-                     ⍝ Now try to execute:
-      MultiFn ⍬
-10
-VALUE ERROR: Undefined name: erase
-MultiFn[4] )erase var   ⍝ This won't work
-            ∧
 </code></pre>
-<p><strong>System functions</strong> are functions of the form <code>⎕FUNCTION</code> and <em>do</em> return a result. Some have shy results which can be used by subsequent functions, or printed to the session output with <code>⎕←</code> ("<em>quad-gets</em>").</p>
+<p><strong>System functions</strong> are functions of the form <code>⎕FUNCTION</code> and <em>do</em> return a result. Some have shy results which can be used by subsequent functions, or printed to the session output with <code>⎕←</code>.</p>
 <pre><code class="language-APL"> multifn←{
     ⍝ These statements are executed &quot;under program control&quot;
     ⎕←5+5
@@ -761,7 +766,47 @@ MultiFn[4] )erase var   ⍝ This won't work
       ⎕NL 3    ⍝ List functions
       ⎕NL-⍳9   ⍝ List all names as a nested vector of character vectors
 </code></pre>
-<h2 id="saving-and-loading">Saving and loading</h2>
+<h3 id="namespaces">Namespaces</h3>
+<p>If nested arrays are arrays inside arrays; <strong>namespaces</strong> are a bit like a workspace within a workspace. They are <strong>objects</strong> which contain collections of names, and these names can be listed as before, but using the dot <code>.</code> syntax from <a target="_blank" href="https://cs.stackexchange.com/questions/89031/what-is-the-origin-of-dot-notation">object-oriented</a> programming.</p>
+<pre><code class="language-APL">      )ns ns         ⍝ Create an empty namespace called ns
+      ns.var←1 2 3   ⍝ Create a variable in ns called var
+      ns.fn←{⍺,⍵}    ⍝ Create a function in ns called fn
+      ⎕nl-9          ⍝ List the names of objects in the current namespace
+┌──┐
+│ns│
+└──┘
+      ns.⎕nl-⍳9      ⍝ List all names in ns
+┌──┬───┐
+│fn│var│
+└──┴───┘
+      )cs ns         ⍝ Change into ns
+      ⎕this.⎕nl-⍳9   ⍝ The current namespace is ⎕THIS
+┌──┬───┐
+│fn│var│
+└──┴───┘
+      #.⎕nl-⍳9       ⍝ The root namespace is #
+┌──┐
+│ns│
+└──┘
+</code></pre>
+<h3 id="mutable-objects">Mutable objects</h3>
+<p>Variables are pass-by-value. This means that if one name is used to assign another name, changes to the first name are not reflected in the second name.</p>
+<pre><code class="language-APL">      var1←1 2 3
+      var2←var1     ⍝ The value of var1 is assigned to var2
+      var1←var1+6   ⍝ The value of var2 is changed
+      ⎕←var2          ⍝ var2 retains the previous value
+1 2 3
+</code></pre>
+<p>Namespaces are objects and are pass-by-reference. All names which are assigned a reference can be used to refer to the original object.</p>
+<pre><code class="language-APL">      )ns ns1
+#.ns1
+      ns1.name←'Bob'
+      ns2←ns1
+      ns2.name←'Steve'
+      ⎕←ns1.name
+Steve
+</code></pre>
+<h3 id="saving-and-loading">Saving and loading</h3>
 <p>There is one more type of system-thing to mention, although you have seen the <code>]box</code> one before. Commands which begin with a right-square-bracket <code>]</code> are called <a target="_blank" href="">User Commands</a>. These are also only used while interacting with the session, but you can customise them and create your own.</p>
 <p>Dyalog webinar: <a target="_blank" href="https://dyalog.tv/Webinar/?v=LWJzRGrOC3k">Creating and Managing your own User Commands</a></p>
 <p>The example below shows how to save and load a workspace.</p>
@@ -780,7 +825,7 @@ MultiFn[4] )erase var   ⍝ This won't work
 </ul>
 <p>With the exception of the scenarios mentioned above, Link is intended to make it unnecessary to save workspaces. All source code changes that you make while editing or tracing your code should immediately end up in text files and be managed using an <abbr title="Source Code Manager">SCM</abbr>. The normal workflow is to start each APL session by loading the code into the workspace from source directories. You might want to save a "stub" workspace that contains a very small amount of code that loads everything else from text source, but from version 18.0 of Dyalog APL you can now <a href="/GettingStarted/Setup.md">easily set that up using text files as well</a>, rendering workspaces obsolete as part of your normal development workflow.</p>
 </div>
-<h2 id="activities">Activities</h2>
+<h2 id="tasks">Tasks</h2>
 <ol>
 <li>In terms of array rank, what type of array is a namespace?</li>
 <li>What is the rank of <code>⎕NL x</code> for any scalar or vector <code>x</code>?</li>
@@ -789,6 +834,10 @@ MultiFn[4] )erase var   ⍝ This won't work
 <li>Use <code>]cd</code> to change to a directory on your machine where you would like to save your work</li>
 <li>Use <code>)wsid WSName</code> to change the name of your active workspace</li>
 <li>Use <code>)save</code> to save your workspace</li>
+<li>Use <code>)clear</code> to clear your workspace</li>
+<li>Create a new namespace called 'Day1'</li>
+<li>Use <code>Day1.⎕CY'WSName'</code> to copy the contents of your saved workspace into the <code>Day1</code> namespace</li>
+<li>Now <code>)save</code> again</li>
 </ol>
 </li>
 </ol>

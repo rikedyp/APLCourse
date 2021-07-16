@@ -400,16 +400,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#has-this-been-done" class="md-nav__link">
-    Has this been done?
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#talk-to-humans" class="md-nav__link">
     Talk to humans
   </a>
+  
+    <nav class="md-nav" aria-label="Talk to humans">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#your-resources" class="md-nav__link">
+    Your Resources
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -444,7 +450,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Flow-control/" class="md-nav__link">
+      <a href="../Flow-control.md" class="md-nav__link">
         For loops and if statements
       </a>
     </li>
@@ -474,7 +480,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Scan-Reduce/" class="md-nav__link">
+      <a href="../Scan-Reduce.md" class="md-nav__link">
         Scans and reductions
       </a>
     </li>
@@ -594,7 +600,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Error-trapping-and-signalling/" class="md-nav__link">
+      <a href="../Error-trapping-and-signalling.md" class="md-nav__link">
         Error trapping and signalling
       </a>
     </li>
@@ -671,16 +677,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#has-this-been-done" class="md-nav__link">
-    Has this been done?
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#talk-to-humans" class="md-nav__link">
     Talk to humans
   </a>
+  
+    <nav class="md-nav" aria-label="Talk to humans">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#your-resources" class="md-nav__link">
+    Your Resources
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -710,17 +722,22 @@
 <p>It is also possible to set a custom URL to use for queries when the interpreter doesn't recognise something.</p>
 <p>In the IDE for Microsoft Windows, go to Options → Configure → Help/DMX. Tick "Use online help for non-Dyalog topics" and set the custom URL of your choice. For example, you can try using <code>https://aplcart.info/?q=%s</code>, so that <kbd>F1</kbd> behaves like an alias to the <code>]APLcart</code> user command.</p>
 <p>In the RIDE, <kbd>F1</kbd> opens a browser window to the <a href="https://help.dyalog.com/latest">Dyalog online documentation</a>.</p>
-<p>The online help is a subset of the full materials available from the <a href="https://docs.dyalog.com">Documentation Centre</a>.</p>
+<ul>
+<li>The <a href="">Documentation Centre</a> </li>
+</ul>
 <h2 id="how-do-i-do-this">How do I do this?</h2>
 <p>This is a much more difficult thing to overcome. Sometimes you have an idea of what you want to achieve, but you either aren't sure what constructs are available to help you achieve it, or you aren't sure that the solution you've come up with is the best way to go about it.</p>
 <ul>
 <li>If you need help with <em>how to do something</em>, try searching in <a href="https://aplcart.info/">APLcart</a>, the searchable idiom<sup><a href="#1">*</a></sup> library</li>
 </ul>
-<h2 id="has-this-been-done">Has this been done?</h2>
-<p>We strongly recommend that you spend some time on a regular basis reading and exploring the existing APL media. As a language with a rich history, there have been a huge number of conferences, published papers and presentations where users and implementors discuss their activities and achievements. Some of these are listed on the <a href="/Reading">further reading</a> page.</p>
+<p>We strongly recommend that you spend some time on a regular basis (maybe at least a few hours each month) reading and exploring the existing APL media. As a language with a rich history, there have been a huge number of conferences, published papers and presentations where users and implementors discuss their activities and achievements. </p>
 <h2 id="talk-to-humans">Talk to humans</h2>
 <ul>
-<li>If you cannot find a solution on APLcart, please <a href="https://stackoverflow.com/questions/ask">ask on Stack Overflow</a>. There are a number of keen APLers who monitor this site and will eagerly answer any questions asked there.</li>
+<li>If you cannot find a solution on APLcart, please <a href="https://stackoverflow.com/questions/ask">ask on Stack Overflow</a>. There are a number of keep APLers who monitor this site and will eagerly answer any questions asked there.</li>
+</ul>
+<h3 id="your-resources">Your Resources</h3>
+<p>There are some places you can go to get help.</p>
+<ul>
 <li>Introduce yourself in <a href="https://chat.stackexchange.com/rooms/52405/the-apl-orchard">the APL Orchard</a> Stack Exchange chat room, where you can usually get same-day replies to your queries.</li>
 <li>As well as Stack Overflow, the <a href="https://forums.dyalog.com/">Dyalog forums</a> are full of interesting discussions and are quite active.</li>
 <li><a href="https://aplwiki.com/">The APL Wiki</a> has hundreds of articles about both the history of APL, as well as specific language features and usage examples.</li>
@@ -728,7 +745,7 @@
 <p><a id="1"></a><br>  </p>
 <blockquote>
 <p>*<strong>Idioms</strong><br />
-an <em>idiom</em> in APL is a short phrase to perform some specific task. For example, here is how to <a href="https://aplcart.info/?q=remove%20leading%20trailing%20blanks#">remove leading, trailing and duplicate spaces from a text vector</a>. In Dyalog specifically, <a href="http://docs.dyalog.com/latest/CheatSheet%20-%20Idioms.pdf">some idioms</a> are recognised by the interpreter and cause special code to be executed which is faster and uses less memory than if the the whole expression was interpreted primitive-by-primitive. In contrast to <a href="https://en.wikipedia.org/wiki/Idiom">idioms</a> in natural language, which have a literal meaning different to their actual meaning, APL idioms are made of source code and therefore say exactly what they do.</p>
+an <em>idiom</em> in APL is a short phrase to perform some specific task. For example, here is how to <a href="https://aplcart.info/?q=remove%20leading%20trailing%20blanks#">remove leading, trailing and duplicate spaces from a text vector</a>. In Dyalog specifically, <a href="http://docs.dyalog.com/latest/CheatSheet%20-%20Idioms.pdf">some idioms</a> are recognised by the interpreter and cause special code to be executed which is faster and uses less memory than if the the whole expression was interpreted primitive-by-primitive. In contrast to <a href="https://en.wikipedia.org/wiki/Idiom">idioms</a> in natural language, which have a literal meaning different to their actual meaning, APL idioms say exactly what they do. I find it interesting that the phrase commonly used to demonstrate idioms in English, <em>raining cats and dogs</em>, is not very commonly used in speech anymore.</p>
 </blockquote>
                 
               

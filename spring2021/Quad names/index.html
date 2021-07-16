@@ -383,7 +383,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Flow-control/" class="md-nav__link">
+      <a href="../Flow-control.md" class="md-nav__link">
         For loops and if statements
       </a>
     </li>
@@ -413,7 +413,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Scan-Reduce/" class="md-nav__link">
+      <a href="../Scan-Reduce.md" class="md-nav__link">
         Scans and reductions
       </a>
     </li>
@@ -542,8 +542,35 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#comparison-tolerance" class="md-nav__link">
+    Comparison tolerance
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#division-control" class="md-nav__link">
     Division control
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-functions" class="md-nav__link">
+    System functions
+  </a>
+  
+    <nav class="md-nav" aria-label="System functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comparison-tolerance_1" class="md-nav__link">
+    Comparison Tolerance
   </a>
   
 </li>
@@ -562,29 +589,9 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#system-functions" class="md-nav__link">
-    System functions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#to-be-moved" class="md-nav__link">
-    To be moved
-  </a>
-  
-    <nav class="md-nav" aria-label="To be moved">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
-  <a href="#comparison-tolerance" class="md-nav__link">
-    Comparison tolerance
+  <a href="#trap-control" class="md-nav__link">
+    Trap control
   </a>
   
 </li>
@@ -655,7 +662,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Error-trapping-and-signalling/" class="md-nav__link">
+      <a href="../Error-trapping-and-signalling.md" class="md-nav__link">
         Error trapping and signalling
       </a>
     </li>
@@ -754,8 +761,35 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#comparison-tolerance" class="md-nav__link">
+    Comparison tolerance
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#division-control" class="md-nav__link">
     Division control
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-functions" class="md-nav__link">
+    System functions
+  </a>
+  
+    <nav class="md-nav" aria-label="System functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comparison-tolerance_1" class="md-nav__link">
+    Comparison Tolerance
   </a>
   
 </li>
@@ -774,29 +808,9 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#system-functions" class="md-nav__link">
-    System functions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#to-be-moved" class="md-nav__link">
-    To be moved
-  </a>
-  
-    <nav class="md-nav" aria-label="To be moved">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
-  <a href="#comparison-tolerance" class="md-nav__link">
-    Comparison tolerance
+  <a href="#trap-control" class="md-nav__link">
+    Trap control
   </a>
   
 </li>
@@ -828,7 +842,6 @@
 <li><a href="http://help.dyalog.com/18.0/#Language/System%20Functions/Summary%20Tables/System%20Variables.htm">a complete list of system variables</a></li>
 </ul>
 <h2 id="system-variables">System variables</h2>
-<p>The Dyalog online documentation has <a href="http://help.dyalog.com/latest/#Language/System%20Functions/Summary%20Tables/System%20Variables.htm?Highlight=system%20variables">a complete list of system variables</a>.</p>
 <p>System variables describe the state of the system.<br />
 Some variables are <span class="svstc">static</span> and cannot change.<br />
 Some variables are <span class="svdyn">dynamic</span> and can change without user intervention.<br />
@@ -1001,6 +1014,36 @@ dyalog
 ⎕LX    Latent eXpression
 ⎕PATH  where to find functions 
 </code></pre>
+<h3 id="comparison-tolerance">Comparison tolerance</h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This subsection is likely to move</p>
+</div>
+<p><code>⎕CT</code> comparison tolerance</p>
+<p><code>⎕DCT</code> decimal comparison tolerance</p>
+<p>Of course, floating point arithmetic voids certain mathematical properties:</p>
+<p><span class="arithmatex">\({{3}\over{5}} = 3 \times {{5}\over{9}} \div 5\)</span></p>
+<pre><code class="language-APL">      ⎕CT←1e¯14   ⍝ Default comparison tolerance
+      (1÷3)=3×(5÷9)÷5
+1
+      ⎕CT←0       ⍝ No comparison tolerance
+      (1÷3)=3×(5÷9)÷5
+0
+</code></pre>
+<pre><code class="language-APL">    ⎕CT←1E¯14
+    1=1 + 10 * -⎕←⍳16
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 
+0 0 0 0 0 0 0 0 0  0  0  0  0  1  1  1 
+</code></pre>
+<p>For exact comparisons set ⎕CT to 0, but beware:</p>
+<pre><code class="language-APL">      10=+/100⍴0.1
+1
+      ⎕CT←0
+      10=+/100⍴0.1
+0
+      10-+/100⍴0.1
+1.953992523E¯14
+</code></pre>
 <h3 id="division-control">Division control</h3>
 <pre><code class="language-APL">      ⎕DIV←0   ⍝ Default
       3÷0
@@ -1013,6 +1056,19 @@ DOMAIN ERROR: Divide by zero
       3÷0
 0
       0÷0
+0
+</code></pre>
+<h2 id="system-functions">System functions</h2>
+<h3 id="comparison-tolerance_1">Comparison Tolerance</h3>
+<p>APL systems prefer to act like traditional arithmetic where possible. However, the base-2 (binary) representation used by computers is unable to represent certain decimal numbers precisely.</p>
+<p>In traditional mathematical notation:</p>
+<p><span class="arithmatex">\(1={6\over10}\times10\times{1\over6}\)</span></p>
+<pre><code class="language-APL">      ⎕CT   ⍝ Default is 10*¯14
+1E¯14
+      1=(6÷10)×10×÷6
+1
+      ⎕CT←0
+      1=(6÷10)×10×÷6
 0
 </code></pre>
 <h3 id="print-precision">Print Precision</h3>
@@ -1029,36 +1085,7 @@ DOMAIN ERROR: Divide by zero
 17
 </code></pre>
 <h3 id="print-width">Print Width</h3>
-<p>The Print Width <code>⎕PW</code> sets the number of characters in the session before wrapping to a new line.</p>
-<p>It can be set to automatically adjust based on the IDE windows size. In the Microsoft Windows IDE, go to <strong>Options</strong>→<strong>Configure</strong>→<strong>Session</strong> and tick <strong>Auto PW</strong>. In the RIDE, go to <strong>Edit</strong>→<strong>Preferences</strong>→<strong>General</strong>→<strong>Session</strong> and tick <strong>Auto PW</strong>.</p>
-<h2 id="system-functions">System functions</h2>
-<p>A complete collection of categorised system functions is available <a href="http://help.dyalog.com/latest/#Language/System%20Functions/Summary%20Tables/System%20Functions%20Categorised.htm?Highlight=system%20function">from the Dyalog online documentation</a>.</p>
-<h2 id="to-be-moved">To be moved</h2>
-<h3 id="comparison-tolerance">Comparison tolerance</h3>
-<p>APL systems prefer to act like traditional arithmetic where possible. However, the base-2 (binary) representation used by computers is unable to represent certain decimal numbers precisely. Therefore, floating point arithmetic voids certain mathematical properties:</p>
-<p><span class="arithmatex">\({{1}\over{3}} = 3 \times {{5}\over{9}} \div 5\)</span></p>
-<pre><code class="language-APL">      ⎕CT←1e¯14   ⍝ Default comparison tolerance
-      (1÷3)=3×(5÷9)÷5
-1
-      ⎕CT←0       ⍝ No comparison tolerance
-      (1÷3)=3×(5÷9)÷5
-0
-</code></pre>
-<pre><code class="language-APL">    ⎕CT←1E¯14
-    1=1 + 10 * -⎕←⍳16
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 
-0 0 0 0 0 0 0 0 0  0  0  0  0  1  1  1 
-</code></pre>
-<p>For exact comparisons set <code>⎕CT</code> to <code>0</code>, but beware:</p>
-<pre><code class="language-APL">      10=+/100⍴0.1
-1
-      ⎕CT←0
-      10=+/100⍴0.1
-0
-      10-+/100⍴0.1
-1.953992523E¯14
-</code></pre>
-<p><code>⎕DCT</code> decimal comparison tolerance</p>
+<h3 id="trap-control">Trap control</h3>
                 
               
               
