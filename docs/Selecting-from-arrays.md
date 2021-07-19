@@ -36,15 +36,12 @@ Square-bracket indexing requires you to know the exact rank of the array and hav
 There is also an **index** function `⍺⌷⍵` which has two distinctions:
 
 - It is a function with the same syntax as other functions
-- It applies to any rank array by automatically filling in less-major cells
+- It applies to any rank array by automatically filling in less-major cells (those cells defined by trailing axes)
 
 ```APL
       (1 2)(2 3)⌷(2 3 4⍴⎕A)
       (2 3 4⍴⎕A)[1 2;2 3;]
 ```
-
-!!! Note
-	The cells of an array are scalars, and indexing always returns the cells. 
 
 ### Take and drop
 We can chop off the edges of an array using **take** `⍺↑⍵` and **drop** `⍺↓⍵`.
@@ -89,8 +86,14 @@ While it is common and perfectly valid to simply use *first* `⊃⍵` to disclos
 words
 ```
 
+Reach indexing allows you to pull items from deep within a nested array:
+```APL
+      (2 1)(2 2) ⊃ 2 3⍴0 1 2 (2 3⍴'AB' 'CD' 'EF' 'GH' 'IJ' 'KL') 4 5
+IJ
+```
+
 ### Select (A.K.A. "Sane") indexing
-Some APLers are unhappy with the squad-index semantics, and have proposed yet another mechanism, called sane indexing or **select**. It can be defined as:
+Some APLers find squad-index semantics awkward, and have proposed yet another mechanism, called "sane" indexing or **select**. It can be defined as:
 ```APL
       I←(⊃⍤⊣⌷⊢)⍤0 99   ⍝ Sane indexing
 ```
@@ -109,7 +112,7 @@ Over time you will learn from experience what is the most appropriate thing to u
 |Rectangular subarrays|Simple|
 |Arbitrary scalars from an array of rank ≥2|Choose|
 |Nested arrays|Reach|
-|Arbitrary cells|Select|
+|Arbitrary collections of cells|Select|
 
 ## Searching and finding
 **Membership** `⍺∊⍵` will return a boolean array indicating the elements in `⍺` which are present in `⍵`.
@@ -159,29 +162,62 @@ Iverson's [dictionary of APL](https://www.jsoftware.com/papers/APLDictionary1.ht
 ## Problem set n
 
 ### Search, sort, slice and select
-1. Give two indexing expressions which apply to a scalar and return that scalar
+1. Write two indexing expressions which apply to a scalar and return that scalar
 
 1. Write a function `IRep` which is equivalent to `{⍺/⍵}` but uses indexing.
 
-1. A nested 3D array, obtain X using a single selection.
+1. `NVec ← '' '34' 'donut' ⍬` is a four-element nested vector. Use a single pick `⍺⊃⍵` to obtain the sub-item `'o'`.
 
-1. How can you index into a scalar?
+1.  From the nested 3D array `Nest←2 3 4⍴(⍳17),(⊂2 3⍴'ab'(2 3⍴'dyalog'),'defg'),⎕A[⍳6]` , use a single selection to obtain:
+	1. The character scalar `'y'`
+	1. The numeric scalar `6`
 
-???+ Example "Answers"
-	`⍬⌷42`  
-	`42[⊂⍬]`  
-	`⍬⊃42`  
-	`IRep ← {⍵[⍺⍴⊂⍬]}`
-
-1. Here is a table of data about visits to a museum
-	<pre><code class="language-APL">      visits ← </code></pre>
-	1. Return a vector of lengths grouped by blah
+	???+ Example "Answers"
+		1. For a scalar `s`, `⍬⌷s` and `s[⊂⍬]`
+		1. `IRep ← {⍵[⍺⍴⊂⍬]}`
+		1. `3 2⊃NVec`
+		1. 
+			1. `(2 2 2)(1 2)(1 2)⊃Nest`
+			1. `(⊂1 2 2)⊃Nest`
 
 1. What is the advantage of `{(⊂⍋⍵)⌷⍵}` over `{⍵[⍋⍵]}`?
 
-1. When does `{(⍺{⍸∨/⍺⍷⍵}⍵) ≢ ⍸∧/⍵∊⍺}`?
+1. When does `{(⍸∨/⍺⍷⍵) ≡ ⍸∧/⍵∊⍺}`?
 
-1. High-rank membership
+1. The membership function `⍺∊⍵` checks whether elements of `⍺` appear in `⍵`. Write a function `E` which checks whether major cells of `⍺` appear as major cells of `⍵`.
+	<pre><code>      text E ↑' APP' 'LESS' 
+0 1 1
+0 0 0</code></pre>
+
+1. Here are some data and questions about visits to a museum.  
+
+	The `section_names` are the names of each of the four sections in the museum.  
+	
+	<pre><code class="language-APL">section_names ← 'Bugs' 'Art' 'Fossils' 'Sea Life'</code></pre>  
+	
+	The variable `sections` is a nested list of text matrices. Each matrix lists the items or creatures which belong to each section.  
+	
+	<pre><code class="language-APL">sections ← ↑¨('Grasshopper' 'Giant Cicada' 'Earth-boring Dung Beetle' 'Scarab Beetle' 'Miyama Stag' 'Giant Stag' 'Brown Cicada' 'Giraffe Stag' 'Horned Dynastid' 'Walking Stick' 'Walking Leaf') ('The Blue Boy by Thomas Gainsborough' ('Rooster and Hen with Hydrangeas by It',(⎕ucs 333),' Jakuch',(⎕ucs 363)) 'The Great Wave off Kanagawa by Hokusai' 'Mona Lisa by Leonardo da Vinci' 'Sunflowers by Vincent van Gogh' 'Still Life with Apples and Oranges by Paul Cézanne' 'Girl with a Pearl Earring by Johannes Vermeer' ('Shak',(⎕ucs 333),'ki dog',(⎕ucs 363),' by Unknown') 'David by Michelangelo di Lodovico Buonarroti Simoni' 'Rosetta Stone by Unknown') ('Amber' 'Ammonite' 'Diplodocus' 'Stegosaur' 'Tyrannosaurus Rex' 'Triceratops') ('Puffer Fish' 'Blue Marlin' 'Ocean Sunfish' 'Acorn Barnacle' 'Mantis Shrimp' 'Octopus' 'Pearl Oyster' 'Scallop' 'Sea Anemone' 'Sea Slug' 'Sea Star' 'Whelk' 'Horseshoe Crab')</code></pre>
+	
+	The `visits` table represents 1000 visits to museum sections over a two week period. The four columns represent:  
+	
+	- The section that was visited as an index into the `section_names`
+	- The day of the visit in [Dyalog Date Number](http://help.dyalog.com/latest/#Language/System%20Functions/dt.htm) format.
+	- The arrival time in minutes from midnight. For example, 15:30 is 930 minutes.
+	- The departure time in minutes from midnight.
+	
+	<pre><code class="language-APL">⎕RL←42 ⋄ days←43589+?1000⍴28 ⋄ (arr lïv)←539+?2⍴⊂1000⍴510 ⋄ section←?1000⍴4
+visits←(⊂⍋days)⌷section,days,(⊂∘⍋⌷⊢)⍤1⍉↑arr lïv</code></pre>
+	
+	In the boolean matrix `display`, each row corresponds to a museum piece and each column corresponds to a day. A `1` indicates days when a particular museum piece was out on display. The order of rows corresponds to the order of pieces in the `sections` table.  
+	
+	<pre><code>display ← 40 28⍴(9/0),1,(4/0),1,(9/0),1,(3/0),(5/1),0,(10/1),0,(5/1),0,(8/1),0,(8/1),0,(4/1),0 0 1 1 0 1 0 1 0 1 1 0 1 0,(5/1),(3/0),1 0 1 0 1 1,(4/0),1 0 1 1 0 0 1 1 0,(6/1),0 1 0 1 0 0 1 1 0 0 1 1 0 1 0 0 1 1 0,(3/1),(3/0),(4/1),0 1 1 0 1 0 0,(7/1),0 1 0 1 1 0 1 1 0 1 1 0,(3/1),0 1 1 0,(4/1),0,(3/1),0 1 0,(3/1),0 0 1 1,(5/0),1 1 0,(3/1),0 1 0 0 1 1,(3/0),(5/1),0,(9/1),0,(3/1),0 1,(3/0),(5/1),0,(3/1),0,(3/1),(3/0),1 1 0 0 1 0 1,(4/0),1 1 0 1 0 1 0 1 0,(9/1),0,(7/1),0,(3/1),0 0 1 1 0 1 1 0 0 1 0 0 1 0,(5/1),0 1,(3/0),1 1 0 1 0 0,(3/1),0,(4/1),0 0 1 1,(7/0),(3/1),(3/0),1 1,(3/0),1 1 0 1 0 1,(6/0),1 1,(4/0),1 0 1 1,(5/0),1 0 1 0 1,(6/0),(3/1),(9/0),1 1,(3/0),1 0 1 0 1 1,(13/0),1 1,(11/0),1 0 1 1,(4/0),1 0 0,(4/1),0,(12/1),0,(5/1),0 1 0 0 1 1 0,(5/1),0,(4/1),0,(4/1),0 0 1,(5/0),1 1,(3/0),(8/1),0 0 1,(3/0),1,(3/0),1,(3/0),1 0 0 1 0 1 0 1 0 1 0 1 1 0,(3/1),(4/0),(3/1),0,(3/1),0 1 1,(3/0),(4/1),0 1 1 0 1 1,(3/0),1 1 0 1 0 1 0 1,(6/0),1 1,(14/0),(8/1),(4/0),(8/1),0,(3/1),0,(4/1),(6/0),1 0 0 1 1,(3/0),1 1 0 0 1 0 1 0 0 1 0 1,(5/0),1 0 0 1 0 1 0 0 1 1,(3/0),1,(8/0),1 0 1 0,(6/1),0 0,(7/1),0 1 1 0,(3/1),0,(9/1),0,(12/1),0 1 1 0,(9/1),0,(3/1),0 0,(3/1),(3/0),(3/1),0,(3/1),(5/0),(7/1),0 1 0,(5/1),0,(3/1),0 0,(3/1),0 0 1 1 0,(4/1),0 1,(3/0),(3/1),(5/0),1 0 1 1 0 1 0,(3/1),0,(5/1),0,(3/1),0,(4/1),0 1,(4/0),1 0 1 0 0 1 1,(5/0),1,(3/0),1 0 0 1 0 1,(3/0),1 0 1 0 0 1,(4/0),1 0 0 1,(6/0),1,(14/0),1 0 0,(4/1),(3/0),(6/1),0 0 1 0,(3/1),0,(4/1),0,(3/1),0 1 0 1,(3/0),(5/1),(3/0),1 0 0 1 0,(3/1),0 1,(4/0),1 0 1 1,(11/0),1,(15/0),(3/1),(4/0),1,(15/0),(5/1),0 1 0,(8/1),0,(3/1),(4/0),(5/1),0 1,(9/0),1 0 1 1 0 0 1 0 0 1,(4/0),1 0,(4/1),0,(7/1),(3/0),1 0 0 1,(3/0),(3/1),0 1 1
+</code></pre>
+	
+	1. How many visitors arrived before 10AM?
+	1. What was the most popular section by visit duration?
+	1. Estimate the opening and closing times of each of the sections.
+	1. Which animal being on display corresponded with the highest increase in visit duration for its section?
 
 ### Word Problems
 
