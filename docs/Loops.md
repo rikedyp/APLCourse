@@ -3,16 +3,16 @@ Looping is an incredibly basic and fundamental programming construct which you w
 
 ### An introduction to an introduction to an introduction to an introduction to an int...
 
-Try the following dfns with various numeric arguments and consider the following:
+Try the following anonymous dfn with various numeric arguments and consider the questions below:
+
+```APL
+      {⍺←1 1 ⋄ ⍵=2:⍺ ⋄ (⍺,(+/¯2↑⍺))∇⍵-1}
+```
 
 1. Which symbol refers to the function itself? 
 1. Which symbol separates expressions? 
 1. Which part represents a conditional? This is where one part of code executes only if a preceding statement is true.
 1. What is the default left argument? What happens if you call this function dyadically?
-
-```APL
-      {⍺←1 1 ⋄ ⍵=2:⍺ ⋄ (⍺,(+/¯2↑⍺))∇⍵-1}
-```
 
 Give the function [an appropriate name](https://en.wikipedia.org/wiki/Fibonacci_number).
 
@@ -24,7 +24,7 @@ If a function gets stuck in an infinite loop, use `Action → Interrupt` in the 
 
 1. Write the shortest dfn which causes infinite recursion unless its argument is `0`.
 
-1. The factorial function multiplies integers up to `⍵`. Write the factorial function as a **recursive** dfn called `Factorial`. Use the primitive `!N` factorial function to check your solution. 
+1. The factorial function multiplies integers up to `⍵`. Write the factorial function as a **recursive** dfn called `Factorial`. Use the primitive `!⍵` factorial function to check your solution. 
 
 1. Write an expression for the factorial function as a reduction (an expression which includes `f/` for some function `f`).
 

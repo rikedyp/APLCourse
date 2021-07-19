@@ -3,8 +3,8 @@ We sure have made a lot of functions so far and we've typed many expressions int
 
 *[REPL]: Read Evaluate Print Loop
 
-### What's a workspace?
-If you have been using Dyalog, the *session log* is the page with all of your input and output so far. You can scroll up the session log (with a mouse or using the `Page Up` key) and see everything you have done so far).
+### What is a workspace?
+If you have been using the Dyalog interpreter, the *session log* is the page with all of your input and output so far. You can scroll up the session log (with a mouse or using the `Page Up` key) and see everything you have done so far).
 
 A workspace is a collection of names. We can obtain some lists of names using <a target="_blank" href="http://help.dyalog.com/latest/#Language/System%20Commands/Introduction.htm?Highlight=System%20commands">**system commands**</a>.
 
@@ -40,18 +40,21 @@ If we try to use a system command inside a function, it won't work.
       }
 ```
 
-**System functions** are functions of the form `⎕FUNCTION` and *do* return a result. Some have shy results which can be used by subsequent functions, or printed to the session output with `⎕←`.
+!!! Note
+	Although we cover error handling and debugging, attempting to execute the above `multifn` function will cause the tracer to open by default in the Windows IDE and RIDE. Simply press <kbd>Esc</kbd> to quit the suspended function and return to the session.
+
+**System functions** are in-built functions with names of the form `⎕FUNCTION` and *do* return a result. Some have shy results which can be used by subsequent functions, or printed to the session output with `⎕←`.
 
 ```APL
  multifn←{
     ⍝ These statements are executed "under program control"
     ⎕←5+5
     var ← 2+2    ⍝ This variable only exists when this function is running
-    ⎕EX var      ⍝ This will work
+    ⎕EX 'var'    ⍝ This will work, although it does not do anything useful in this dfn
 }
 ```
 
-The Name List `⎕NL` function lists names.
+The Name List `⎕NL` function lists names according to their [*name class*](http://help.dyalog.com/18.0/#Language/System Functions/nc.htm).
 
 ```APL
 	  ⎕NL 2    ⍝ List variables as a text matrix
