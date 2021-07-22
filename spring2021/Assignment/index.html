@@ -451,38 +451,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../Flow-control.md" class="md-nav__link">
-        For loops and if statements
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../Operators/" class="md-nav__link">
         Operators
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Scan-Reduce.md" class="md-nav__link">
-        Scans and reductions
       </a>
     </li>
   
@@ -588,21 +558,6 @@
     <li class="md-nav__item">
       <a href="../Stack/" class="md-nav__link">
         The call stack
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Error-trapping-and-signalling.md" class="md-nav__link">
-        Error trapping and signalling
       </a>
     </li>
   
@@ -723,10 +678,8 @@
 <li>
 <p>Using selections, find at least four different ways to set the bottom-right 3 by 3 submatrix in <code>n</code> to <code>0</code>.
     For example, <code>(2 2↓n)←0</code>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>See which primitives may be used in a <a href='http://help.dyalog.com/latest/#Language/Primitive%20Functions/Assignment%20Selective.htm?Highlight=selective%20assignment'>selective assignment</a></p>
-</div>
+<details class="hint"><summary>Hint</summary><p>See which primitives may be used in a <a href='http://help.dyalog.com/latest/#Language/Primitive%20Functions/Assignment%20Selective.htm?Highlight=selective%20assignment'>selective assignment</a></p>
+</details>
 </li>
 </ol>
 <h2 id="modified-assignment">Modified Assignment</h2>
@@ -746,7 +699,7 @@
 </div>
 <p>Monadic functions take a single right argument array as input. Dyadic functions take two argument arrays.</p>
 <p>Monadic operators take a single left operand which can be a function or an array (as in <code>+/</code> where plus <code>+</code> is the function operand and reduce <code>/</code> is the operator). </p>
-<p>Dyadic operators take two operands which could be functions or arrays depending on the operator's definition.</p>
+<p>Dyadic operators take two operands which could be functions or arrays depending on the operator's definition. For example, the rank operator <code>F⍤k</code> takes a function left operand <code>F</code> and array right operand <code>k</code> of up to 3 elements.</p>
 <p>Selective and indexed assignment methods will change the values of variables. The "at" operator <code>@</code> merges two arrays at specified indices and returns a new array.</p>
 <p>If a function right operand returns a boolean array when applied to <code>⍵</code> (e.g. <code>3=1 3 5</code>) then ones <code>1</code> in the boolean array determine where scalars of <code>⍺</code> are inserted.</p>
 <pre><code class="language-APL">      ('∆⍥'@{⍵∊'AEIOU'})2 3⍴'DYALOG'
@@ -754,17 +707,21 @@
       (' '@(1 2)(1 3)(2 1))2 3⍴'DYALOG'
 </code></pre>
 <ol>
-<li>The following expression contains an error:
-    <code>('∆⍥'@1)2 3⍴'DYALOG'</code>
-    Change the parenthesised function containing <code>@</code> in <strong>two</strong> ways so that it gives the following results:<ol>
-<li><pre><code>∆∆∆
-LOG</code></pre></li>
-<li><pre><code>∆∆∆
-⍥⍥⍥</code></pre></li>
+<li>The following expression contains an error:<br />
+<code>('∆⍥'@1)2 3⍴'DYALOG'</code><br />
+    Change the parenthesised function containing <code>@</code> in <strong>two</strong> ways so that it gives the following results:  <ol>
+<li>
+<p><pre><code>∆∆∆
+LOG</code></pre>  </p>
+</li>
+<li>
+<p><pre><code>∆∆∆
+⍥⍥⍥</code></pre></p>
+</li>
 </ol>
 </li>
 </ol>
-<p>Generally, the left operand to <code>@</code> is a function applied to scalars in <code>⍵</code> specified by a right operand array of indices; or a boolean array returned by a right operand function. </p>
+<p>Generally, the left operand to <code>@</code> is a function applied to scalars in <code>⍵</code> which are specified by a right operand that is either an array of scalar (simple or enclosed vector) indices or a boolean array returned by a right operand function. An array left operand is shorthand for a <a href="https://aplwiki.com/wiki/Constant">constant function</a> that returns the array.</p>
 <pre><code class="language-APL">      {1↓(1∘⎕C@{¯1⌽' '=⍵})' ',⍵}'my excellent heading'
 </code></pre>
 <h2 id="strand-assignment">Strand Assignment</h2>

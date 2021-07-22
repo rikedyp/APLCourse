@@ -383,38 +383,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../Flow-control.md" class="md-nav__link">
-        For loops and if statements
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../Operators/" class="md-nav__link">
         Operators
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Scan-Reduce.md" class="md-nav__link">
-        Scans and reductions
       </a>
     </li>
   
@@ -491,8 +461,56 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sub-topics" class="md-nav__link">
-    Sub topics
+  <a href="#installed-libraries" class="md-nav__link">
+    Installed Libraries
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#experimenting-with-code" class="md-nav__link">
+    Experimenting with code
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-and-sharing-your-own-utilities" class="md-nav__link">
+    Creating and sharing your own utilities
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-in-component-files" class="md-nav__link">
+    Code in component files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-code-in-text-files" class="md-nav__link">
+    Source code in text files
+  </a>
+  
+    <nav class="md-nav" aria-label="Source code in text files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#link" class="md-nav__link">
+    Link
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#importing-apl-code-from-the-internet" class="md-nav__link">
+    Importing APL code from the internet
   </a>
   
 </li>
@@ -573,21 +591,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../Error-trapping-and-signalling.md" class="md-nav__link">
-        Error trapping and signalling
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../implementation/" class="md-nav__link">
         Interpreter internals
       </a>
@@ -636,8 +639,56 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sub-topics" class="md-nav__link">
-    Sub topics
+  <a href="#installed-libraries" class="md-nav__link">
+    Installed Libraries
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#experimenting-with-code" class="md-nav__link">
+    Experimenting with code
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-and-sharing-your-own-utilities" class="md-nav__link">
+    Creating and sharing your own utilities
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-in-component-files" class="md-nav__link">
+    Code in component files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#source-code-in-text-files" class="md-nav__link">
+    Source code in text files
+  </a>
+  
+    <nav class="md-nav" aria-label="Source code in text files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#link" class="md-nav__link">
+    Link
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#importing-apl-code-from-the-internet" class="md-nav__link">
+    Importing APL code from the internet
   </a>
   
 </li>
@@ -656,14 +707,74 @@
                 
                 
                 <h1 id="importing-exporting-and-distributing-code">Importing, Exporting and Distributing Code</h1>
-<h2 id="sub-topics">Sub topics</h2>
+<p>We have already learned <a href="/Workspaces">the basics of saving and loading workspaces</a>. Here we address some more specific things like how to use other people's code, how to let other people use your code, and how to distribute your application to users.</p>
+<h2 id="installed-libraries">Installed Libraries</h2>
+<p>Dyalog installations come with a suite of libraries with pre-written code utilities and examples.</p>
+<p>Find which ones are available to you now with <code>)lib</code>. </p>
+<p>You can copy code into the workspace in several ways:</p>
 <ul>
-<li><code>⎕CR</code> in component files</li>
-<li>Link</li>
-<li>Workspace</li>
-<li>Shared code files</li>
-<li><code>]Get</code></li>
-<li><code>]SALT.Load</code> and <code>⎕SE.SALT.Load</code></li>
+<li>
+<p>Copy the entire library into the current namespace (use pcopy to ensure that existing names are not overwritten):</p>
+<p><code>)pcopy dfns</code></p>
+</li>
+<li>
+<p>Copy selected functions into the current namespace:
+    <pre><code class="language-APL">)copy dfns cal date days
+cal 2↑⎕ts</code></pre></p>
+</li>
+<li>
+<p>Copy the entire library into a specific namespace:
+    <pre><code class="language-APL">'dfns'⎕ns⍬
+dfns.⎕cy'dfns'</code></pre></p>
+</li>
+<li>
+<p>Copy the selected functions into a specific namespace:
+    <pre><code class="language-APL">'dfns'⎕ns⍬
+'cal' 'date' 'days'dfns.⎕cy'dfns'</code></pre></p>
+<div class="admonition warning">
+<p class="admonition-title">Version Warning</p>
+<p>In Dyalog version 12.1, you must use a matrix left argument to copy multiple names with <code>⎕CY</code>:<br />
+<pre><code class="language-APL">(⍪↑'cal' 'date' 'days')dfns.⎕cy'dfns'</code></pre>
+The leading <code>⍪</code> ensures that <code>⎕CY</code> does not fail when there is an empty character vector instead of a nested vector of character vectors. If you are dynamically generating this list of names, ensure it is a character matrix when passed to <code>⎕CY</code>.</p>
+</div>
+</li>
+</ul>
+<p>Alongside <a href="https://aplcart.info">APLcart</a>, the <a href="https://dfns.dyalog.com">dfns library</a> (not to be confused with the dfns construct) contains a large number of useful functions for tasks ranging from number theory, graphs and tree data structures and games and graphics.</p>
+<h2 id="experimenting-with-code">Experimenting with code</h2>
+<p>The <code>]Peek</code> user command allows you to try an expression as if it was executed in a saved workspace without having to copy the contents of that workspace.</p>
+<pre><code class="language-APL">      ]peek dfns cal 2021 7
+      ]peek -?
+</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Version Warning</p>
+<p>]WS.Peek is not available in Dyalog version 12.1</p>
+</div>
+<h2 id="creating-and-sharing-your-own-utilities">Creating and sharing your own utilities</h2>
+<ul>
+<li>stuff about the UCMD system</li>
+<li>difference between 12.1 and 17.1<ul>
+<li>aSample.dyalog provided</li>
+</ul>
+</li>
+<li>latest: startup.dyalog, myucmds and custom user ⎕SE folder</li>
+</ul>
+<h2 id="code-in-component-files">Code in component files</h2>
+<ul>
+<li><code>⎕CR</code> (can you do ⎕OR?) in component files</li>
+</ul>
+<h2 id="source-code-in-text-files">Source code in text files</h2>
+<ul>
+<li>Used to be WS only</li>
+<li>SALT</li>
+</ul>
+<h3 id="link">Link</h3>
+<ul>
+<li>Maybe mention it briefly here</li>
+</ul>
+<h2 id="importing-apl-code-from-the-internet">Importing APL code from the internet</h2>
+<ul>
+<li>]Httpcommand</li>
+<li>]Get</li>
 </ul>
                 
               

@@ -394,11 +394,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#problem-set-n" class="md-nav__link">
-    Problem set n
+  <a href="#problem-set-7" class="md-nav__link">
+    Problem set 7
   </a>
   
-    <nav class="md-nav" aria-label="Problem set n">
+    <nav class="md-nav" aria-label="Problem set 7">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -533,38 +533,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../Flow-control.md" class="md-nav__link">
-        For loops and if statements
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../Operators/" class="md-nav__link">
         Operators
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Scan-Reduce.md" class="md-nav__link">
-        Scans and reductions
       </a>
     </li>
   
@@ -670,21 +640,6 @@
     <li class="md-nav__item">
       <a href="../Stack/" class="md-nav__link">
         The call stack
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Error-trapping-and-signalling.md" class="md-nav__link">
-        Error trapping and signalling
       </a>
     </li>
   
@@ -829,11 +784,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#problem-set-n" class="md-nav__link">
-    Problem set n
+  <a href="#problem-set-7" class="md-nav__link">
+    Problem set 7
   </a>
   
-    <nav class="md-nav" aria-label="Problem set n">
+    <nav class="md-nav" aria-label="Problem set 7">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -906,15 +861,11 @@ UX
 <p>There is also an <strong>index</strong> function <code>⍺⌷⍵</code> which has two distinctions:</p>
 <ul>
 <li>It is a function with the same syntax as other functions</li>
-<li>It applies to any rank array by automatically filling in less-major cells</li>
+<li>It applies to any rank array by automatically filling in less-major cells (those cells defined by trailing axes)</li>
 </ul>
 <pre><code class="language-APL">      (1 2)(2 3)⌷(2 3 4⍴⎕A)
       (2 3 4⍴⎕A)[1 2;2 3;]
 </code></pre>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The cells of an array are scalars, and indexing always returns the cells. </p>
-</div>
 <h3 id="take-and-drop">Take and drop</h3>
 <p>We can chop off the edges of an array using <strong>take</strong> <code>⍺↑⍵</code> and <strong>drop</strong> <code>⍺↓⍵</code>.</p>
 <pre><code class="language-APL">      ¯1 3 2↑2 3 4⍴⎕A 
@@ -950,8 +901,12 @@ UV
       3⊃'here' 'are' 'some' 'words'
 words
 </code></pre>
+<p>Reach indexing allows you to pull items from deep within a nested array:</p>
+<pre><code class="language-APL">      (2 1)(2 2) ⊃ 2 3⍴0 1 2 (2 3⍴'AB' 'CD' 'EF' 'GH' 'IJ' 'KL') 4 5
+IJ
+</code></pre>
 <h3 id="select-aka-sane-indexing">Select (A.K.A. "Sane") indexing</h3>
-<p>Some APLers are unhappy with the squad-index semantics, and have proposed yet another mechanism, called sane indexing or <strong>select</strong>. It can be defined as:</p>
+<p>Some APLers find squad-index semantics awkward, and have proposed yet another mechanism, called "sane" indexing or <strong>select</strong>. It can be defined as:</p>
 <pre><code class="language-APL">      I←(⊃⍤⊣⌷⊢)⍤0 99   ⍝ Sane indexing
 </code></pre>
 <p>Select provides the best of both simple indexing and choose indexing, allowing you to select arbitrary collections of cells.</p>
@@ -986,7 +941,7 @@ words
 <td>Reach</td>
 </tr>
 <tr>
-<td>Arbitrary cells</td>
+<td>Arbitrary collections of cells</td>
 <td>Select</td>
 </tr>
 </tbody>
@@ -1022,43 +977,73 @@ The symbol <code>⍸</code> is not available in Classic Edition, and the Interva
 <pre><code class="language-APL">(∪a)≡⍤99 ¯1⍤¯1 99⊢a
 (∪∘.≡⍥↓⊢)a
 </code></pre>
-<h2 id="problem-set-n">Problem set n</h2>
+<h2 id="problem-set-7">Problem set 7</h2>
 <h3 id="search-sort-slice-and-select">Search, sort, slice and select</h3>
 <ol>
 <li>
-<p>Give two indexing expressions which apply to a scalar and return that scalar</p>
+<p>Write two indexing expressions which apply to a scalar and return that scalar</p>
 </li>
 <li>
 <p>Write a function <code>IRep</code> which is equivalent to <code>{⍺/⍵}</code> but uses indexing.</p>
 </li>
 <li>
-<p>A nested 3D array, obtain X using a single selection.</p>
+<p><code>NVec ← '' '34' 'donut' ⍬</code> is a four-element nested vector. Use a single pick <code>⍺⊃⍵</code> to obtain the sub-item <code>'o'</code>.</p>
 </li>
 <li>
-<p>How can you index into a scalar?</p>
+<p>From the nested 3D array <code>Nest←2 3 4⍴(⍳17),(⊂2 3⍴'ab'(2 3⍴'dyalog'),'defg'),⎕A[⍳6]</code> , use a single selection to obtain:</p>
+<ol>
+<li>The character scalar <code>'y'</code></li>
+<li>The numeric scalar <code>6</code></li>
+</ol>
+<details class="example" open="open"><summary>Answers</summary><ol>
+<li>For a scalar <code>s</code>, <code>⍬⌷s</code> and <code>s[⊂⍬]</code></li>
+<li><code>IRep ← {⍵[⍺⍴⊂⍬]}</code></li>
+<li><code>3 2⊃NVec</code></li>
+<li>
+<ol>
+<li><code>(2 2 2)(1 2)(1 2)⊃Nest</code></li>
+<li><code>(⊂1 2 2)⊃Nest</code></li>
+</ol>
 </li>
 </ol>
-<details class="example" open="open"><summary>Answers</summary><p><code>⍬⌷42</code><br />
-<code>42[⊂⍬]</code><br />
-<code>⍬⊃42</code><br />
-<code>IRep ← {⍵[⍺⍴⊂⍬]}</code></p>
 </details>
-<ol>
-<li>
-<p>Here is a table of data about visits to a museum
-    <pre><code class="language-APL">      visits ← </code></pre></p>
-<ol>
-<li>Return a vector of lengths grouped by blah</li>
-</ol>
 </li>
 <li>
 <p>What is the advantage of <code>{(⊂⍋⍵)⌷⍵}</code> over <code>{⍵[⍋⍵]}</code>?</p>
 </li>
 <li>
-<p>When does <code>{(⍺{⍸∨/⍺⍷⍵}⍵) ≢ ⍸∧/⍵∊⍺}</code>?</p>
+<p>When does <code>{(⍸∨/⍺⍷⍵) ≡ ⍸∧/⍵∊⍺}</code>?</p>
 </li>
 <li>
-<p>High-rank membership</p>
+<p>The membership function <code>⍺∊⍵</code> checks whether elements of <code>⍺</code> appear in <code>⍵</code>. Write a function <code>E</code> which checks whether major cells of <code>⍺</code> appear as major cells of <code>⍵</code>.
+    <pre><code>      text E ↑' APP' 'LESS' 
+0 1 1
+0 0 0</code></pre></p>
+</li>
+<li>
+<p>Here are some data and questions about visits to a museum.  </p>
+<p>The <code>section_names</code> are the names of each of the four sections in the museum.  </p>
+<p><pre><code class="language-APL">section_names ← 'Bugs' 'Art' 'Fossils' 'Sea Life'</code></pre>  </p>
+<p>The variable <code>sections</code> is a nested list of text matrices. Each matrix lists the items or creatures which belong to each section.  </p>
+<p><pre><code class="language-APL">sections ← ↑¨('Grasshopper' 'Giant Cicada' 'Earth-boring Dung Beetle' 'Scarab Beetle' 'Miyama Stag' 'Giant Stag' 'Brown Cicada' 'Giraffe Stag' 'Horned Dynastid' 'Walking Stick' 'Walking Leaf') ('The Blue Boy by Thomas Gainsborough' ('Rooster and Hen with Hydrangeas by It',(⎕ucs 333),' Jakuch',(⎕ucs 363)) 'The Great Wave off Kanagawa by Hokusai' 'Mona Lisa by Leonardo da Vinci' 'Sunflowers by Vincent van Gogh' 'Still Life with Apples and Oranges by Paul Cézanne' 'Girl with a Pearl Earring by Johannes Vermeer' ('Shak',(⎕ucs 333),'ki dog',(⎕ucs 363),' by Unknown') 'David by Michelangelo di Lodovico Buonarroti Simoni' 'Rosetta Stone by Unknown') ('Amber' 'Ammonite' 'Diplodocus' 'Stegosaur' 'Tyrannosaurus Rex' 'Triceratops') ('Puffer Fish' 'Blue Marlin' 'Ocean Sunfish' 'Acorn Barnacle' 'Mantis Shrimp' 'Octopus' 'Pearl Oyster' 'Scallop' 'Sea Anemone' 'Sea Slug' 'Sea Star' 'Whelk' 'Horseshoe Crab')</code></pre></p>
+<p>The <code>visits</code> table represents 1000 visits to museum sections over a two week period. The four columns represent:  </p>
+<ul>
+<li>The section that was visited as an index into the <code>section_names</code></li>
+<li>The day of the visit in <a href="http://help.dyalog.com/latest/#Language/System%20Functions/dt.htm">Dyalog Date Number</a> format.</li>
+<li>The arrival time in minutes from midnight. For example, 15:30 is 930 minutes.</li>
+<li>The departure time in minutes from midnight.</li>
+</ul>
+<p><pre><code class="language-APL">⎕RL←42 ⋄ days←43589+?1000⍴28 ⋄ (arr lïv)←539+?2⍴⊂1000⍴510 ⋄ section←?1000⍴4
+visits←(⊂⍋days)⌷section,days,(⊂∘⍋⌷⊢)⍤1⍉↑arr lïv</code></pre></p>
+<p>In the boolean matrix <code>display</code>, each row corresponds to a museum piece and each column corresponds to a day. A <code>1</code> indicates days when a particular museum piece was out on display. The order of rows corresponds to the order of pieces in the <code>sections</code> table.  </p>
+<p><pre><code>display ← 40 28⍴(9/0),1,(4/0),1,(9/0),1,(3/0),(5/1),0,(10/1),0,(5/1),0,(8/1),0,(8/1),0,(4/1),0 0 1 1 0 1 0 1 0 1 1 0 1 0,(5/1),(3/0),1 0 1 0 1 1,(4/0),1 0 1 1 0 0 1 1 0,(6/1),0 1 0 1 0 0 1 1 0 0 1 1 0 1 0 0 1 1 0,(3/1),(3/0),(4/1),0 1 1 0 1 0 0,(7/1),0 1 0 1 1 0 1 1 0 1 1 0,(3/1),0 1 1 0,(4/1),0,(3/1),0 1 0,(3/1),0 0 1 1,(5/0),1 1 0,(3/1),0 1 0 0 1 1,(3/0),(5/1),0,(9/1),0,(3/1),0 1,(3/0),(5/1),0,(3/1),0,(3/1),(3/0),1 1 0 0 1 0 1,(4/0),1 1 0 1 0 1 0 1 0,(9/1),0,(7/1),0,(3/1),0 0 1 1 0 1 1 0 0 1 0 0 1 0,(5/1),0 1,(3/0),1 1 0 1 0 0,(3/1),0,(4/1),0 0 1 1,(7/0),(3/1),(3/0),1 1,(3/0),1 1 0 1 0 1,(6/0),1 1,(4/0),1 0 1 1,(5/0),1 0 1 0 1,(6/0),(3/1),(9/0),1 1,(3/0),1 0 1 0 1 1,(13/0),1 1,(11/0),1 0 1 1,(4/0),1 0 0,(4/1),0,(12/1),0,(5/1),0 1 0 0 1 1 0,(5/1),0,(4/1),0,(4/1),0 0 1,(5/0),1 1,(3/0),(8/1),0 0 1,(3/0),1,(3/0),1,(3/0),1 0 0 1 0 1 0 1 0 1 0 1 1 0,(3/1),(4/0),(3/1),0,(3/1),0 1 1,(3/0),(4/1),0 1 1 0 1 1,(3/0),1 1 0 1 0 1 0 1,(6/0),1 1,(14/0),(8/1),(4/0),(8/1),0,(3/1),0,(4/1),(6/0),1 0 0 1 1,(3/0),1 1 0 0 1 0 1 0 0 1 0 1,(5/0),1 0 0 1 0 1 0 0 1 1,(3/0),1,(8/0),1 0 1 0,(6/1),0 0,(7/1),0 1 1 0,(3/1),0,(9/1),0,(12/1),0 1 1 0,(9/1),0,(3/1),0 0,(3/1),(3/0),(3/1),0,(3/1),(5/0),(7/1),0 1 0,(5/1),0,(3/1),0 0,(3/1),0 0 1 1 0,(4/1),0 1,(3/0),(3/1),(5/0),1 0 1 1 0 1 0,(3/1),0,(5/1),0,(3/1),0,(4/1),0 1,(4/0),1 0 1 0 0 1 1,(5/0),1,(3/0),1 0 0 1 0 1,(3/0),1 0 1 0 0 1,(4/0),1 0 0 1,(6/0),1,(14/0),1 0 0,(4/1),(3/0),(6/1),0 0 1 0,(3/1),0,(4/1),0,(3/1),0 1 0 1,(3/0),(5/1),(3/0),1 0 0 1 0,(3/1),0 1,(4/0),1 0 1 1,(11/0),1,(15/0),(3/1),(4/0),1,(15/0),(5/1),0 1 0,(8/1),0,(3/1),(4/0),(5/1),0 1,(9/0),1 0 1 1 0 0 1 0 0 1,(4/0),1 0,(4/1),0,(7/1),(3/0),1 0 0 1,(3/0),(3/1),0 1 1
+</code></pre></p>
+<ol>
+<li>How many visitors arrived before 10AM?</li>
+<li>What was the most popular section by visit duration?</li>
+<li>Estimate the opening and closing times of each of the sections.</li>
+<li>Which animal being on display corresponded with the highest increase in visit duration for its section?</li>
+</ol>
 </li>
 </ol>
 <h3 id="word-problems">Word Problems</h3>
@@ -1073,7 +1058,7 @@ The symbol <code>⍸</code> is not available in Classic Edition, and the Interva
 </code></pre>
 <div class="admonition warning">
 <p class="admonition-title">Version Warning</p>
-<p><code>HttpCommand</code> and <code>⎕NGET</code> are not available in Dyalog version 12.1. Instead, ???</p>
+<p><code>HttpCommand</code> and <code>⎕NGET</code> are not available in Dyalog version 12.1. Instead, read the file using <code>⎕NREAD</code> as described in <a href="../Data/#n">the chapter on data input and output</a>.</p>
 </div>
 <p>Now answer the following questions about <code>words</code>.</p>
 <ol>

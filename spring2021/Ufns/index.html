@@ -415,6 +415,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#nested-functions" class="md-nav__link">
+    Nested functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#which-style-to-use" class="md-nav__link">
     Which style to use?
   </a>
@@ -443,6 +450,19 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    Activities
+  </a>
+  
+    <nav class="md-nav" aria-label="Activities">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
   <a href="#which-style-again" class="md-nav__link">
     Which style again?
@@ -460,13 +480,6 @@
           <li class="md-nav__item">
   <a href="#marking-tests" class="md-nav__link">
     Marking Tests
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tasks" class="md-nav__link">
-    Tasks
   </a>
   
 </li>
@@ -492,38 +505,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../Flow-control.md" class="md-nav__link">
-        For loops and if statements
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../Operators/" class="md-nav__link">
         Operators
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Scan-Reduce.md" class="md-nav__link">
-        Scans and reductions
       </a>
     </li>
   
@@ -642,21 +625,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../Error-trapping-and-signalling.md" class="md-nav__link">
-        Error trapping and signalling
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../implementation/" class="md-nav__link">
         Interpreter internals
       </a>
@@ -719,6 +687,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#nested-functions" class="md-nav__link">
+    Nested functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#which-style-to-use" class="md-nav__link">
     Which style to use?
   </a>
@@ -747,6 +722,19 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#activities" class="md-nav__link">
+    Activities
+  </a>
+  
+    <nav class="md-nav" aria-label="Activities">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
   <a href="#which-style-again" class="md-nav__link">
     Which style again?
@@ -764,13 +752,6 @@
           <li class="md-nav__item">
   <a href="#marking-tests" class="md-nav__link">
     Marking Tests
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tasks" class="md-nav__link">
-    Tasks
   </a>
   
 </li>
@@ -794,46 +775,62 @@
                 
                 
                 <h1 id="user-defined-functions">User defined functions</h1>
+<p>This is a fairly brief introduction, and there are exercises at the end of this section to help solidify your understanding, but there is also <a href="https://mastering.dyalog.com/User-Defined-Functions.html">a more extensive treatment of user-defined functions in the book Mastering Dyalog APL</a>.</p>
 <h2 id="the-three-function-styles">The Three Function Styles</h2>
 <p>So far, we have been reading and writing <a href="https://aplwiki.com/wiki/Dfn">dfns</a>. </p>
-<pre><code class="language-APL">         3 {⍺+⍵} 5              ⍝ Left argument ⍺, right argument ⍵
-           {⍵&gt;0:⍵,∇ ⍵-1 ⋄ ⍵}5   ⍝ Guard is : (colon). The function itself is ∇ (del)
-      Fn ← {⍺⍵}                 ⍝ We can give functions names
+<pre><code class="language-APL">    3 {⍺+⍵} 5              ⍝ Left argument ⍺, right argument ⍵
+      {⍵&gt;0:⍵,∇ ⍵-1 ⋄ ⍵}5   ⍝ Guard is : (colon). The function itself is ∇ (del)
+ Fn ← {⍺⍵}                 ⍝ We can give functions names
 </code></pre>
-<p>It is also possible to name functions without explicitly referring to their arguments. This is called <a href="https://aplwiki.com/wiki/Tacit_programming">tacit</a> or <em>point-free</em> programming.</p>
+<p>It is also possible to name functions which do not explicity refer to their arguments. This is called <a href="https://aplwiki.com/wiki/Tacit_programming">tacit</a> or <em>point-free</em> programming.</p>
 <pre><code class="language-APL">      Plus ← +
       IndicesTo ← ⍳
       _Reduce ← /      
       Sum ← Plus _Reduce
       Sum IndicesTo 10
 </code></pre>
-<p>There is a syntax for composing functions called <a href=""><em>trains</em></a>. We won't look at them in detail now, but they allow some rather neat and memorable ways to write short functions.</p>
+<p>There is a syntax for composing functions called <a href="https://aplwiki.com/wiki/Tacit_programming#Trains"><em>trains</em></a>. We won't look at them in detail now, but they allow some rather neat and memorable ways to write short functions.</p>
+<div class="admonition warning">
+<p class="admonition-title">Version Warning</p>
+<p>Trains were introduced in Dyalog version 14.0</p>
+</div>
 <pre><code class="language-APL">      Mean ← +⌿ ÷ ≢         ⍝ The sum divided by the count
       Mean 3 1 4 1
       3 (+,-) 5             ⍝ Plus and minus
       ','(≠⊆⊢)'some,text'   ⍝ Split on commas
 </code></pre>
-<p>{% include note.html content='Small unnamed dfns and tacit functions expand your vocabulary. One of my favourites is the "split by delimiter" train <code class="language-APL">(≠⊆⊢)</code>. It looks like a beat-up face <a href="https://en.wikipedia.org/wiki/Emoticon#Japanese_style_(kaomoji)">kaomoji</a>. A similar phrase which can take multiple delimiters can be found on <a href="https://aplcart.info/?q=split%20text#">aplcart.info</a>.' %}</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Small unnamed dfns and tacit functions expand your vocabulary. One of my favourites is the "split by delimiter" train <code class="language-APL">(≠⊆⊢)</code>. It looks like a beat-up face <a href="https://en.wikipedia.org/wiki/Emoticon#Japanese_style_(kaomoji)">kaomoji</a>. A similar phrase which can take multiple delimiters can be found on <a href="https://aplcart.info/?q=split%20text#">aplcart.info</a>.</p>
+</div>
 <h2 id="traditional-functions">Traditional functions</h2>
-<p>Dyalog is a modern APL implementation. Since the first APL implementations there has been a way of defining functions with a header line and named arguments and results. Since the introduction of dfns, functions of the original style are called <em>traditional functions</em> or <a href="https://aplwiki.com/wiki/Defined_function"><em>tradfns</em></a>.</p>
+<p>Dyalog is a modern APL implementation. Since early APL implementations there has been a way of defining functions with a header line and named arguments and results. Since the introduction of dfns, functions of the original style are called <em>traditional functions</em> or <a href="https://aplwiki.com/wiki/Defined_function"><em>tradfns</em></a>.</p>
 <pre><code class="language-APL">      Mean ← +⌿÷≢         ⍝ A 3-train (fork) for the arithmetic mean
       Mean ← {(+⌿⍵)÷≢⍵}   ⍝ A dfn for the arithmetic mean
       ∇ m ← Mean a        ⍝ A tradfn for the arithmetic mean
         m ← (+⌿a) ÷ ≢a
       ∇
 </code></pre>
-<p>{% include note.html content="Copy and paste everything between (and including) the two <code class='language-APL'>∇</code> <em>del</em> symbols into the session, and press <code class='language-APL'>Enter</code>, to define a tradfn in your workspace. <br><br>Using <code class='language-APL'>Shift+Enter</code> with the cursor on a name will bring up an editor window for that named thing." %}</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Copy and paste everything between (and including) the two <code class='language-APL'>∇</code> <em>del</em> symbols into the session, and press <code class='language-APL'>Enter</code>, to define a tradfn in your workspace. <br><br>Using <code class='language-APL'>Shift+Enter</code> with the cursor on a name will bring up an editor window for that named thing.</p>
+</div>
 <p>A tradfn header reflects the calling syntax of the function. </p>
-<pre><code class="language-APL">     ∇ {result}←{optional}TradFn argument;local1;local2
-[1]    :If 0=⎕NC'optional'                             
-[2]        optional←'no left argument'                 
-[3]    :EndIf                                          
-[4]    local1←'⍺: ',optional                           
-[5]    local2←'⍵: ',argument                           
-[6]    global←⍪'TradFn last called with'local1 local2  
-[7]    result←⍪local1 local2                           
-     ∇      
+<pre><code class="language-APL">     ∇ {result}←{optional}TradFn argument;local1                             
+[1]    ;local2   ⍝ Locals can be declared across multiple lines in the header
+[2]    :If 0=⎕NC'optional'                                                   
+[3]        optional←'no left argument'                                       
+[4]    :EndIf                                                                
+[5]    local1←'⍺: ',optional                                                 
+[6]    local2←'⍵: ',argument                                                 
+[7]    global←⍪'TradFn last called with'local1 local2                        
+[8]    result←⍪local1 local2                                                 
+     ∇     
 </code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default, names assigned in tradfns are global. This is mostly for historical reasons. Names declared in the header - the arguments, results, and names preceded by semicolons - are localised.</p>
+</div>
 <ol>
 <li>Try calling <code>TradFn</code> with one and two arguments. How can the result be made to display to the session? </li>
 <li>Inspect the variable <code>global</code> after calling <code>TradFn</code> with different arguments.</li>
@@ -844,10 +841,36 @@
       ∇
 </code></pre>
 <p><code>T</code> is a function which takes no arguments, returns no results and has no effects.</p>
-<p>Results in <code>{}</code> curly braces do not print to the session by default, but can be passed to arguments. To ease debugging and write functions with predictable behaviour, it is generally best not to use shy results.</p>
+<p>Results in <code>{}</code> curly braces are called <strong>shy results</strong> and do not print to the session by default, but can be passed to arguments. To ease debugging and write functions with predictable behaviour, it is generally best not to use shy results.</p>
 <p>Optional left arguments are a little awkward in tradfns. The dfn equivalent is a little nicer looking: <code>{⍺←'default' ⋄ ⍺,⍵}</code>.</p>
+<h2 id="nested-functions">Nested functions</h2>
+<p>It is possible to define functions inside some other functions.</p>
+<ul>
+<li>
+<p>Tacit functions can only include other user-defined functions by name
+    <pre><code class="language-APL">      Sort ← {(⊂⍋⍵)⌷⍵}
+      CSI ← Sort⍥⎕C   ⍝ Case-insensitive sort</code></pre></p>
+<div class="admonition warning">
+<p class="admonition-title">Version Warning</p>
+<p><code>⎕C</code> (<em>quad C</em>) and <code>⍥</code> (<em>over</em>) are only available from Dyalog version 18.0 onwards. Upper- and lower-casing can be easily implemented in raw APL, or achieved using <code>819⌶</code> (<em>eight nineteen I-beam</em>). Over can be defined as a dop: <code>_O_←{0=⎕NC'⍺':⍺⍺ ⍵⍵ ⍵ ⋄ (⍵⍵ ⍺) ⍺⍺ ⍵⍵ ⍵}</code>.</p>
+</div>
+</li>
+<li>
+<p>Dfns can contain tacit definitions and dfn definitions, as well as any named user-defined functions
+    <pre><code class="language-APL"> SortedMeans ← {
+    Sort ← {(⊂⍋⍵)⌷⍵}
+    Mean ← +⌿÷1⌈≢
+    Sort Mean¨⍵
+}</code></pre></p>
+</li>
+<li>Tradfns can contain tacit definitions, dfn definitions and any named user-defined functions
+    <pre><code class="language-APL"> result←SortedMeans vectors;Mean;Sort
+ Sort←{(⊂⍋⍵)⌷⍵}
+ Mean←+⌿÷1⌈≢
+ result←Sort Mean¨vectors</code></pre></li>
+</ul>
 <h2 id="which-style-to-use">Which style to use?</h2>
-<p>While usage of different function styles varies throughout many applications, I suggest these non-prescriptive guidelines, from <a href="https://abrudz.github.io/style/">Adám's APL Style Guide</a>, for production code. When maintaining others' code, it is best to try to continue in the already established style.</p>
+<p>While usage of different function styles varies throughout many applications, you might take inspiration from <a href="https://abrudz.github.io/style/">Adám's APL Style Guide</a>, when writing brand new production code. When maintaining others' code, it is best to try to continue in the already established style.</p>
 <h4 id="dfns">Dfns</h4>
 <p>For medium sized functions and utilities. Nested dfns are fine, but never use multi-line dfns inline.</p>
 <pre><code class="language-APL"> MultiDfn←{        ⍝ A Dfn with nested in-line multi-line dfns
@@ -879,7 +902,10 @@
 <p>Best used as program control and for dealing with system interactions. The use of control structures can make procedural tasks easier to debug. For example, if an error occurs during a loop or iteration.</p>
 <pre><code class="language-APL">      ¯5{i←⍺+⍳⍵ ⋄ i÷i-2}10   ⍝ A single line function cannot be traced through
 </code></pre>
-<p>{% include note.html content="💡 Use <code class='language-APL'>Ctrl+Enter</code> to step through a multiline function. You can then use <code class='language-APL'>Shift+Enter</code> to edit the function during execution and <code class='language-APL'>Esc</code> to save your changes to the function and continue execution." %}</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use <code class='language-APL'>Ctrl+Enter</code> to step through a multiline function. You can then use <code class='language-APL'>Shift+Enter</code> to edit the function during execution and <code class='language-APL'>Esc</code> to save your changes to the function and continue execution.</p>
+</div>
 <pre><code class="language-APL">    ∇  r←a MultiLineError o;i
 [1]    :For i :In a+⍳o       
 [2]        r←i+3             
@@ -887,6 +913,7 @@
 [4]    :EndFor               
     ∇    
 </code></pre>
+<h2 id="activities">Activities</h2>
 <h3 id="which-style-again">Which style again?</h3>
 <ol>
 <li>Which of the following function styles can have multiple lines?<ol>
@@ -935,7 +962,7 @@
 </li>
 </ol>
 <h3 id="marking-tests">Marking Tests</h3>
-<p>Way back in section 1.4 you wrote a dfn to convert test scores into letter values.</p>
+<p>Way back in <a href="/Outer-product/#problem-set-4">problem set 4</a> you wrote a dfn to convert test scores into letter values.</p>
 <p>You were led to produce some function or expression similar to the following:</p>
 <pre><code class="language-APL">      Grade←{'FDCBA'[+/⍵∘.&gt;80 70 60 50 0]}
       Grade 95 65 92 77
@@ -959,21 +986,24 @@ For each score in scores:
 <pre><code class="language-APL">      :If :OrIf :AndIf :ElseIf :Else :EndIf
       :For :In :EndFor
       :While :EndWhile
-      :Repeat :Until      
+      :Repeat :Until :Return
 </code></pre>
-<p>Exit from a loop before it is finished using the <code>:Return</code> keyword.</p>
-<h3 id="tasks">Tasks</h3>
 <ol>
 <li>
 <p>Translate the pseudocode above into a <strong>tradfn</strong> called <code>Grade2</code> using control stuctures.</p>
 </li>
 <li>
-<p>Rewrite the <code>Grade</code> function again as either a dfn or a tradfn called <code>Grade3</code> which uses the interval index function (dyadic <code>⍸</code>).</p>
+<p>Rewrite the <code>Grade</code> function again as either a dfn or a tradfn called <code>Grade3</code> which uses <code>⍺⍸⍵</code> interval index.</p>
 </li>
 <li>
-<p>Use the <code>]runtime</code> user command to compare the computation time for each of the three grading functions.</p>
-<p><code>APL
-      ]runtime -c "Grade 10×⍳10" "Grade2 10×⍳10" "Grade3 10×⍳10"</code></p>
+<p>Use the <code>]runtime</code> user command to compare the computation time for each of the three grading functions.
+    <pre><code class="language-APL">]runtime -c "Grade 10×⍳10" "Grade2 10×⍳10" "Grade3 10×⍳10"</code></pre></p>
+<div class="admonition warning">
+<p class="admonition-title">Version Warning</p>
+<p>The <code>]runtime</code> user command is not available in Dyalog version 12.1. However, it is just a cover for the <code>cmpx</code> function from <code>dfns</code>:
+<pre><code class="language-APL">'cmpx'⎕CY'dfns'
+cmpx 'Grade 10×⍳10' 'Grade2 10×⍳10' 'Grade3 10×⍳10'</code></pre></p>
+</div>
 </li>
 </ol>
                 
