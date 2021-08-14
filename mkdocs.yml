@@ -9,6 +9,7 @@ extra_javascript:
 theme:
   name: material
   favicon: 'img/favicon-32.png'
+  language: en
   logo: 'img/dyalog-white.svg'
   features:
     - navigation.instant
@@ -37,16 +38,12 @@ nav:
   - Namespaces and other objects: Namespaces.md
   - Getting Help: Help.md
   - User-defined functions: Ufns.md
-  - For loops and if statements: Flow-control.md
   - Operators: Operators.md
-  - Scans and reductions: Scan-Reduce.md
-  - Error handling basics: Errors.md
+  - Quad names: Quad names.md
+  - Error Handling and Debugging: Errors.md
   - Data IO: Data.md
   - Code IO: Code.md
-  - Quad names: Quad names.md
   - External interfaces: Interfaces.md
   - Historical quirks: Quirks.md
-  - The call stack: Stack.md
-  - Error trapping and signalling: Error-trapping-and-signalling.md
-  - Interpreter internals: implementation.md
+  - Interpreter internals: Interpreter-internals.md
   - Further reading: Reading.md

@@ -31,7 +31,7 @@ UX
 1. What happens if you use too many or too few semicolons?
 
 ### Squad (A.K.A. "Functional") indexing
-Square-bracket indexing requires you to know the exact rank of the array and have the correct number of semicolons in your indexing expression. You might also notice that it is a special or [anomolous syntax](https://aplwiki.com/wiki/APL_syntax#Syntactic_elements).
+Square-bracket indexing requires you to know the exact rank of the array and have the correct number of semicolons in your indexing expression. You might also notice that it is a special or [anomalous syntax](https://aplwiki.com/wiki/APL_syntax#Syntactic_elements).
 
 There is also an **index** function `⍺⌷⍵` which has two distinctions:
 
@@ -92,10 +92,10 @@ Reach indexing allows you to pull items from deep within a nested array:
 IJ
 ```
 
-### Select (A.K.A. "Sane") indexing
-Some APLers find squad-index semantics awkward, and have proposed yet another mechanism, called "sane" indexing or **select**. It can be defined as:
+### Select / From
+Some APLers find squad-index semantics awkward, and have proposed yet another mechanism, called **select** or [**from**](https://aplwiki.com/wiki/From). It can be defined as:
 ```APL
-      I←(⊃⍤⊣⌷⊢)⍤0 99   ⍝ Sane indexing
+      I←((⊃⊣)⌷⊢)_Rank_ 0 99
 ```
 
 Select provides the best of both simple indexing and choose indexing, allowing you to select arbitrary collections of cells.
@@ -151,20 +151,39 @@ The **key** operator was introduced in Dyalog version 14.0. Begin to familiarise
 	The symbol `⌸` is not available in Classic Edition, and the Key operator is instead represented by `⎕U2338`.  
 	The symbol `⍸` is not available in Classic Edition, and the Interval Index function is instead represented by `⎕U2378`.
 
-At this point it is worth familiarising yourself with older APL constructs which perform similar functionality to key, and are likely to exist in code bases written before Dyalog version 14.0. You already wrote Interval Index [in problem set 4](/Outer product/#problem-set-4) using the outer product `∘.F`. See if you can rewrite that `Grade` function using Interval Index `⍺⍸⍵`.
+At this point it is worth familiarising yourself with older APL constructs which perform similar functionality to key, and are likely to exist in code bases written before Dyalog version 14.0. 
 
-Iverson's [dictionary of APL](https://www.jsoftware.com/papers/APLDictionary1.htm) defines monadic equals `=⍵` as "nub in", which gives
+1. You already wrote Interval Index [in problem set 4](/Outer product/#problem-set-4) using the outer product `∘.F`. See if you can rewrite that `Grade` function using **interval index** `⍺⍸⍵`.
+
+	!!! Warning "Version Warning"
+		The function *interval index* `⍺⍸⍵` was introduced in Dyalog version 16.0
+
+1. Try to write the interval index function `⍺⍸⍵` without using the `⍸` glyph
+
+Iverson's [dictionary of APL](https://www.jsoftware.com/papers/APLDictionary1.htm) defines monadic equals `=⍵` as "nub in":
+
 ```APL
-(∪a)≡⍤99 ¯1⍤¯1 99⊢a
-(∪∘.≡⍥↓⊢)a
+      NubIn ← (∪≡⍤99 ¯1⍤¯1 99⊢)
+      NubIn 'abbcab'
+1 0 0 0 1 0
+0 1 1 0 0 1
+0 0 0 1 0 0
+      NubIn 3 3⍴6↑⎕A
+1 0 1
+0 1 0
 ```
 
-## Problem set n
+!!! Warning "Version Warning"
+	The function *unique* `∪⍵` fails on arrays where `1<≢⍴⍵` prior to version 17.0. Try to define `NubIn` so that it works on high rank arrays and without using the rank operator.
+	??? Hint
+		Use *split* `↓⍵` and *outer product* `∘.F`.
+
+## Problem set 7
 
 ### Search, sort, slice and select
 1. Write two indexing expressions which apply to a scalar and return that scalar
 
-1. Write a function `IRep` which is equivalent to `{⍺/⍵}` but uses indexing.
+1. Write a function `IRep` which is equivalent to `⍺/⍵` but uses indexing instead of replicat	e.
 
 1. `NVec ← '' '34' 'donut' ⍬` is a four-element nested vector. Use a single pick `⍺⊃⍵` to obtain the sub-item `'o'`.
 
@@ -172,15 +191,9 @@ Iverson's [dictionary of APL](https://www.jsoftware.com/papers/APLDictionary1.ht
 	1. The character scalar `'y'`
 	1. The numeric scalar `6`
 
-	???+ Example "Answers"
-		1. For a scalar `s`, `⍬⌷s` and `s[⊂⍬]`
-		1. `IRep ← {⍵[⍺⍴⊂⍬]}`
-		1. `3 2⊃NVec`
-		1. 
-			1. `(2 2 2)(1 2)(1 2)⊃Nest`
-			1. `(⊂1 2 2)⊃Nest`
-
-1. What is the advantage of `{(⊂⍋⍵)⌷⍵}` over `{⍵[⍋⍵]}`?
+1. Two sorting expressions are `{(⊂⍋⍵)⌷⍵}` and `{⍵[⍋⍵]}`?  
+	
+	When might you use one over the other?
 
 1. When does `{(⍸∨/⍺⍷⍵) ≡ ⍸∧/⍵∊⍺}`?
 
@@ -189,35 +202,36 @@ Iverson's [dictionary of APL](https://www.jsoftware.com/papers/APLDictionary1.ht
 0 1 1
 0 0 0</code></pre>
 
-1. Here are some data and questions about visits to a museum.  
+### Visit to the museum
+Here are some data and questions about visits to a museum.  
 
-	The `section_names` are the names of each of the four sections in the museum.  
-	
-	<pre><code class="language-APL">section_names ← 'Bugs' 'Art' 'Fossils' 'Sea Life'</code></pre>  
-	
-	The variable `sections` is a nested list of text matrices. Each matrix lists the items or creatures which belong to each section.  
-	
-	<pre><code class="language-APL">sections ← ↑¨('Grasshopper' 'Giant Cicada' 'Earth-boring Dung Beetle' 'Scarab Beetle' 'Miyama Stag' 'Giant Stag' 'Brown Cicada' 'Giraffe Stag' 'Horned Dynastid' 'Walking Stick' 'Walking Leaf') ('The Blue Boy by Thomas Gainsborough' ('Rooster and Hen with Hydrangeas by It',(⎕ucs 333),' Jakuch',(⎕ucs 363)) 'The Great Wave off Kanagawa by Hokusai' 'Mona Lisa by Leonardo da Vinci' 'Sunflowers by Vincent van Gogh' 'Still Life with Apples and Oranges by Paul Cézanne' 'Girl with a Pearl Earring by Johannes Vermeer' ('Shak',(⎕ucs 333),'ki dog',(⎕ucs 363),' by Unknown') 'David by Michelangelo di Lodovico Buonarroti Simoni' 'Rosetta Stone by Unknown') ('Amber' 'Ammonite' 'Diplodocus' 'Stegosaur' 'Tyrannosaurus Rex' 'Triceratops') ('Puffer Fish' 'Blue Marlin' 'Ocean Sunfish' 'Acorn Barnacle' 'Mantis Shrimp' 'Octopus' 'Pearl Oyster' 'Scallop' 'Sea Anemone' 'Sea Slug' 'Sea Star' 'Whelk' 'Horseshoe Crab')</code></pre>
-	
-	The `visits` table represents 1000 visits to museum sections over a two week period. The four columns represent:  
-	
-	- The section that was visited as an index into the `section_names`
-	- The day of the visit in [Dyalog Date Number](http://help.dyalog.com/latest/#Language/System%20Functions/dt.htm) format.
-	- The arrival time in minutes from midnight. For example, 15:30 is 930 minutes.
-	- The departure time in minutes from midnight.
-	
-	<pre><code class="language-APL">⎕RL←42 ⋄ days←43589+?1000⍴28 ⋄ (arr lïv)←539+?2⍴⊂1000⍴510 ⋄ section←?1000⍴4
+The `section_names` are the names of each of the four sections in the museum.  
+
+<pre><code class="language-APL">section_names ← 'Bugs' 'Art' 'Fossils' 'Sea Life'</code></pre>  
+
+The variable `sections` is a nested list of text matrices. Each matrix lists the items or creatures which belong to each section.  
+
+<pre><code class="language-APL">sections ← ↑¨('Grasshopper' 'Giant Cicada' 'Earth-boring Dung Beetle' 'Scarab Beetle' 'Miyama Stag' 'Giant Stag' 'Brown Cicada' 'Giraffe Stag' 'Horned Dynastid' 'Walking Stick' 'Walking Leaf') ('The Blue Boy by Thomas Gainsborough' ('Rooster and Hen with Hydrangeas by It',(⎕ucs 333),' Jakuch',(⎕ucs 363)) 'The Great Wave off Kanagawa by Hokusai' 'Mona Lisa by Leonardo da Vinci' 'Sunflowers by Vincent van Gogh' 'Still Life with Apples and Oranges by Paul Cézanne' 'Girl with a Pearl Earring by Johannes Vermeer' ('Shak',(⎕ucs 333),'ki dog',(⎕ucs 363),' by Unknown') 'David by Michelangelo di Lodovico Buonarroti Simoni' 'Rosetta Stone by Unknown') ('Amber' 'Ammonite' 'Diplodocus' 'Stegosaur' 'Tyrannosaurus Rex' 'Triceratops') ('Puffer Fish' 'Blue Marlin' 'Ocean Sunfish' 'Acorn Barnacle' 'Mantis Shrimp' 'Octopus' 'Pearl Oyster' 'Scallop' 'Sea Anemone' 'Sea Slug' 'Sea Star' 'Whelk' 'Horseshoe Crab')</code></pre>
+
+The `visits` table represents 1000 visits to museum sections over a two week period. The four columns represent:  
+
+- The section that was visited as an index into the `section_names`
+- The day of the visit in [Dyalog Date Number](http://help.dyalog.com/latest/#Language/System%20Functions/dt.htm) format.
+- The arrival time in minutes from midnight. For example, 15:30 is 930 minutes.
+- The departure time in minutes from midnight.
+
+<pre><code class="language-APL">⎕RL←42 ⋄ days←43589+?1000⍴28 ⋄ (arr lïv)←539+?2⍴⊂1000⍴510 ⋄ section←?1000⍴4
 visits←(⊂⍋days)⌷section,days,(⊂∘⍋⌷⊢)⍤1⍉↑arr lïv</code></pre>
-	
-	In the boolean matrix `display`, each row corresponds to a museum piece and each column corresponds to a day. A `1` indicates days when a particular museum piece was out on display. The order of rows corresponds to the order of pieces in the `sections` table.  
-	
-	<pre><code>display ← 40 28⍴(9/0),1,(4/0),1,(9/0),1,(3/0),(5/1),0,(10/1),0,(5/1),0,(8/1),0,(8/1),0,(4/1),0 0 1 1 0 1 0 1 0 1 1 0 1 0,(5/1),(3/0),1 0 1 0 1 1,(4/0),1 0 1 1 0 0 1 1 0,(6/1),0 1 0 1 0 0 1 1 0 0 1 1 0 1 0 0 1 1 0,(3/1),(3/0),(4/1),0 1 1 0 1 0 0,(7/1),0 1 0 1 1 0 1 1 0 1 1 0,(3/1),0 1 1 0,(4/1),0,(3/1),0 1 0,(3/1),0 0 1 1,(5/0),1 1 0,(3/1),0 1 0 0 1 1,(3/0),(5/1),0,(9/1),0,(3/1),0 1,(3/0),(5/1),0,(3/1),0,(3/1),(3/0),1 1 0 0 1 0 1,(4/0),1 1 0 1 0 1 0 1 0,(9/1),0,(7/1),0,(3/1),0 0 1 1 0 1 1 0 0 1 0 0 1 0,(5/1),0 1,(3/0),1 1 0 1 0 0,(3/1),0,(4/1),0 0 1 1,(7/0),(3/1),(3/0),1 1,(3/0),1 1 0 1 0 1,(6/0),1 1,(4/0),1 0 1 1,(5/0),1 0 1 0 1,(6/0),(3/1),(9/0),1 1,(3/0),1 0 1 0 1 1,(13/0),1 1,(11/0),1 0 1 1,(4/0),1 0 0,(4/1),0,(12/1),0,(5/1),0 1 0 0 1 1 0,(5/1),0,(4/1),0,(4/1),0 0 1,(5/0),1 1,(3/0),(8/1),0 0 1,(3/0),1,(3/0),1,(3/0),1 0 0 1 0 1 0 1 0 1 0 1 1 0,(3/1),(4/0),(3/1),0,(3/1),0 1 1,(3/0),(4/1),0 1 1 0 1 1,(3/0),1 1 0 1 0 1 0 1,(6/0),1 1,(14/0),(8/1),(4/0),(8/1),0,(3/1),0,(4/1),(6/0),1 0 0 1 1,(3/0),1 1 0 0 1 0 1 0 0 1 0 1,(5/0),1 0 0 1 0 1 0 0 1 1,(3/0),1,(8/0),1 0 1 0,(6/1),0 0,(7/1),0 1 1 0,(3/1),0,(9/1),0,(12/1),0 1 1 0,(9/1),0,(3/1),0 0,(3/1),(3/0),(3/1),0,(3/1),(5/0),(7/1),0 1 0,(5/1),0,(3/1),0 0,(3/1),0 0 1 1 0,(4/1),0 1,(3/0),(3/1),(5/0),1 0 1 1 0 1 0,(3/1),0,(5/1),0,(3/1),0,(4/1),0 1,(4/0),1 0 1 0 0 1 1,(5/0),1,(3/0),1 0 0 1 0 1,(3/0),1 0 1 0 0 1,(4/0),1 0 0 1,(6/0),1,(14/0),1 0 0,(4/1),(3/0),(6/1),0 0 1 0,(3/1),0,(4/1),0,(3/1),0 1 0 1,(3/0),(5/1),(3/0),1 0 0 1 0,(3/1),0 1,(4/0),1 0 1 1,(11/0),1,(15/0),(3/1),(4/0),1,(15/0),(5/1),0 1 0,(8/1),0,(3/1),(4/0),(5/1),0 1,(9/0),1 0 1 1 0 0 1 0 0 1,(4/0),1 0,(4/1),0,(7/1),(3/0),1 0 0 1,(3/0),(3/1),0 1 1
+
+In the boolean matrix `display`, each row corresponds to a museum piece and each column corresponds to a day. A `1` indicates days when a particular museum piece was out on display. The order of rows corresponds to the order of pieces in the `sections` table.  
+
+<pre><code>display ← 40 28⍴(9/0),1,(4/0),1,(9/0),1,(3/0),(5/1),0,(10/1),0,(5/1),0,(8/1),0,(8/1),0,(4/1),0 0 1 1 0 1 0 1 0 1 1 0 1 0,(5/1),(3/0),1 0 1 0 1 1,(4/0),1 0 1 1 0 0 1 1 0,(6/1),0 1 0 1 0 0 1 1 0 0 1 1 0 1 0 0 1 1 0,(3/1),(3/0),(4/1),0 1 1 0 1 0 0,(7/1),0 1 0 1 1 0 1 1 0 1 1 0,(3/1),0 1 1 0,(4/1),0,(3/1),0 1 0,(3/1),0 0 1 1,(5/0),1 1 0,(3/1),0 1 0 0 1 1,(3/0),(5/1),0,(9/1),0,(3/1),0 1,(3/0),(5/1),0,(3/1),0,(3/1),(3/0),1 1 0 0 1 0 1,(4/0),1 1 0 1 0 1 0 1 0,(9/1),0,(7/1),0,(3/1),0 0 1 1 0 1 1 0 0 1 0 0 1 0,(5/1),0 1,(3/0),1 1 0 1 0 0,(3/1),0,(4/1),0 0 1 1,(7/0),(3/1),(3/0),1 1,(3/0),1 1 0 1 0 1,(6/0),1 1,(4/0),1 0 1 1,(5/0),1 0 1 0 1,(6/0),(3/1),(9/0),1 1,(3/0),1 0 1 0 1 1,(13/0),1 1,(11/0),1 0 1 1,(4/0),1 0 0,(4/1),0,(12/1),0,(5/1),0 1 0 0 1 1 0,(5/1),0,(4/1),0,(4/1),0 0 1,(5/0),1 1,(3/0),(8/1),0 0 1,(3/0),1,(3/0),1,(3/0),1 0 0 1 0 1 0 1 0 1 0 1 1 0,(3/1),(4/0),(3/1),0,(3/1),0 1 1,(3/0),(4/1),0 1 1 0 1 1,(3/0),1 1 0 1 0 1 0 1,(6/0),1 1,(14/0),(8/1),(4/0),(8/1),0,(3/1),0,(4/1),(6/0),1 0 0 1 1,(3/0),1 1 0 0 1 0 1 0 0 1 0 1,(5/0),1 0 0 1 0 1 0 0 1 1,(3/0),1,(8/0),1 0 1 0,(6/1),0 0,(7/1),0 1 1 0,(3/1),0,(9/1),0,(12/1),0 1 1 0,(9/1),0,(3/1),0 0,(3/1),(3/0),(3/1),0,(3/1),(5/0),(7/1),0 1 0,(5/1),0,(3/1),0 0,(3/1),0 0 1 1 0,(4/1),0 1,(3/0),(3/1),(5/0),1 0 1 1 0 1 0,(3/1),0,(5/1),0,(3/1),0,(4/1),0 1,(4/0),1 0 1 0 0 1 1,(5/0),1,(3/0),1 0 0 1 0 1,(3/0),1 0 1 0 0 1,(4/0),1 0 0 1,(6/0),1,(14/0),1 0 0,(4/1),(3/0),(6/1),0 0 1 0,(3/1),0,(4/1),0,(3/1),0 1 0 1,(3/0),(5/1),(3/0),1 0 0 1 0,(3/1),0 1,(4/0),1 0 1 1,(11/0),1,(15/0),(3/1),(4/0),1,(15/0),(5/1),0 1 0,(8/1),0,(3/1),(4/0),(5/1),0 1,(9/0),1 0 1 1 0 0 1 0 0 1,(4/0),1 0,(4/1),0,(7/1),(3/0),1 0 0 1,(3/0),(3/1),0 1 1
 </code></pre>
-	
-	1. How many visitors arrived before 10AM?
-	1. What was the most popular section by visit duration?
-	1. Estimate the opening and closing times of each of the sections.
-	1. Which animal being on display corresponded with the highest increase in visit duration for its section?
+
+1. How many visitors arrived before 10AM?
+1. What was the most popular section by visit duration?
+1. Estimate the opening and closing times of each of the sections.
+1. Which animal being on display corresponded with the highest increase in visit duration for its section?
 
 ### Word Problems
 
@@ -238,7 +252,7 @@ If you have the file on your computer (maybe you were given it on a USB drive, f
 ```
 
 !!! Warning "Version Warning"
-	`HttpCommand` and `⎕NGET` are not available in Dyalog version 12.1. Instead, ???
+	`HttpCommand` and `⎕NGET` are not available in Dyalog version 12.1. Instead, read the file using `⎕NREAD` as described in [the chapter on data input and output](../Data/#n).
 
 Now answer the following questions about `words`.
 
@@ -259,7 +273,7 @@ Now answer the following questions about `words`.
 
 1. How many words are in alphabetical order?
 
-???+ Example "Answers"
+??? Example "Answers"
 	<ol type="a">
 		<li>$3585$</li>
 		<li>$2149$</li>
@@ -270,3 +284,12 @@ Now answer the following questions about `words`.
 	</ol>
 
 ### Rain facts
+The 3D array `rain` gives the monthly rainfall in millimeters over 7 years in 5 countries.
+
+```APL
+      ⎕RL←42 ⋄ rain←?7 5 12⍴250
+```
+
+1. Which month in each year in each country had the highest rainfall?
+1. In the data, the countries are in order 1 to 5. Sort the countries in descending order of average monthly rainfall
+1. Sort the countries in ascending order of total yearly rainfall

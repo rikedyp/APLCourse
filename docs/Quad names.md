@@ -5,14 +5,16 @@ There is a [vendor-agnostic](https://aplwiki.com/wiki/List_of_language_developer
 
 See the Dyalog online documentation for:
 
-- [a complete list of categorised system functions](http://help.dyalog.com/18.0/#Language/System%20Functions/Summary%20Tables/System%20Functions%20Categorised.htm)
-- [a complete list of system variables](http://help.dyalog.com/18.0/#Language/System%20Functions/Summary%20Tables/System%20Variables.htm)
+- [a complete list of categorised system functions with descriptions](http://help.dyalog.com/18.0/#Language/System%20Functions/Summary%20Tables/System%20Functions%20Categorised.htm)
+- [a complete list of system variables with descriptions](http://help.dyalog.com/18.0/#Language/System%20Functions/Summary%20Tables/System%20Variables.htm)
+- [a complete list of system functions and variables](http://help.dyalog.com/latest/#Language/System%20Functions/Summary%20Tables/System%20Functions%20and%20Variables%20ColWise.htm)
 
 ## System variables
+The Dyalog online documentation has [a complete list of system variables](http://help.dyalog.com/latest/#Language/System%20Functions/Summary%20Tables/System%20Variables.htm).
 
 System variables describe the state of the system.  
 Some variables are <span class="svstc">static</span> and cannot change.  
-Some variables are <span class="svdyn">dynamic</span> and can change without user intervention.  
+Some variables are <span class="svdyn">dynamic</span> and can change without direct user intervention.  
 The others can be <span class="svset">changed by the user</span>.
 
 <style>
@@ -41,7 +43,7 @@ The others can be <span class="svset">changed by the user</span>.
 		<td class="svdyn">⎕AV</td>
 		<td class="svset">⎕FR</td>
 		<td class="svset">⎕PW</td>
-		<td class="svstc">⎕TC</td>
+		<td class="svdyn">⎕TC</td>
 	</tr>
 	<tr>
 		<td class="svset">⎕USING</td>
@@ -61,14 +63,14 @@ The others can be <span class="svset">changed by the user</span>.
 		<td class="svset">⎕WSID</td>
 		<td class="svstc">⎕D</td>
 		<td class="svset">⎕LX</td>
-		<td class="svdyn">⎕RTL</td>
+		<td class="svset">⎕RTL</td>
 		<td class="svdyn">⎕TNAME</td>
 	</tr>
 	<tr>
 		<td class="svset">⎕WX</td>
 		<td class="svset">⎕DCT</td>
 		<td class="svset">⎕ML</td>
-		<td class="svdyn">⎕SE</td>
+		<td class="svstc">⎕SE</td>
 		<td class="svdyn">⎕TNUMS</td>
 	</tr>
 	<tr>
@@ -80,9 +82,9 @@ The others can be <span class="svset">changed by the user</span>.
 	</tr>
 </table>
 
-Of course, the majority of the time you can refer to the [help system](../Help) to remind yourself exactly how each of these works. There are many system variables built up over the decades, many of which are kept mostly for backwards compatibility.
+Of course, the majority of the time you can refer to the [help system](../Help/#what-does-this-thing-do) to remind yourself exactly how each of these works. There are many system variables built up over the decades, many of which are kept mostly for backwards compatibility.
 
-In the following table, the <span class="svimp">quad-names</span> you are <span class="svimp">most likely to come across</span> in existing code are highlighted in <span class="svimp">red</span>.
+In the following table, the <span class="svimp">system variables</span> you are <span class="svimp">most likely to come across</span> in existing code are highlighted in <span class="svimp">red</span>.
 
 <style>
 	.sv{color: black;}
@@ -191,45 +193,6 @@ dyalog
 ⎕PATH  where to find functions 
 ```
 
-### Comparison tolerance
-
-!!! Warning
-	This subsection is likely to move
-
-`⎕CT` comparison tolerance
-
-`⎕DCT` decimal comparison tolerance
-
-Of course, floating point arithmetic voids certain mathematical properties:
-
-${{3}\over{5}} = 3 \times {{5}\over{9}} \div 5$
-
-```APL
-      ⎕CT←1e¯14   ⍝ Default comparison tolerance
-      (1÷3)=3×(5÷9)÷5
-1
-      ⎕CT←0       ⍝ No comparison tolerance
-      (1÷3)=3×(5÷9)÷5
-0
-```
-
-```APL
-	⎕CT←1E¯14
-	1=1 + 10 * -⎕←⍳16
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 
-0 0 0 0 0 0 0 0 0  0  0  0  0  1  1  1 
-```
-For exact comparisons set ⎕CT to 0, but beware:
-```APL
-      10=+/100⍴0.1
-1
-      ⎕CT←0
-      10=+/100⍴0.1
-0
-      10-+/100⍴0.1
-1.953992523E¯14
-```
-
 ### Division control
 ```APL
       ⎕DIV←0   ⍝ Default
@@ -243,25 +206,6 @@ DOMAIN ERROR: Divide by zero
       3÷0
 0
       0÷0
-0
-```
-
-## System functions
-
-### Comparison Tolerance
-APL systems prefer to act like traditional arithmetic where possible. However, the base-2 (binary) representation used by computers is unable to represent certain decimal numbers precisely.
-
-In traditional mathematical notation:
-
-$1={6\over10}\times10\times{1\over6}$
-
-```APL
-      ⎕CT   ⍝ Default is 10*¯14
-1E¯14
-      1=(6÷10)×10×÷6
-1
-      ⎕CT←0
-      1=(6÷10)×10×÷6
 0
 ```
 
@@ -281,6 +225,13 @@ The number of significant digits in the display of numeric output.
 ```
 
 ### Print Width
+The Print Width `⎕PW` sets the number of characters in the session before wrapping to a new line.
 
-### Trap control
+It can be assigned to directly, or set to automatically adjust based on the IDE windows size. In the Microsoft Windows IDE, go to **Options**→**Configure**→**Session** and tick **Auto PW**. In the RIDE, go to **Edit**→**Preferences**→**General**→**Session** and tick **Auto PW**.
 
+## System functions
+In this course, we try to introduce relevant quad-names in appropriate contexts. However, not every quad-name is shown in this tutorial.
+
+A complete collection of categorised system functions is available [from the Dyalog online documentation](http://help.dyalog.com/latest/#Language/System%20Functions/Summary%20Tables/System%20Functions%20Categorised.htm?Highlight=system%20function).
+
+Further treatment of system functions is provided in [Chapter L of Mastering Dyalog APL](https://www.dyalog.com/uploads/documents/MasteringDyalogAPL.pdf#%5B%7B%22num%22%3A927%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22XYZ%22%7D%2C69%2C640%2C0%5D).

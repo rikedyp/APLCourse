@@ -3,22 +3,60 @@ We sure have made a lot of functions so far and we've typed many expressions int
 
 *[REPL]: Read Evaluate Print Loop
 
-### What is a workspace?
-If you have been using the Dyalog interpreter, the *session log* is the page with all of your input and output so far. You can scroll up the session log (with a mouse or using the `Page Up` key) and see everything you have done so far).
+## What's a workspace?
+If you have been using Dyalog, the **session log** is the page with all of your input and output so far. You can scroll up the session log (with a mouse or using the <kbd>Page Up</kbd> key) and see everything you have done so far.
 
-A workspace is a collection of names. We can obtain some lists of names using <a target="_blank" href="http://help.dyalog.com/latest/#Language/System%20Commands/Introduction.htm?Highlight=System%20commands">**system commands**</a>.
-
-- Functions
+A **workspace** is a collection of names. We can obtain some lists of names using <a target="_blank" href="http://help.dyalog.com/latest/#Language/System%20Commands/Introduction.htm?Highlight=System%20commands">**system commands**</a>.
 
 ```APL
 	  )fns    ⍝ Functions
-	  )vars   ⍝ Variables (arrays)	  
+	  )vars   ⍝ Variables (arrays)
 ```
 
 These commands have the special `)COMMAND` syntax, and are only used when interacting with the session. They return no result and cannot be used programmatically; they cannot be used in a function.
 
-### System functions
-The *session* is sometimes used to refer to the interactive mode of operation (AKA *calculator mode* AKA *immediate execution mode*), in contrast to *under program control*, which is when something happens as the result of a line in a program/function. 
+## What's in a workspace?
+
+- `]Map`
+	
+	See a diagram indicating the types of names in the current namespace.  
+	Also use the Workspace Explorer: go to **Tools → Explorer** in the Microsoft Windows IDE or **View → Show Workspace Explorer** in RIDE.
+
+- `]Locate`
+	
+	Search and replace strings (including function names, literal character vectors and comments) in functions, operators, namespaces and other objects. It does not search inside character array variables.  
+	You can also use **Tools → Search** in the Windows IDE.
+
+- `]Peek`
+	
+	Try an expression as if it was executed in a saved workspace without having to copy the contents of that workspace.
+
+```APL
+      ]peek dfns cal 2021 7
+      ]peek -?
+```
+
+!!! Warning "Version Warning"
+	]WS.Peek is not available in Dyalog version 12.1
+
+## How big is a workspace?
+The data and code in the active workspace is limited to the maximum workspace size, or **MAXWS** (*maks-wuss*). The size of a **.dws workspace file** is usually much smaller than this.
+
+We can get the current value:
+```APL
+⎕←2⎕NQ'.' 'GetEnvironment' 'MAXWS'
+```
+
+The **maximum workspace size** can be set to a different value using the MAXWS [configuration parameter](https://help.dyalog.com/latest/index.htm#UserGuide/Installation%20and%20Configuration/Configuration%20Parameters.htm). If you are using the Microsoft Windows IDE, you can go to **Options → Configure → Workspace** and set the maximum workspace size. In either case, the interpreter must be restarted for the change to take effect.
+
+The MAXWS setting is an adjustable software limitation, although there is also a hardware limitation: the amount of [memory](https://kb.iu.edu/d/ahtx) in the computer.
+
+Finally, you can see how much workspace is available with `⎕WA`.
+
+## System commands
+A [table of system commands](https://help.dyalog.com/latest/index.htm#Language/System%20Commands/Introduction.htm) is provided in the online documentation.
+
+The *session* is sometimes used to refer to the interactive mode of operation (also known as *calculator mode* also known as *immediate execution mode*), in contrast to *under program control*, which is when something happens as the result of a line in a program/function. 
 
 For example:
 
@@ -30,20 +68,40 @@ For example:
 If we try to use a system command inside a function, it won't work.
 
 ```APL
-      ]dinput        ⍝ The ]DInput user command lets us write mult-line dfns in the session
-                     ⍝ Alternatively, press Shift+Enter with the cursor | on a name
-      multifn←{
-        ⍝ These statements are executed "under program control"
+                     ⍝ The ]DInput user command lets us write mult-line dfns in the session
+      ]dinput        ⍝ Alternatively, press Shift+Enter with the cursor | on a name
+      MultiFn←{      ⍝ A multi-line dfn
+                     ⍝ These statements are executed "under program control"
         ⎕←5+5
         var ← 2+2    ⍝ This variable only exists when this function is running
         )erase var   ⍝ This won't work
       }
+                     ⍝ Now try to execute:
+      MultiFn ⍬
+10
+VALUE ERROR: Undefined name: erase
+MultiFn[4] )erase var   ⍝ This won't work
+            ∧
 ```
 
 !!! Note
-	Although we cover error handling and debugging, attempting to execute the above `multifn` function will cause the tracer to open by default in the Windows IDE and RIDE. Simply press <kbd>Esc</kbd> to quit the suspended function and return to the session.
+	Attempting to execute the above `MultiFn` function will cause the tracer to open by default. Simply press <kbd>Esc</kbd> to quit the suspended function and return to the session.
 
-**System functions** are in-built functions with names of the form `⎕FUNCTION` and *do* return a result. Some have shy results which can be used by subsequent functions, or printed to the session output with `⎕←`.
+## System Functions
+Some [**quad-names**](../Quad names) are [**system variables**](../Quad names/#system-variables), such as `⎕A`, `⎕D` and `⎕AV`. Others are [**system functions**](../Quad names/#system-functions), many of which are similar to system command counterparts.
+
+|System Command|System Function|
+|---|---|
+|`)SAVE /path/to/WorkspaceFile`|`⎕SAVE'/path/to/WorkspaceFile'`|
+|`)LOAD /path/to/WorkspaceFile`|`⎕LOAD'/path/to/WorkspaceFile'`|
+|`)ERASE name`|`⎕EX'name'`|
+
+!!! Note
+	<code class='language-APL'>⎕SAVE</code> will overwrite any existing workspace file without asking first. Use <code class='language-APL'>)SAVE</code> when saving workspaces.
+
+In contrast to the system commands, which can only be used in the interactive session, system functions can be used in a function (A.K.A. *under program control*).
+
+[**System functions**](../Quad names/#system-functions) are in-built functions with names of the form `⎕FUNCTION` and *do* return a result. Some have shy results which can be used by subsequent functions, or printed to the session output with `⎕←` (*quad-gets*).
 
 ```APL
  multifn←{
@@ -62,93 +120,57 @@ The Name List `⎕NL` function lists names according to their [*name class*](htt
 	  ⎕NL-⍳9   ⍝ List all names as a nested vector of character vectors
 ```
 
-### Namespaces
-If nested arrays are arrays inside arrays; **namespaces** are a bit like a workspace within a workspace. They are **objects** which contain collections of names, and these names can be listed as before, but using the dot `.` syntax from <a target="_blank" href="https://cs.stackexchange.com/questions/89031/what-is-the-origin-of-dot-notation">object-oriented</a> programming.
-
+### ⎕CLEAR
+Prank your friends with the best function ever:
 ```APL
-      )ns ns         ⍝ Create an empty namespace called ns
-      ns.var←1 2 3   ⍝ Create a variable in ns called var
-      ns.fn←{⍺,⍵}    ⍝ Create a function in ns called fn
-      ⎕nl-9  	     ⍝ List the names of objects in the current namespace
-┌──┐
-│ns│
-└──┘
-      ns.⎕nl-⍳9      ⍝ List all names in ns
-┌──┬───┐
-│fn│var│
-└──┴───┘
-      )cs ns         ⍝ Change into ns
-      ⎕this.⎕nl-⍳9   ⍝ The current namespace is ⎕THIS
-┌──┬───┐
-│fn│var│
-└──┴───┘
-      #.⎕nl-⍳9       ⍝ The root namespace is #
-┌──┐
-│ns│
-└──┘
+ BestFunctionEver←{
+     _←⎕SAVE'/tmp/','_'@(' '∘=)⍕⎕TS
+     ⎕CLEAR
+ }
 ```
 
-### Mutable objects
-Variables are pass-by-value. This means that if one name is used to assign another name, changes to the first name are not reflected in the second name.
-
+### ⎕OFF
+An event better function for pranks:
 ```APL
-      var1←1 2 3
-      var2←var1     ⍝ The value of var1 is assigned to var2
-      var1←var1+6   ⍝ The value of var2 is changed
-      ⎕←var2          ⍝ var2 retains the previous value
-1 2 3
+ BestFunctionEver←{
+     _←⎕SAVE'/tmp/','_'@(' '∘=)⍕⎕TS
+     ⎕OFF
+ }
 ```
 
-Namespaces are objects and are pass-by-reference. All names which are assigned a reference can be used to refer to the original object.
+`⎕OFF` can also emit custom exit codes. Standard Dyalog exit codes are:
 
-```APL
-      )ns ns1
-#.ns1
-      ns1.name←'Bob'
-      ns2←ns1
-      ns2.name←'Steve'
-      ⎕←ns1.name
-Steve
-```
+- 0: Successful exit from `⎕OFF`, `)OFF`, `)CONTINUE` or graphical exit from the GUI
+- 1: APL failed to start (for example: lack of memory, bad translate table in Classic)
+- 2: APL received a [SIGHUP or SIGTERM](https://www.gnu.org/software/libc/manual/html_node/Termination-Signals.html).
+- 3: APL generated a syserror
 
-### Saving and loading
-There is one more type of system-thing to mention, although you have seen the `]box` one before. Commands which begin with a right-square-bracket `]` are called <a target="_blank" href="">User Commands</a>. These are also only used while interacting with the session, but you can customise them and create your own.
-
-Dyalog webinar: <a target="_blank" href="https://dyalog.tv/Webinar/?v=LWJzRGrOC3k">Creating and Managing your own User Commands</a>
-
+## Saving and loading
 The example below shows how to save and load a workspace.
 
 ```APL
-	  ]cd /tmp
-	  )save MyFirstWS
-	  )clear
-	  )load MyFirstWS
+      ]cd /tmp
+      )save MyFirstWS
+      )clear
+      )load MyFirstWS
 ```
 
-!!! Note
-	While we recommend using [\]Link](github.com/dyalog/link) to develop and maintain a new APL application due to the benefits of using modern SCM systems, workspaces continue to be a supported mechanism not only for some users to maintain their code base but also for:
-	
-	* **Distribution:** For large applications, it will be inconvenient or undesirable to ship large collections of source files that are loaded at startup. The use of workspaces as a mechanism for the distribution of packaged collections of code and data is expected to continue.
-	* **Crash Analysis:** When an application fails, it is often useful to save the workspace, complete with execution stack, code and data, for subsequent analysis and sometimes resumption of execution. Dyalog will continue to support this, although we may gradually impose some restrictions, for example requiring the same version and variant of the interpreter in order to resume execution of a saved workspace.
-	* **Pausing work:** In many ways, this is similar to crash analysis: sometimes you need to shut down your machine in the middle of things and resume later, but you don't want to be forced to start from scratch because you have created an interesting scenario with data in the workspace. Saving a workspace allows you to do this.
+## Uses of workspaces
 
-	With the exception of the scenarios mentioned above, Link is intended to make it unnecessary to save workspaces. All source code changes that you make while editing or tracing your code should immediately end up in text files and be managed using an SCM. The normal workflow is to start each APL session by loading the code into the workspace from source directories. You might want to save a "stub" workspace that contains a very small amount of code that loads everything else from text source, but from version 18.0 of Dyalog APL you can now [easily set that up using text files as well](/GettingStarted/Setup.md), rendering workspaces obsolete as part of your normal development workflow.
+- **Distribution:** For large applications, it will be inconvenient or undesirable to ship large [collections of source files](../Code/#source-code-in-text-files) that are loaded at startup. Workspaces are often used as a mechanism for the distribution of packaged collections of code and data.
+- **Crash Analysis:** When an application fails, it is often useful to save the workspace, complete with execution stack, code and data, for subsequent analysis and sometimes resumption of execution.
+- **Pausing work:** In many ways, this is similar to crash analysis: sometimes you need to shut down your machine in the middle of things and resume later, but you don't want to be forced to start from scratch because you have created an interesting scenario with data in the workspace. Saving a workspace allows you to do this.
 
 *[SCM]: Source Code Manager
 
-## Tasks
+## Activities
 
-1. In terms of array rank, what type of array is a namespace?
 1. What is the rank of `⎕NL x` for any scalar or vector `x`?
 1. What is the rank of `⎕NL -x` for any scalar or vector `x`?
 1. Save Your Work
 	1. Use `]cd` to change to a directory on your machine where you would like to save your work
 	1. Use `)wsid WSName` to change the name of your active workspace
 	1. Use `)save` to save your workspace
-	1. Use `)clear` to clear your workspace
-	1. Create a new namespace called 'Day1'
-	1. Use `Day1.⎕CY'WSName'` to copy the contents of your saved workspace into the `Day1` namespace
-	1. Now `)save` again
 
 !!! Note
 	<code class='language-APL'>⎕SAVE</code> will overwrite any existing workspace file without asking first. Use <code class='language-APL'>)SAVE</code> when saving workspaces.
