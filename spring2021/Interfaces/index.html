@@ -18,7 +18,7 @@
     
     
       
-        <title>External interfaces - APL Course</title>
+        <title>External Interfaces - APL Course</title>
       
     
     
@@ -94,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              External interfaces
+              External Interfaces
             
           </span>
         </div>
@@ -339,7 +339,7 @@
   
     <li class="md-nav__item">
       <a href="../Namespaces/" class="md-nav__link">
-        Namespaces and other objects
+        Namespaces and Other Objects
       </a>
     </li>
   
@@ -369,7 +369,7 @@
   
     <li class="md-nav__item">
       <a href="../Ufns/" class="md-nav__link">
-        User-defined functions
+        User-defined Functions
       </a>
     </li>
   
@@ -398,8 +398,23 @@
   
   
     <li class="md-nav__item">
+      <a href="../Quad%20names/" class="md-nav__link">
+        Quad Names
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../Errors/" class="md-nav__link">
-        Error handling basics
+        Error Handling and Debugging
       </a>
     </li>
   
@@ -441,21 +456,6 @@
 
   
   
-  
-    <li class="md-nav__item">
-      <a href="../Quad%20names/" class="md-nav__link">
-        Quad names
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
     
   
   
@@ -468,12 +468,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          External interfaces
+          External Interfaces
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        External interfaces
+        External Interfaces
       </a>
       
         
@@ -498,6 +498,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#apl-as-a-shared-library" class="md-nav__link">
+    APL as a Shared Library
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#pynapl" class="md-nav__link">
     Py'n'APL
   </a>
@@ -506,7 +513,7 @@
       
         <li class="md-nav__item">
   <a href="#rsconnect-and-rconnect" class="md-nav__link">
-    RsConnect and RConnect
+    RSConnect and RConnect
   </a>
   
 </li>
@@ -519,8 +526,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#commole" class="md-nav__link">
-    COMM/OLE
+  <a href="#comole" class="md-nav__link">
+    COM/OLE
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#null" class="md-nav__link">
+    ⎕NULL
   </a>
   
 </li>
@@ -549,7 +563,7 @@
   
     <li class="md-nav__item">
       <a href="../Quirks/" class="md-nav__link">
-        Historical quirks
+        Historical Quirks
       </a>
     </li>
   
@@ -563,23 +577,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../Stack/" class="md-nav__link">
-        The call stack
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../implementation/" class="md-nav__link">
-        Interpreter internals
+      <a href="../Interpreter-internals/" class="md-nav__link">
+        Interpreter Internals
       </a>
     </li>
   
@@ -594,7 +593,7 @@
   
     <li class="md-nav__item">
       <a href="../Reading/" class="md-nav__link">
-        Further reading
+        Further Reading
       </a>
     </li>
   
@@ -633,6 +632,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#apl-as-a-shared-library" class="md-nav__link">
+    APL as a Shared Library
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#pynapl" class="md-nav__link">
     Py'n'APL
   </a>
@@ -641,7 +647,7 @@
       
         <li class="md-nav__item">
   <a href="#rsconnect-and-rconnect" class="md-nav__link">
-    RsConnect and RConnect
+    RSConnect and RConnect
   </a>
   
 </li>
@@ -654,8 +660,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#commole" class="md-nav__link">
-    COMM/OLE
+  <a href="#comole" class="md-nav__link">
+    COM/OLE
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#null" class="md-nav__link">
+    ⎕NULL
   </a>
   
 </li>
@@ -683,13 +696,44 @@
                 <h1 id="external-interfaces">External Interfaces</h1>
 <p>In an ideal world, we'd spend our entire lives blissfully in the warm comfort of the APL session. All of our data would magically appear and we would write perfect, beautiful algorithms to solve idealised problems.</p>
 <p>In the real world, we must interface with external systems. After all, the entire point of learning this tool is to use it to solve real world problems.</p>
-<p><a href="https://www.dyalog.com/tools/index.htm">Dyalog Tools and Interfaces</a></p>
 <h2 id="name-association">Name Association</h2>
+<p>Sufficiently knowledgable programmers can interface directly between APL and a compiled library using <code>⎕NA</code>. Input and output data types must be explicitly declared. For more information see <a href="http://help.dyalog.com/latest/#Language/System%20Functions/na.htm">the online documentation about ⎕NA</a>.</p>
+<h2 id="apl-as-a-shared-library">APL as a Shared Library</h2>
+<p>It is also possible to bundle an APL application as a compiled native shared or static object (.dll, .dylib or .so) which exposes APL functions and makes them accessible via another programming language or application's <a href="https://en.wikipedia.org/wiki/Foreign_function_interface">foreign function interface</a>. </p>
+<p>Examples of usage and links to documentation are available on <a href="https://github.com/Dyalog/NativeLib">github.com/Dyalog/NativeLib</a></p>
 <h2 id="pynapl">Py'n'APL</h2>
-<h2 id="rsconnect-and-rconnect">RsConnect and RConnect</h2>
+<p>Start instances of Python from Dyalog, and start instances of Dyalog from Python. Leverage the convenience of Python's vast collection of libraries and combine it with the expressive power of APL. See <a href="https://github.com/Dyalog/pynapl">github.com/Dyalog/pynapl</a> for more information.</p>
+<h2 id="rsconnect-and-rconnect">RSConnect and RConnect</h2>
+<p>R is a very popular language with a large collection of statistical libraries. Two R interfaces exist for Dyalog:</p>
+<p><a href="https://github.com/kimmolinna/rsconnect">RSconnect R interface for Dyalog</a> using Rserve</p>
+<p><a href="https://docs.dyalog.com/latest/R%20Interface%20Guide.pdf">RConnect R interface for Dyalog</a> using rscproxy</p>
 <h2 id="net">.NET</h2>
-<h2 id="commole">COMM/OLE</h2>
+<p>Microsoft's .NET Framework contains a plethora of useful libraries for business applications. </p>
+<p>To enable reference to .NET namespaces, set <code>⎕USING</code>:</p>
+<pre><code class="language-APL">      ⎕USING←''
+      System.TimeZone.CurrentTimeZone.StandardName
+GMT Standard Time
+</code></pre>
+<p>Set the system variable <code>⎕USING</code> in order to access names within .NET namespaces.  </p>
+<pre><code class="language-APL">      ⎕USING←'System'
+      TimeZone.CurrentTimeZone.StandardName
+GMT Standard Time
+</code></pre>
+<p>In recent years, Microsoft have been developing a cross-platform equivalent called .NET Core (or .NET 5). This allows the same libraries to be used on Microsoft Windows, macOS and Linux. It must be installed separately and enabled by setting the <a href="http://help.dyalog.com/latest/#UserGuide/Installation%20and%20Configuration/Configuration%20Parameters.htm">configuration parameter</a> <code>DYALOG_NETCORE=1</code>.</p>
+<h2 id="comole">COM/OLE</h2>
+<p>Dyalog is able to directly control certain Microsoft applications using the <a href="https://en.wikipedia.org/wiki/Component_Object_Model">Component Object Model</a>. For examples, see:</p>
+<ul>
+<li><a href="https://dyalog.tv/Webinar/?v=hs90SdUc9dE">Dyalog Webinar: APL and Microsoft Excel</a></li>
+<li><a href="https://www.dyalog.com/uploads/conference/dyalog11/presentations/C05_using_excel_under_apl/officeauto11.pdf">Document: Charting the APL/Excel waters</a></li>
+<li><a href="https://docs.dyalog.com/latest/Dyalog%20for%20Microsoft%20Windows%20Interface%20Guide.pdf#page=185">Chapter 9 of the Dyalog for Microsoft Windows Interfaces Guide</a>.</li>
+</ul>
+<h2 id="null">⎕NULL</h2>
+<p>The core APL language does not have a "null" value as such. While you might think that the empty numeric vector <code>⍬</code> could be considered a type of "null", it already has type information associated with it so it doesn't really work - it is more accurate to call it an <em>empty numeric vector</em>. In order to cooperate with the COM and .NET interfaces described above, Dyalog has a proper null value which can be invoked with <code>⎕NULL</code>.</p>
 <h2 id="conga-and-http">Conga and HTTP</h2>
+<p><a href="">Conga</a> is the core TCP/IP framework for Dyalog. On top of this, there are several higher level utilities for various web-based applications.</p>
+<p><a href="../Data/#downloading-data-from-the-internet">HttpCommand</a> can be used to issue requests to web servers and retrieve data.</p>
+<p><a href="https://github.com/Dyalog/Jarvis">Jarvis</a> is a very convenient way to expose APL functions as either a JSON or RESTful web service. It can even serve a simple static web interface and is the web service component of <a href="https://tryapl.org">TryAPL</a>.</p>
+<p><a href="https://github.com/Dyalog/DUI/">DUI</a> (Dyalog User Interface) is a cross-platform GUI framework for building web-based front-ends in APL. It includes its own web server, so the same code can be used for a standalone desktop application, web app and website. There is an example site for its predecessor (identical in most ways, but without standalone desktop deployment) called <a href="https://miserver.dyalog.com">MiServer</a>.</p>
                 
               
               
@@ -708,7 +752,7 @@
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../Quad%20names/" class="md-footer__link md-footer__link--prev" rel="prev">
+        <a href="../Code/" class="md-footer__link md-footer__link--prev" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -717,7 +761,7 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Quad names
+              Code IO
             </div>
           </div>
         </a>
@@ -729,7 +773,7 @@
               <span class="md-footer__direction">
                 Next
               </span>
-              Historical quirks
+              Historical Quirks
             </div>
           </div>
           <div class="md-footer__button md-icon">

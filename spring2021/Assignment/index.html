@@ -375,6 +375,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#an-apl-model-of-at" class="md-nav__link">
+    An APL model of At
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -407,7 +414,7 @@
   
     <li class="md-nav__item">
       <a href="../Namespaces/" class="md-nav__link">
-        Namespaces and other objects
+        Namespaces and Other Objects
       </a>
     </li>
   
@@ -437,7 +444,7 @@
   
     <li class="md-nav__item">
       <a href="../Ufns/" class="md-nav__link">
-        User-defined functions
+        User-defined Functions
       </a>
     </li>
   
@@ -466,8 +473,23 @@
   
   
     <li class="md-nav__item">
+      <a href="../Quad%20names/" class="md-nav__link">
+        Quad Names
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../Errors/" class="md-nav__link">
-        Error handling basics
+        Error Handling and Debugging
       </a>
     </li>
   
@@ -511,23 +533,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../Quad%20names/" class="md-nav__link">
-        Quad names
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../Interfaces/" class="md-nav__link">
-        External interfaces
+        External Interfaces
       </a>
     </li>
   
@@ -542,7 +549,7 @@
   
     <li class="md-nav__item">
       <a href="../Quirks/" class="md-nav__link">
-        Historical quirks
+        Historical Quirks
       </a>
     </li>
   
@@ -556,23 +563,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../Stack/" class="md-nav__link">
-        The call stack
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../implementation/" class="md-nav__link">
-        Interpreter internals
+      <a href="../Interpreter-internals/" class="md-nav__link">
+        Interpreter Internals
       </a>
     </li>
   
@@ -587,7 +579,7 @@
   
     <li class="md-nav__item">
       <a href="../Reading/" class="md-nav__link">
-        Further reading
+        Further Reading
       </a>
     </li>
   
@@ -653,6 +645,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#an-apl-model-of-at" class="md-nav__link">
+    An APL model of At
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -695,7 +694,7 @@
 <h2 id="at">At</h2>
 <div class="admonition warning">
 <p class="admonition-title">Version Warning</p>
-<p>At <code>@</code> is not available in Dyalog version 12.1. Modified, indexed assignment is usually used instead.</p>
+<p>At <code>@</code> is not available in Dyalog version 12.1. Modified, indexed assignment is usually used instead. A compatible APL model is provided at the end of this chapter.</p>
 </div>
 <p>Monadic functions take a single right argument array as input. Dyadic functions take two argument arrays.</p>
 <p>Monadic operators take a single left operand which can be a function or an array (as in <code>+/</code> where plus <code>+</code> is the function operand and reduce <code>/</code> is the operator). </p>
@@ -722,10 +721,10 @@ LOG</code></pre>  </p>
 </li>
 </ol>
 <p>Generally, the left operand to <code>@</code> is a function applied to scalars in <code>⍵</code> which are specified by a right operand that is either an array of scalar (simple or enclosed vector) indices or a boolean array returned by a right operand function. An array left operand is shorthand for a <a href="https://aplwiki.com/wiki/Constant">constant function</a> that returns the array.</p>
-<pre><code class="language-APL">      {1↓(1∘⎕C@{¯1⌽' '=⍵})' ',⍵}'my excellent heading'
+<pre><code class="language-APL">      {1↓(1∘(819⌶)@{¯1⌽' '=⍵})' ',⍵}'my excellent heading'
 </code></pre>
 <h2 id="strand-assignment">Strand Assignment</h2>
-<p><a href=""><em>Distributed assignment</em></a> or <em>strand assignment</em> allows multiple names to be defined using a single assignment arrow <code>←</code>.</p>
+<p><a href="http://help.dyalog.com/latest/#Language/Introduction/Namespaces/Distributed Assignment.htm"><strong>Distributed assignment</strong></a> or <strong>strand assignment</strong> allows multiple names to be defined using a single assignment arrow <code>←</code>.</p>
 <pre><code class="language-APL">      (max min avg)←{(⌈⌿⍵)(⌊⌿⍵)((+⌿÷≢)⍵)}3 1 4 1 5
 </code></pre>
 <div class="admonition note">
@@ -739,14 +738,27 @@ LOG</code></pre>  </p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>You might have some issues when using inline, modified or strand assignment in dfns. This is by design, but can be a source of confusion.
-<pre><code class="language-APL">      {a←3 ⋄ f←+ ⋄ a f←3 ⋄ a f}⍬
-3 3
-      a←3 ⋄ f←+ ⋄ a f←3 ⋄ a f
-SYNTAX ERROR: Missing right argument
-      a←3 ⋄ f←+ ⋄ a f←3 ⋄ a f
-                            ∧
-</code></pre></p>
+<pre><code class="language-APL">      {a←3 ⋄ f←+ ⋄ a f←3 ⋄ a}⍬
+3
+      a←3 ⋄ f←+ ⋄ a f←3 ⋄ a
+6</code></pre>  </p>
+<p>You can get around these problems by writing <code>∘⊢</code> (or in 12.1: <code>∘{⍵}</code> ) to the immediate right of any function involved:
+<pre><code class="language-APL">      {a←3 ⋄ f←+ ⋄ a f∘{⍵}←3 ⋄ a}⍬
+6</code></pre></p>
 </div>
+<h2 id="an-apl-model-of-at">An APL model of At</h2>
+<p>The primitive operator "<em>at</em>" (<code>F@i</code>) was introduced to Dyalog in version 16.0. A model compatible with earlier versions is as follows:  </p>
+<pre><code> _At_←{
+     ⍺←{⍵}                                       ⍝ Substitution: (⍺ ⍺⍺ ⍵) at ⍵⍵ in ⍵.
+     0::⎕SIGNAL ⎕EN                              ⍝ signal any error to caller
+     3=⎕NC'⍵⍵':⍺ ⍺⍺ ∇∇({(,⍵)/,⍳⍴⍵}⍵{⍵}¨⍵⍵ ⍵){⍵}⍵ ⍝ selector is function: bool mask
+     3∧.≠⎕NC 2 2⍴'⍺ ⍺⍺':⎕SIGNAL 2                ⍝ both ⍺ and ⍺⍺ arrays: syntax err
+     3≠⎕NC'⍺⍺':⍺⍺{⍺}∇∇ ⍵⍵{⍵}⍵                    ⍝ modifier is array: substitution
+     1&lt;|≡⍵⍵:A{⍺}A[⍵⍵]←⍺ ⍺⍺(A←⍵)[⍵⍵]              ⍝ nested: reach/choose indexing
+     I←(⊂⍵⍵)⌷[⎕IO]⍳⍴⍵                            ⍝ simple: major cell selection
+     A{⍺}A[I]←⍺ ⍺⍺(A←⍵)[I]                       ⍝ nb: duplicate indices ignored
+ }
+</code></pre>
                 
               
               

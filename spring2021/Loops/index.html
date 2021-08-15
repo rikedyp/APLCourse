@@ -469,7 +469,7 @@
   
     <li class="md-nav__item">
       <a href="../Namespaces/" class="md-nav__link">
-        Namespaces and other objects
+        Namespaces and Other Objects
       </a>
     </li>
   
@@ -499,7 +499,7 @@
   
     <li class="md-nav__item">
       <a href="../Ufns/" class="md-nav__link">
-        User-defined functions
+        User-defined Functions
       </a>
     </li>
   
@@ -528,8 +528,23 @@
   
   
     <li class="md-nav__item">
+      <a href="../Quad%20names/" class="md-nav__link">
+        Quad Names
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../Errors/" class="md-nav__link">
-        Error handling basics
+        Error Handling and Debugging
       </a>
     </li>
   
@@ -573,23 +588,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../Quad%20names/" class="md-nav__link">
-        Quad names
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../Interfaces/" class="md-nav__link">
-        External interfaces
+        External Interfaces
       </a>
     </li>
   
@@ -604,7 +604,7 @@
   
     <li class="md-nav__item">
       <a href="../Quirks/" class="md-nav__link">
-        Historical quirks
+        Historical Quirks
       </a>
     </li>
   
@@ -618,23 +618,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../Stack/" class="md-nav__link">
-        The call stack
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../implementation/" class="md-nav__link">
-        Interpreter internals
+      <a href="../Interpreter-internals/" class="md-nav__link">
+        Interpreter Internals
       </a>
     </li>
   
@@ -649,7 +634,7 @@
   
     <li class="md-nav__item">
       <a href="../Reading/" class="md-nav__link">
-        Further reading
+        Further Reading
       </a>
     </li>
   
@@ -794,7 +779,7 @@
 <p>Looping is an incredibly basic and fundamental programming construct which you will notice we have barely used at all so far. Or at least, we haven't used many explicit loops.</p>
 <div class="admonition note">
 <p class="admonition-title">Terminology</p>
-<p>The type of looping over items in a collection as provided by <em>for</em> and <em>while</em> loops is sometimes referred to as <strong>scalar looping</strong>, as there are other types of loops in APL which might deal with, for example, each row of a matrix in turn but process whole rows at a time. In contrast, <a href="/Nested/#each-a-primitive-for-explicit-loops">each <code>¨</code></a> is a mechanism for looping over every item of an array (the <a href="/Array model/#cells-and-axes">scalars</a>), although its operand function can see arrays nested within those items.</p>
+<p>The type of looping over items in a collection as provided by <em>for</em> and <em>while</em> loops is sometimes referred to as <strong>scalar looping</strong>. Other types of looping in APL might, for example, process each row of a matrix in turn but process whole rows at a time. In contrast, <a href="/Nested/#each-a-primitive-for-explicit-loops">each <code>¨</code></a> is a mechanism for looping over every item of an array (the <a href="/Array model/#cells-and-axes">scalars</a>); its operand function can see arrays nested within the scalars.</p>
 </div>
 <h2 id="an-introduction-to-an-introduction-to-an-introduction-to-an-introduction-to-an-int">An introduction to an introduction to an introduction to an introduction to an int...</h2>
 <pre><code class="language-APL">      {⍺←1 1 ⋄ ⍵=2:⍺ ⋄ (⍺,(+/¯2↑⍺))∇⍵-1}
@@ -825,6 +810,10 @@
 </ol>
 <h2 id="a-sort-of-detour">A sort of detour</h2>
 <p>Dyalog's <em>grade-up</em> <code>⍋</code> and <em>grade-down</em> <code>⍒</code> functions are able to <a href="https://aplwiki.com/wiki/Total_array_ordering">sort any array</a>. However, it is interesting and useful to look at other approaches to sorting.</p>
+<div class="admonition warning">
+<p class="admonition-title">Version Warning</p>
+<p>Total array ordering was introduced to Dyalog in version 17.0.</p>
+</div>
 <p>Here is a function 'NSort' for sorting numeric lists.</p>
 <pre><code class="language-APL">      NSort←{0=⍴⍵:⍬ ⋄ (U/⍵),∇(~U←⍵=⌊/⍵)/⍵}
 </code></pre>
@@ -852,8 +841,10 @@ MAGNET
 SAUCER 
 </code></pre>
 <p>What do the following expressions tell you about the <code>⍋</code> grade-up and <code>⍒</code> grade-down functions on high-rank arrays?</p>
-<pre><code class="language-APL">      ⍋4 2 2⍴∊1 2 3 4,¨?4⍴(⊂3⍴10)
-      ⍒4 2 2⍴∊'ABCD',¨{⎕A[⍵]}¨?4⍴(⊂3⍴10)
+<pre><code class="language-APL">      ⍋4 2 2⍴'ABDCAADCBCDECDEF'
+2 1 3 4
+      ⍒4 2 2⍴'ABDCAADCBCDECDEF'
+4 3 1 2
 </code></pre>
 <h2 id="you-have-the-power">You have the power</h2>
 <p>One common type of iteration is to apply the same function again to the result of the previous application. In traditional mathematics, this is expressed with superscript notation:</p>
@@ -867,8 +858,8 @@ SAUCER
       Power←{⍺(Times⍣⍵)1}
 </code></pre>
 <h2 id="primitive-iterations-are-still-loops">Primitive iterations are still loops</h2>
-<p>You might have felt this already, but it is important to know that the rank operator <code>F⍤j k l</code> is conceptually a loop. It just happens to be that certain operations are parallelisable, and some of those are parallelised within the Dyalog interpreter.</p>
-<p>We will give some details later in <a href="../performance.md">the section on performance</a>.</p>
+<p>You might have noticed this already, but it is important to know that the rank operator <code>F⍤j k l</code> is conceptually a loop. It just happens to be that certain operations are parallelisable, and some of those are parallelised within the Dyalog interpreter.</p>
+<p>We will give some details later in <a href="../Interpreter-internals/#performance">the section on performance</a>.</p>
 <h2 id="reduction-is-a-loop">Reduction is a loop</h2>
 <p>Primitive reductions are often optimised. For example, <strong>plus-reduction</strong> <code>+/</code> is able to take advantage of <a href="https://dyalog.tv/Dyalog19/?v=TqmpSP8Knvg">vector instructions</a> on certain machines and <strong>and-reduction</strong> <code>∧/</code> can quit early if a zero is found in the array.</p>
 <p>We can observe differences by writing a custom function and comparing runtimes:</p>
@@ -889,7 +880,7 @@ SAUCER
  Elapsed:    3723 
 </code></pre>
 <h2 id="moving-windows">Moving windows</h2>
-<p><strong>Windowed-reduction</strong> <code>⍺ F/ ⍵</code> is an extension to reduction which applies an <em>F-reduction</em> <code>F/</code> for a function <code>F</code> to a sliding window of size <code>⍺</code>.</p>
+<p><strong>Windowed-reduction</strong> <code>⍺ F/ ⍵</code> is an extension to reduction which applies an <em>F-reduction</em> <code>F/</code> for a function <code>F</code> on a sliding window of size <code>⍺</code>.</p>
 <p>It is useful to use catenate to display the windowed selection of the array to which the reduction will be applied:</p>
 <pre><code class="language-APL">      3,/⍳10
 </code></pre>
@@ -915,7 +906,7 @@ SAUCER
 6 9 12 15 18 21 24 27</code></pre></p>
 </div>
 <h2 id="dont-forget-scan">Don't forget scan!</h2>
-<p>Scan is another construct which is simple in a way that misleads you into thinking it is only used for specific things. It is exactly a reduction <code>F/</code> on successive prefixes of <code>⍵</code>. The final value is <code>F/⍵</code>.</p>
+<p><strong>Scan</strong> <code>F\⍵</code> is another construct which is simple in a way that misleads you into thinking it is only used for very specific things. It is exactly a reduction <code>F/</code> on successive prefixes of <code>⍵</code>. The final value is <code>F/⍵</code>.</p>
 <pre><code class="language-APL">      +/⍳10
 55
       +\⍳10
@@ -924,7 +915,7 @@ SAUCER
       ⌈\2 0 3 ¯1 4 2 6
 2 2 3 3 4 4 6
 </code></pre>
-<p>However, scan can be used in many scenarios that you might not expect. A lot of historical uses for scans are partitioned versions of functions which nowadays can be implemented with partitioning primitives (<code>⍺⊂⍵</code> and <code>⍺⊆⍵</code>), nested arrays and the each operator <code>F¨</code>. </p>
+<p>However, scan can be used in many scenarios that you might not expect. Scans are often used in high performance expressions of <strong>partitioned-application</strong> functions which nowadays can be implemented with partitioning primitives (<code>⍺⊂⍵</code> and <code>⍺⊆⍵</code>), nested arrays and the each operator <code>F¨</code>. </p>
 <p>For example, one <a href="https://youtu.be/QtvvQ7MdwKY">YouTube video comparing APL and Haskell</a> demonstrates one of the big differences in the APL approach in contrast to other types of programming. </p>
 <pre><code class="language-APL">      4 {1↓∊' '∘,¨⍺↑' '(≠⊆⊢)⍵} 'take the first four words'
 </code></pre>
@@ -935,7 +926,7 @@ SAUCER
 </code></pre>
 <pre><code>take the first four
 </code></pre>
-<p>Despite both having types of function composition, Haskell and other functional programming languages tend to focus on the composition of those functions as the fundamental process to finding and refining solutions. In APL, we are usually most interested in the fundamental data transformation that is occuring, and using APL's <a href="">inherently parallel</a>, array-at-a-time primitives to achieve that transformation in a way that can tend towards simple and fast code.</p>
+<p>Despite both having types of function composition, Haskell and other functional programming languages tend to focus on the composition of those functions as the fundamental process to finding and refining solutions. In APL, we are usually most interested in the fundamental data transformation that is occuring, and using APL's inherently parallel, array-at-a-time primitives to achieve that transformation in a way that can tend towards simple and fast code.</p>
 <p>Between integer and boolean arguments alone there are more interesting constructs than can be covered well here. You can find more on this topic by going to the following links:  </p>
 <ul>
 <li>Watch the Dyalog webinar about <a href="https://www.youtube.com/watch?v=erv_1LxEByk&amp;list=PLA9gQgjzcpKGwmgzlayqzS_z1ThDwFzl4&amp;index=3">Boolean Scans and Reductions</a></li>
@@ -943,30 +934,40 @@ SAUCER
 <li>You can <a href="https://nbviewer.jupyter.org/github/Dyalog/dyalog-jupyter-notebooks/blob/master/Boolean%20Scans%20and%20Reductions.ipynb">view the static notebook online</a></li>
 </ul>
 <h2 id="for-and-while">For and While</h2>
-<p>The traditional control structures such as <em>for loops</em>, <em>while loops</em> and <em>if statements</em> weren't introduced in Dyalog <a href="https://aplwiki.com/wiki/Dyalog_APL#Versions">until version 8.0 in 1996</a>. Usually, they are only used for program control on the outer levels, or if an algorithm explicitly requires the type of <a href="#">scalar looping</a>.</p>
-<p>The syntax is covered in the <a href="#">section on control structures</a> (or maybe on User Defined Functions).</p>
+<p>The traditional control structures such as <em>for loops</em>, <em>while loops</em> and <em>if statements</em> weren't introduced in Dyalog <a href="https://aplwiki.com/wiki/Dyalog_APL#Versions">until version 8.0 in 1996</a>. Usually, they are only used for program control on the outer levels, or if an algorithm explicitly requires that type of <a href="#">scalar looping</a>.</p>
+<p>The syntax is mentioned in the <a href="../Ufns/#marking-tests">section on user-defined functions</a>.</p>
+<div class="admonition hint">
+<p class="admonition-title">Peformance note</p>
+<p>When constructing loops, think about whether unnecessary computation is being performed.</p>
+<p>For example,</p>
+<p><pre><code class="language-APL">:While LikelyToBeFales
+:AndIf ExpensiveTest</code></pre></p>
+<p>is probably better than</p>
+<p><pre><code class="language-APL">:While LikelyToBeFales∧ExpensiveTest</code></pre></p>
+<p>You will also often see:</p>
+<p><pre><code class="language-APL">:While PreCondition
+:AndIf OnlyComputableIfPreCondition</code></pre></p>
+</div>
 <h2 id="problem-set-8">Problem set 8</h2>
 <h3 id="bell-numbers">Bell Numbers</h3>
 <p>A <a href="https://en.wikipedia.org/wiki/Bell_number">Bell number</a> counts the possible partitions of a set. The n<sup>th</sup> Bell number <span class="arithmatex">\(B_n\)</span> counts the ways you can partition a set of <span class="arithmatex">\(n\)</span> elements.</p>
 <p>Here we will investigate 3 ways of computing Bell numbers.</p>
 <ol>
 <li>
-<p>Brute force
-    Write a function <code>BellBrute</code> which </p>
-</li>
-<li>
-<p>Triangle scheme</p>
-<details class="example"><summary>Answer</summary><p><pre><code class="language-APL">BellNumber ← {
-  NewRow←{⍺←⊃⌽⍵ ⋄ ⍬≡⍵:⍺ ⋄ n←⍺+⊃⍵ ⋄ ⍺,n ∇ 1↓⍵}
-  ⍺←1
-  ⍵=0:⍺
-  next←↑(↓⍺),⊂NewRow,¯1↑⍺
-  next ∇ ⍵-1
-}</code></pre></p>
+<p>Brute force</p>
+<p>Write a function <code>BellBrute</code> which counts all of the unique partitions of length <code>⍵</code> by creating partitions as nested arrays.</p>
+<details class="hint"><summary>Hint</summary><p>Binary representations of decimal numbers can be used as partition vectors.</p>
 </details>
 </li>
 <li>
-<p>Recurrance relation of binomial coefficients</p>
+<p>Triangle scheme</p>
+<p>Implement the <a href="https://en.wikipedia.org/wiki/Bell_number#Triangle_scheme_for_calculations">triangle scheme</a> for calculations.</p>
+</li>
+<li>
+<p>Recurrance relation of binomial coefficients
+    The Bell numbers satisfy a recurrence relation involving binomial coefficients:</p>
+<p><span class="arithmatex">\(B_{n+1} = \sum_{k=0}^{n}\binom{n}{k}B_k\)</span></p>
+<p>Implement <code>BellRecur</code> using this formula.</p>
 </li>
 </ol>
 <h3 id="four-is-magic">Four is Magic</h3>
@@ -1003,8 +1004,6 @@ Eleven is six, six is three, three is five, five is four, four is magic.
 1 8
 </code></pre>
 <p>For an extra challenge, modify your function so that it can also accept a character vector where <code>\b</code> is treated as a single token and signifies a backspace character.</p>
-<details class="example" open="open"><summary>Answers</summary><p>This problem has some inherent "loopiness" since the act of any given backspace depends on if there were backspaces acting before it.</p>
-</details>
                 
               
               

@@ -396,7 +396,7 @@
   
     <li class="md-nav__item">
       <a href="../Namespaces/" class="md-nav__link">
-        Namespaces and other objects
+        Namespaces and Other Objects
       </a>
     </li>
   
@@ -426,7 +426,7 @@
   
     <li class="md-nav__item">
       <a href="../Ufns/" class="md-nav__link">
-        User-defined functions
+        User-defined Functions
       </a>
     </li>
   
@@ -455,8 +455,23 @@
   
   
     <li class="md-nav__item">
+      <a href="../Quad%20names/" class="md-nav__link">
+        Quad Names
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../Errors/" class="md-nav__link">
-        Error handling basics
+        Error Handling and Debugging
       </a>
     </li>
   
@@ -500,23 +515,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../Quad%20names/" class="md-nav__link">
-        Quad names
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../Interfaces/" class="md-nav__link">
-        External interfaces
+        External Interfaces
       </a>
     </li>
   
@@ -531,7 +531,7 @@
   
     <li class="md-nav__item">
       <a href="../Quirks/" class="md-nav__link">
-        Historical quirks
+        Historical Quirks
       </a>
     </li>
   
@@ -545,23 +545,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../Stack/" class="md-nav__link">
-        The call stack
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../implementation/" class="md-nav__link">
-        Interpreter internals
+      <a href="../Interpreter-internals/" class="md-nav__link">
+        Interpreter Internals
       </a>
     </li>
   
@@ -576,7 +561,7 @@
   
     <li class="md-nav__item">
       <a href="../Reading/" class="md-nav__link">
-        Further reading
+        Further Reading
       </a>
     </li>
   
@@ -691,7 +676,7 @@ Was OFF
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Version Warning</p>
-<p>The <code>]box</code> user command is not available in version 12.1.</p>
+<p>The <code>]box</code> user command is not available in Dyalog version 12.1, but putting <code>]disp</code> before an expression achieves a similar effect.</p>
 </div>
 <h3 id="reduce-down">Reduce down</h3>
 <p>Reduce-first <code>F⌿</code> on a matrix will reduce down columns instead of along rows. </p>
@@ -806,7 +791,7 @@ Was OFF
 <details class="example"><summary>Answer</summary><p><pre><code class="language-APL">Primes ← {⍸2=+⌿0=∘.|⍨⍳⍵}</code></pre></p>
 <p>An alternative coding uses the multiplication table:</p>
 <p><pre><code class="language-APL">Primes ← {i~∘.×⍨i←1↓⍳⍵}</code></pre></p>
-<p>Of course, the outer product <code>∘.F</code> indicates that the number of calculations to compute both of these solutions increases with the square of the input size. We say they have a computational complexity "<em>of order n squared</em>" or <span class="arithmatex">\(O(n)\)</span> in <a href="https://en.wikipedia.org/wiki/Big_O_notation">big-O notation</a>. This is a very inefficient way to do find prime numbers.</p>
+<p>Of course, the outer product <code>∘.F</code> indicates that the number of calculations to compute both of these solutions increases with the square of the input size. We say they have a computational complexity "<em>of order n squared</em>" or <span class="arithmatex">\(O(n^2)\)</span> in <a href="https://en.wikipedia.org/wiki/Big_O_notation">big-O notation</a>. This is a very inefficient way to find prime numbers.</p>
 <p>To see discussions around more efficient ways to compute prime numbers in APL, see <a href="https://dfns.dyalog.com/n_pco.htm">the dfns page on prime numbers</a>.</p>
 </details>
 </li>

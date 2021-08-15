@@ -18,7 +18,7 @@
     
     
       
-        <title>The call stack - APL Course</title>
+        <title>The Stack - APL Course</title>
       
     
     
@@ -94,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              The call stack
+              The Stack
             
           </span>
         </div>
@@ -339,7 +339,7 @@
   
     <li class="md-nav__item">
       <a href="../Namespaces/" class="md-nav__link">
-        Namespaces and other objects
+        Namespaces and Other Objects
       </a>
     </li>
   
@@ -369,7 +369,7 @@
   
     <li class="md-nav__item">
       <a href="../Ufns/" class="md-nav__link">
-        User-defined functions
+        User-defined Functions
       </a>
     </li>
   
@@ -398,8 +398,23 @@
   
   
     <li class="md-nav__item">
+      <a href="../Quad%20names/" class="md-nav__link">
+        Quad Names
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../Errors/" class="md-nav__link">
-        Error handling basics
+        Error Handling and Debugging
       </a>
     </li>
   
@@ -443,23 +458,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../Quad%20names/" class="md-nav__link">
-        Quad names
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../Interfaces/" class="md-nav__link">
-        External interfaces
+        External Interfaces
       </a>
     </li>
   
@@ -474,111 +474,8 @@
   
     <li class="md-nav__item">
       <a href="../Quirks/" class="md-nav__link">
-        Historical quirks
+        Historical Quirks
       </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          The call stack
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        The call stack
-      </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-a-stack" class="md-nav__link">
-    What is a stack?
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-build-the-stack" class="md-nav__link">
-    How to build the stack
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#name-scope" class="md-nav__link">
-    Name scope
-  </a>
-  
-    <nav class="md-nav" aria-label="Name scope">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#dfns" class="md-nav__link">
-    Dfns
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tradfns" class="md-nav__link">
-    Tradfns
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#avoid-globals" class="md-nav__link">
-    Avoid globals
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#when-to-use-globals" class="md-nav__link">
-    When to use globals
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -591,8 +488,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../implementation/" class="md-nav__link">
-        Interpreter internals
+      <a href="../Interpreter-internals/" class="md-nav__link">
+        Interpreter Internals
       </a>
     </li>
   
@@ -607,7 +504,7 @@
   
     <li class="md-nav__item">
       <a href="../Reading/" class="md-nav__link">
-        Further reading
+        Further Reading
       </a>
     </li>
   
@@ -649,47 +546,6 @@
   <a href="#how-to-build-the-stack" class="md-nav__link">
     How to build the stack
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#name-scope" class="md-nav__link">
-    Name scope
-  </a>
-  
-    <nav class="md-nav" aria-label="Name scope">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#dfns" class="md-nav__link">
-    Dfns
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tradfns" class="md-nav__link">
-    Tradfns
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#avoid-globals" class="md-nav__link">
-    Avoid globals
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#when-to-use-globals" class="md-nav__link">
-    When to use globals
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -748,38 +604,6 @@
     ∇  
 </code></pre>
 <p>When a function is called, it goes to the top of </p>
-<h2 id="name-scope">Name scope</h2>
-<p>The scope of a name describes the circumstances under which it is visible to code.
-When a program is called, names in the calling environment are visible, unless explicitly localised in the header.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Likely to be moved to the section on user defined functions, we'll see</p>
-</div>
-<p>In a TradFn, names are localized by putting them in the header, separated by semicolons.
-In a d  fn names are automatically localized when a new name is assigned. (We will see our first dfn in a moment).</p>
-<h3 id="dfns">Dfns</h3>
-<h3 id="tradfns">Tradfns</h3>
-<h3 id="avoid-globals">Avoid globals</h3>
-<p>When possible, avoid using global variables.
-Pass parameters to functions as arguments unless this becomes very awkward.
-The use of global variables should be limited to state settings that affect the entire application, or tables containing databases that are shared globally.
-If you need global constants, it is a good idea to create them in a function in order to be able to use source code management / change tracking</p>
-<p>In recent years, a new reason is emerging to avoid globals:
-A function which uses globals is difficult, if not impossible, to run in parallel.
-If two copies of the function run in parallel and they update the global data, some kind of locking is required.
-Locking often defeats the potential benefits of parallel execution.</p>
-<p>When one program calls another, APL maintains a stack to it can find its way back and continue execution when a called function completes
-Local names only exist while the function they are local to is on the stack.
-Names should be localized unless they really really, really, really need to be global</p>
-<h3 id="when-to-use-globals">When to use globals</h3>
-<p>Example, a switch which affects the entire application:</p>
-<pre><code class="language-APL">    ∇  err←Log msg                                  
-[1]    :If verbose                                  
-[2]        ⎕←msg   ⍝ Display information to the user
-[3]    :EndIf                                       
-[4]    PrintFile msg                                
-    ∇   
-</code></pre>
                 
               
               
@@ -795,39 +619,6 @@ Names should be localized unless they really really, really, really need to be g
       
         
 <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-        <a href="../Quirks/" class="md-footer__link md-footer__link--prev" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              Historical quirks
-            </div>
-          </div>
-        </a>
-      
-      
-        <a href="../implementation/" class="md-footer__link md-footer__link--next" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Interpreter internals
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

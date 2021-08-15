@@ -18,7 +18,7 @@
     
     
       
-        <title>Namespaces and other objects - APL Course</title>
+        <title>Namespaces and Other Objects - APL Course</title>
       
     
     
@@ -94,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Namespaces and other objects
+              Namespaces and Other Objects
             
           </span>
         </div>
@@ -348,12 +348,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Namespaces and other objects
+          Namespaces and Other Objects
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Namespaces and other objects
+        Namespaces and Other Objects
       </a>
       
         
@@ -399,26 +399,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#dictionary" class="md-nav__link">
-    Dictionary
-  </a>
-  
-    <nav class="md-nav" aria-label="Dictionary">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#self-contained-dictionary-of-name-value-pairs" class="md-nav__link">
-    Self-contained dictionary of name-value pairs
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#names-and-references" class="md-nav__link">
     Names and references
   </a>
@@ -453,8 +433,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#activities" class="md-nav__link">
-    Activities
+  <a href="#problem-set-9" class="md-nav__link">
+    Problem set 9
   </a>
   
 </li>
@@ -491,7 +471,7 @@
   
     <li class="md-nav__item">
       <a href="../Ufns/" class="md-nav__link">
-        User-defined functions
+        User-defined Functions
       </a>
     </li>
   
@@ -520,8 +500,23 @@
   
   
     <li class="md-nav__item">
+      <a href="../Quad%20names/" class="md-nav__link">
+        Quad Names
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../Errors/" class="md-nav__link">
-        Error handling basics
+        Error Handling and Debugging
       </a>
     </li>
   
@@ -565,23 +560,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../Quad%20names/" class="md-nav__link">
-        Quad names
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../Interfaces/" class="md-nav__link">
-        External interfaces
+        External Interfaces
       </a>
     </li>
   
@@ -596,7 +576,7 @@
   
     <li class="md-nav__item">
       <a href="../Quirks/" class="md-nav__link">
-        Historical quirks
+        Historical Quirks
       </a>
     </li>
   
@@ -610,23 +590,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../Stack/" class="md-nav__link">
-        The call stack
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../implementation/" class="md-nav__link">
-        Interpreter internals
+      <a href="../Interpreter-internals/" class="md-nav__link">
+        Interpreter Internals
       </a>
     </li>
   
@@ -641,7 +606,7 @@
   
     <li class="md-nav__item">
       <a href="../Reading/" class="md-nav__link">
-        Further reading
+        Further Reading
       </a>
     </li>
   
@@ -701,26 +666,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#dictionary" class="md-nav__link">
-    Dictionary
-  </a>
-  
-    <nav class="md-nav" aria-label="Dictionary">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#self-contained-dictionary-of-name-value-pairs" class="md-nav__link">
-    Self-contained dictionary of name-value pairs
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#names-and-references" class="md-nav__link">
     Names and references
   </a>
@@ -755,8 +700,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#activities" class="md-nav__link">
-    Activities
+  <a href="#problem-set-9" class="md-nav__link">
+    Problem set 9
   </a>
   
 </li>
@@ -775,6 +720,12 @@
                 
                 
                 <h1 id="namespaces-and-other-objects">Namespaces and other objects</h1>
+<p>If you are familiar with <strong>Object Oriented Programming</strong> (<strong>OOP</strong>) concepts and have experience using them from another language, then Dyalog's classes and namespaces should hopefully feel quite straightforward to you.</p>
+<p>Two documents are worth looking at, whether or not you are familiar with OOP:</p>
+<ul>
+<li><a href="http://docs.dyalog.com/latest/Object%20Oriented%20Programming%20for%20APL%20Programmers.pdf">Object Oriented Programming for APL Programmers</a></li>
+<li><a href="http://docs.dyalog.com/latest/Object%20Oriented%20Programming%20for%20Impatient%20APL%20Programmers.pdf">A Quick Introduction to Object Oriented Programming for Impatient APL Programmers</a></li>
+</ul>
 <p>If nested arrays are arrays inside arrays; <strong>namespaces</strong> are a bit like a workspace within a workspace. They are <strong>objects</strong> which contain collections of names, and these names can be listed as before, but using the dot <code>.</code> syntax from <a target="_blank" href="https://cs.stackexchange.com/questions/89031/what-is-the-origin-of-dot-notation">object-oriented</a> programming.</p>
 <pre><code class="language-APL">      )ns ns         ⍝ Create an empty namespace called ns
       ns.var←1 2 3   ⍝ Create a variable in ns called var
@@ -814,6 +765,7 @@
       ⎕←ns1.name
 Steve
 </code></pre>
+<p>It is possible to </p>
 <div class="admonition note">
 <p class="admonition-title">Discussion</p>
 <ol>
@@ -866,6 +818,15 @@ Steve
 </code></pre>
 <pre><code>10 20 30
 </code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Beware:</strong> <code>⍎</code> is potentially dangerous:</p>
+<p><pre><code class="language-APL">      ns←⎕NS⍬
+      name←'⎕OFF⋄'   ⍝ !!!
+      value←1 2 3
+      ns {⍺.{⍎⍺,'←⍵'}/⍵} name value</code></pre></p>
+<p>In production, <strong>validate your arguments</strong>.</p>
+</div>
 <h2 id="modifying-namespaces">Modifying namespaces</h2>
 <p>In some applications, it is useful to keep a namespace as an object that holds the state of something.</p>
 <p>It is reasonable in this case to write a tradfn that uses a namespace reference as both its argument and result. While tradfns can have the side effect of modifying a namespace, we strongly recommend that functions take arguments and return results anyway.</p>
@@ -874,9 +835,17 @@ Steve
       ∇ 
 </code></pre>
 <h2 id="code-organisation">Code organisation</h2>
-<h2 id="dictionary">Dictionary</h2>
-<p>There is no native dictionary type in APL. However, there are several ways to get dictionary behaviour, with advantages and disadvantages to each.</p>
-<h3 id="self-contained-dictionary-of-name-value-pairs">Self-contained dictionary of name-value pairs</h3>
+<p>Having modular code organisation is a very sensible idea. However, it is a recent invention relative to APL. In a newer application, it is not hard to imagine a <code>utils</code> namespace, a <code>maths</code> namespace, an <code>interface</code> namespace and so on. In older applications, such compartmentalisation is often achieved using a naming convention. For example:</p>
+<pre><code class="language-APL">      ⎕NL 3
+displayINPUT
+displaySHOW 
+mathsAVG    
+mathsDET    
+mathsSTDEV  
+utilLINES   
+utilSPLIT  
+</code></pre>
+<p>This type of code organisation is known as a <strong>flat workspace structure</strong>.</p>
 <h2 id="names-and-references">Names and references</h2>
 <p>In Dyalog there are both <em>named</em> and <em>unnamed</em> namespaces. Considering our use of the word "name" to refer to a token in the workspace, beginning with a letter, that refers to an array or function or operator, this is certainly a little confusing.</p>
 <p>When creating or modifying a namespace, we can assign the namespace to a name which is a namespace reference.</p>
@@ -891,9 +860,8 @@ Steve
       nsref2 ← nsname
       ⎕←nsref2
 </code></pre>
-<p>Unscripted namespaces (those created using <code>⎕NS</code> and <code>)NS</code>) can be unnamed, but <a href="#scripted-namespaces">scripted namespaces</a> must have a name.</p>
 <h2 id="display-form">Display form</h2>
-<p>The display form of an APL array is what is displayed when you execute an expression to display it:</p>
+<p>The <a href="http://help.dyalog.com/latest/#Language/System Functions/df.htm"><strong>display form</strong></a> of an APL array is what is displayed when you execute an expression to display it:</p>
 <pre><code class="language-APL">      x ← 1 2 3
       x     ⍝ The display form of x (depending on ]box settings)
 1 2 3
@@ -902,24 +870,28 @@ Steve
 </code></pre>
 <p>Namespaces have a default display form.
 The display form can be altered with ⎕DF:</p>
-<pre class="highlight"><code>  abc.⎕DF '#.abc' ⋄ abc
-</code></pre>
-<p><code>#.abc</code>
+<pre><code class="language-APL">      abc.⎕DF '#.abc' ⋄ abc
+#.abc
       def.⎕DF 'Hello' ⋄ def
 Hello
       (abc def).⎕DF ⎕NULL ⋄ abc def  ⍝ reset to default
- <code>#.[Namespace]  #.def</code></p>
+ #.[Namespace]  #.def 
+</code></pre>
 <h2 id="scripted-namespaces">Scripted namespaces</h2>
 <p>Store the source namespace as a single piece of text:</p>
-<pre class="highlight"><code>  )ed ⍟ns  ⍝ equivalent to '⍟'⎕ED'ns'
+<pre><code class="language-APL">      )ed ⍟ns  ⍝ equivalent to '⍟'⎕ED'ns'
 </code></pre>
-<p>or
-      ⎕FIX  ':Namespace ns'  'var←123'  ':EndNamespace'
+<p>or</p>
+<pre><code class="language-APL">      ⎕FIX  ':Namespace ns'  'var←123'  ':EndNamespace'
       ns.var
 123
       ⎕SRC ns
- :Namespace ns  var←123  :EndNamespace </p>
-<p>Note: Every time we ”fix”, the namespace is reset per the script</p>
+ :Namespace ns  var←123  :EndNamespace 
+</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Every time we ”fix”, the namespace is reset per the script. This means that <code>ns.var←456</code> would become <code>123</code> since the definition <code>var←123</code> is found in the script.</p>
+</div>
 <pre><code class="language-APL">
       ns.var←456
       ⎕SRC ns
@@ -931,6 +903,7 @@ Hello
 123
 
 </code></pre>
+<p>The table below compares some methods for a namespace in the workspace versus a namespace script with text source.</p>
 <table>
 <thead>
 <tr>
@@ -945,7 +918,7 @@ Hello
 </tr>
 <tr>
 <td>Get:  <code>⍕⍵</code></td>
-<td>Set: <code>⎕SRC ⍵</code></td>
+<td>Get: <code>⎕SRC ⍵</code></td>
 </tr>
 <tr>
 <td>Reset: <code>⍵.⎕DF ⎕NULL</code></td>
@@ -954,9 +927,17 @@ Hello
 </tbody>
 </table>
 <h3 id="require">:Require</h3>
-<h2 id="activities">Activities</h2>
+<p>It is possible to have a script depend on other scripts. To do so, use the <a href="https://help.dyalog.com/latest/index.htm#Language/Object%20Oriented%20Programming/Including%20Script%20Files.htm"><strong>:require</strong></a> keyword.</p>
+<h2 id="problem-set-9">Problem set 9</h2>
 <ol>
-<li>Request handler<ol>
+<li>Are namespaces created with <code>)NS</code> scripted or unscripted?</li>
+<li>
+<p>Use <code>⎕FIX</code> to create an unnamed, scripted namespace  </p>
+<p>What happens if you try to edit this script using the Dyalog editor?</p>
+</li>
+<li>
+<p>Request handler</p>
+<ol>
 <li>Create a namespace called <code>req</code> containing<ul>
 <li>a variable <code>status</code> with the value <code>200</code></li>
 <li>a method <code>Method</code> which is the function <code>{4+2×⍵}</code></li>
@@ -973,17 +954,19 @@ Hello
 ┌───┬───┬───┐
 │...│---│...│
 └───┴───┴───┘</code></pre></p>
+<details class="hint"><summary>Hint</summary><p>See the <a href="https://help.dyalog.com/latest/index.htm#Language/System%20Functions/ns.htm">documentation for <code>⎕NS</code></a>.</p>
+</details>
 </li>
 <li>
-<p>Write an expression that swaps the values of two variables, the names of which are given as a 2-element nested vector of character vectors <code>⍺</code>.
+<p>Write a function that swaps the values of two variables, the names of which are given as a 2-element nested vector of character vectors <code>⍺</code>.
     <pre><code class="language-APL">      ns←⎕NS⍬
-      ns.(x y)←10 20
-      your_expression
-      ns.(x y)
+      ns.(aa bb)←10 20
+      ns your_function 'aa' 'bb'
+      ns.(aa bb)
 20 10</code></pre></p>
 </li>
 <li>
-<p>Write an expression that swaps the values of the variables named x in the namespaces ns1 and ns2 .
+<p>Write an expression that swaps the values of the variables named <code>x</code> in the namespaces <code>ns1</code> and <code>ns2</code> .
     <pre><code class="language-APL">      ns1←⎕NS⍬ ⋄ ns2←⎕NS⍬
       ns1.x←10 ⋄ ns2.x←20
       ns1.y←30 ⋄ ns2.y←40
@@ -1003,7 +986,7 @@ Hello
 <li>Depth (≡) is 0 (simple scalar)</li>
 <li>Allows dot syntax (ns.name)</li>
 </ul>
-<details class="example" open="open"><summary>Answers</summary><p><pre><code class="language-APL">ScalarRef←(0=≡)∧(326=⎕DR)
+<details class="example"><summary>Answers</summary><p><pre><code class="language-APL">ScalarRef←(0=≡)∧(326=⎕DR)
 ScalarRef←{9=⊃⎕NC'⍵'}
 ScalarRef←{9=⊃⎕NC'⍵'}</code></pre></p>
 </details>
@@ -1022,7 +1005,7 @@ ScalarRef←{9=⊃⎕NC'⍵'}</code></pre></p>
 ││└─────────┘││ │ │   │
 │└───────────┘│ │ │   │
 └─────────────┴─┴─┴───┘</code></pre></p>
-<details class="example" open="open"><summary>Answers</summary><p><pre><code class="language-APL">RefMask←{0=≡⍵:ScalarRef ⍵ ⋄ ∇¨⍵} 
+<details class="example"><summary>Answers</summary><p><pre><code class="language-APL">RefMask←{0=≡⍵:ScalarRef ⍵ ⋄ ∇¨⍵} 
 RefMask←{b⊣(∊b)←ScalarRef¨∊b←⍵}</code></pre></p>
 </details>
 </li>
@@ -1047,7 +1030,7 @@ RefMask←{b⊣(∊b)←ScalarRef¨∊b←⍵}</code></pre></p>
 #
   FindRoot ⎕NS⍬
 #</code></pre></p>
-<details class="example" open="open"><summary>Answer</summary><p><code>FindRoot←{⍵.##}⍣=</code></p>
+<details class="example"><summary>Answer</summary><p><code>FindRoot←{⍵.##}⍣=</code></p>
 </details>
 </li>
 <li>
@@ -1069,18 +1052,19 @@ RefMask←{b⊣(∊b)←ScalarRef¨∊b←⍵}</code></pre></p>
  ⎕SE  ⎕SE.Dyalog  ⎕SE.Dyalog.Utils </p>
 <p>Line ⎕SE.cbbot.bandsb2.sb.io
  ⎕SE  ⎕SE.cbbot  ⎕SE.cbbot.bandsb2  ⎕SE.cbbot.bandsb2.sb  ⎕SE.cbbot.bandsb2.sb.io</code></pre></p>
-<details class="example" open="open"><summary>Answers</summary><p><code>{⍺←⍬ ⋄ ⍵≡p←⍵.##:⍵,⍺ ⋄ p∇⍨⍵,⍺}</code>
-<code>{1↓r⊣{r,⍨←⍵.##}⍣≡r←⍵}</code></p>
+<details class="example"><summary>Answers</summary><p><code>Line ← {⍺←⍬ ⋄ ⍵≡p←⍵.##:⍵,⍺ ⋄ p∇⍨⍵,⍺}</code><br />
+<code>Line ← {1↓r⊣{r,⍨←⍵.##}⍣≡r←⍵}</code></p>
 </details>
 </li>
 <li>
 <p>Where are my children?
     Write a function that lists all the children of a given namespace.</p>
-<details class="hint" open="open"><summary>Hint</summary><p>Note: <code>⎕NL</code> is Name List, not Children List<br />
+<details class="hint"><summary>Hint</summary><p>Note: <code>⎕NL</code> is Name List, not Children List<br />
 Plan: You'll have to crawl through the entire workspace<br />
 Think: How could namespaces still be out of reach?</p>
 </details>
-<details class="example" open="open"><summary>Answer</summary><p><pre><code class="language-APL">∇ children←{arg}ListChildren target;args;next;parents;visited
+<details class="example"><summary>Answer</summary><p>This answer demonstrates how complex attempting to do these types of tasks can become. Even the long function below does not cover every single edge case. You should take care to design your application so that you do not rely on these properties for behvaiour. If you find yourself needing to do these types of things to make your application work, then you might want to reconsider your approach.</p>
+<p><pre><code class="language-APL">∇ children←{arg}ListChildren target;args;next;parents;visited
     :If 0=⎕NC'arg' ⋄ arg←(# ⎕SE target)(0⍴#)(0⍴#) ⋄ :EndIf
     (parents children visited)←arg
     next←∪∊parents.(⍎¨'##' '⎕THIS',⎕NL ¯9)⍝ visit all reachable ns

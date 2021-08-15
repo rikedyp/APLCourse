@@ -419,6 +419,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#an-apl-model-of-the-rank-operator" class="md-nav__link">
+    An APL model of the rank operator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#reduce-on-an-empty-vector" class="md-nav__link">
     Reduce on an empty vector?
   </a>
@@ -502,7 +509,7 @@
   
     <li class="md-nav__item">
       <a href="../Namespaces/" class="md-nav__link">
-        Namespaces and other objects
+        Namespaces and Other Objects
       </a>
     </li>
   
@@ -532,7 +539,7 @@
   
     <li class="md-nav__item">
       <a href="../Ufns/" class="md-nav__link">
-        User-defined functions
+        User-defined Functions
       </a>
     </li>
   
@@ -561,8 +568,23 @@
   
   
     <li class="md-nav__item">
+      <a href="../Quad%20names/" class="md-nav__link">
+        Quad Names
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../Errors/" class="md-nav__link">
-        Error handling basics
+        Error Handling and Debugging
       </a>
     </li>
   
@@ -606,23 +628,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../Quad%20names/" class="md-nav__link">
-        Quad names
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../Interfaces/" class="md-nav__link">
-        External interfaces
+        External Interfaces
       </a>
     </li>
   
@@ -637,7 +644,7 @@
   
     <li class="md-nav__item">
       <a href="../Quirks/" class="md-nav__link">
-        Historical quirks
+        Historical Quirks
       </a>
     </li>
   
@@ -651,23 +658,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../Stack/" class="md-nav__link">
-        The call stack
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../implementation/" class="md-nav__link">
-        Interpreter internals
+      <a href="../Interpreter-internals/" class="md-nav__link">
+        Interpreter Internals
       </a>
     </li>
   
@@ -682,7 +674,7 @@
   
     <li class="md-nav__item">
       <a href="../Reading/" class="md-nav__link">
-        Further reading
+        Further Reading
       </a>
     </li>
   
@@ -837,6 +829,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#an-apl-model-of-the-rank-operator" class="md-nav__link">
+    An APL model of the rank operator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#reduce-on-an-empty-vector" class="md-nav__link">
     Reduce on an empty vector?
   </a>
@@ -949,7 +948,7 @@ UVWX
 </code></pre>
 <div class="admonition warning">
 <p class="admonition-title">Version Warning</p>
-<p>The rank operator <code>⍤</code> is not available in version 12.1.<br />
+<p>The rank operator <code>⍤</code> is not available in version 12.1. A compatible APL model of the operator which can be used (but might not provide the best performance) is provided at the end of this chapter.<br />
 The glyph <code>⍤</code> is not available in Dyalog Classic. Rank is instead represented by <code>⎕U2364</code>.</p>
 <p><code>_Rank_←{⍺←⊢ ⋄ ⍺(⍺⍺ ⎕U2364 ⍵⍵)⍵}</code></p>
 </div>
@@ -1367,6 +1366,24 @@ C 6</code></pre></p>
     </li>
 </ol></p>
 </details>
+<h2 id="an-apl-model-of-the-rank-operator">An APL model of the rank operator</h2>
+<p>The primitive rank operator <code>F⍤k</code> was introduced in Dyalog version 14.0. An APL model compatible with earlier versions is as follows:  </p>
+<pre><code class="language-APL"> _Rank_←{
+     ⍺←{⍵}
+     ⍺ ⍺⍺{⍺←{⍵} ⋄ ⍺ ⍺⍺ ⍵}{
+         0 1000::⎕SIGNAL ⎕EN
+         effrank←{0≤⍺:⍺⌊⍴⍴⍵ ⋄ 0⌈⍺+⍴⍴⍵}   ⍝ effective rank
+         cells←{⊂[(-⍺ effrank ⍵)↑⍳⍴⍴⍵]⍵}
+         (m l r)←⌽3⍴⌽⍵⍵
+         ⎕ML←0                           ⍝ needed by ↑⍵
+         0=⎕NC'⍺':↑⍺⍺¨(m cells ⍵)        ⍝ monadic case
+         x←l cells ⍺
+         y←r cells ⍵
+         ((⍴x)≡⍴y)⍱0=(⍴⍴x)⌊⍴⍴y:⎕SIGNAL 4+(⍴⍴x)≡⍴⍴y
+         ↑x ⍺⍺¨y                         ⍝ dyadic  case
+     }⍵⍵{⍵}⍵
+ }
+</code></pre>
 <h2 id="reduce-on-an-empty-vector">Reduce on an empty vector?</h2>
 <p>For your interest, here are some reductions of note. Try to ask yourself why they give the results they do. Could they have been given different definitions?</p>
 <pre><code class="language-APL">      +/⍬

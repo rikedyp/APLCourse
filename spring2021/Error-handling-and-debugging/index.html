@@ -11,7 +11,7 @@
       
       
       
-        <link rel="canonical" href="https://dyalog.com/Errors/">
+        <link rel="canonical" href="https://dyalog.com/Error-handling-and-debugging/">
       
       <link rel="icon" href="../img/favicon-32.png">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.6">
@@ -411,162 +411,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Error Handling and Debugging
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Errors/" class="md-nav__link">
         Error Handling and Debugging
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#whats-in-a-name" class="md-nav__link">
-    What's in a Name?
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#error-messages-and-error-codes" class="md-nav__link">
-    Error Messages and Error Codes
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#suspend-your-disbelief" class="md-nav__link">
-    Suspend your disbelief
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cant-be-helped" class="md-nav__link">
-    Can't be helped
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gotta-trap-em-all" class="md-nav__link">
-    Gotta :Trap 'em all
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#trap" class="md-nav__link">
-    ⎕TRAP
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#who-needs-to-know" class="md-nav__link">
-    Who needs to know?
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pass-it-on" class="md-nav__link">
-    Pass it on
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#error-number-ranges" class="md-nav__link">
-    Error number ranges
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#trace" class="md-nav__link">
-    ⎕TRACE
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-stack" class="md-nav__link">
-    The stack
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#problem-set-12" class="md-nav__link">
-    Problem set 12
-  </a>
-  
-    <nav class="md-nav" aria-label="Problem set 12">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#help-im-trapped" class="md-nav__link">
-    Help I'm Trapped
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#prefix-agreement-operator" class="md-nav__link">
-    Prefix agreement operator
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#testing-for-types" class="md-nav__link">
-    Testing for types
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#can-you-fix-it" class="md-nav__link">
-    Can you fix it?
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -722,13 +571,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#trap" class="md-nav__link">
-    ⎕TRAP
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#who-needs-to-know" class="md-nav__link">
     Who needs to know?
   </a>
@@ -738,6 +580,13 @@
         <li class="md-nav__item">
   <a href="#pass-it-on" class="md-nav__link">
     Pass it on
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trap" class="md-nav__link">
+    ⎕TRAP
   </a>
   
 </li>
@@ -754,11 +603,24 @@
     ⎕TRACE
   </a>
   
+    <nav class="md-nav" aria-label="⎕TRACE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#to-do" class="md-nav__link">
+    To do
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-stack" class="md-nav__link">
-    The stack
+  <a href="#preventing-build-up-of-the-stack" class="md-nav__link">
+    Preventing build up of the stack
   </a>
   
 </li>
@@ -788,13 +650,6 @@
           <li class="md-nav__item">
   <a href="#testing-for-types" class="md-nav__link">
     Testing for types
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#can-you-fix-it" class="md-nav__link">
-    Can you fix it?
   </a>
   
 </li>
@@ -867,7 +722,7 @@ Names.va←({2 6 11::0 ⋄ ⍎(⎕UCS ⍵),'←',⍕⍵}¨⍳1E4)~0   ⍝ Valid 
 <ol>
 <li>
 <p>Find the error codes of the four error messages given above.</p>
-<details class="hint"><summary>Hint</summary><p>Try:
+<details class="hint" open="open"><summary>Hint</summary><p>Try:
 <pre><code class="language-APL">      1 2+2 3⍴⍳9   ⍝ Write some expression to generate the error
       ⎕←⎕EN        ⍝ Inspect the Error Number of the last error
       ⎕←⎕EM 4      ⍝ Inspect the Error Message for that number</code></pre></p>
@@ -936,21 +791,48 @@ Names.va←({2 6 11::0 ⋄ ⍎(⎕UCS ⍵),'←',⍕⍵}¨⍳1E4)~0   ⍝ Valid 
 <ul>
 <li>Press <kbd>Esc</kbd> to exit the current function</li>
 <li>Enter <code>→0</code> into the session to exit the current function and resume the calling line</li>
-<li>Type <code>→</code> (naked branch) into the session to clear the last call on the stack</li>
 <li>Enter <code>)RESET</code> or <code>)SIC</code> into the session to clear the entire execution stack and return to the session</li>
+<li>Type <code>→</code> (naked branch) into the session to clear the last call on the stack</li>
 </ul>
 <h2 id="gotta-trap-em-all">Gotta :Trap 'em all</h2>
 <p>The keyword <code>:Trap ErrorNums</code> allows a function to specify behaviour if an error with a number in the scalar or vector <code>ErrorNums</code> occurs. It can be used in conjunction with <code>:Case N</code> to execute some code if the error number is <code>N</code> and <code>:Else</code> for the other errors. All errors are trapped with <code>:Trap 0</code>.</p>
 <p>For example:</p>
-<pre><code class="language-APL"> :Trap 3 4 5 6 11
+<pre><code class="language-APL"> :Trap 3 4
     ⍝ Code to execute here
  :Case 3
      ⎕←'Index Error'
- :CaseList 5 6 11
-     ⎕←'Length, Value or Domain Error'
  :Else
      ⎕←'Rank Error'
  :EndTrap
+</code></pre>
+<h2 id="who-needs-to-know">Who needs to know?</h2>
+<p>Errors can occur due to a mistakenly written piece of code. However, even a perfectly valid function can trigger errors if run with input which is outside of its domain.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is best not to rely on error trapping for behaviour, in part because future extensions to the language may introduce valid behaviours in those cases.</p>
+</div>
+<p>You should test inputs explicitly using APL primitives. It can be tempting to use <code>:Trap 0</code> to force alternative behaviour for unexpected inputs. However, trapping all errors should only really be done in order for your application to fail safely for the sake of end users. Best practice is to think carefully about the properties of valid inputs to your functions, and signal errors or otherwise indicate to the user that an invalid input has been attempted.</p>
+<h2 id="pass-it-on">Pass it on</h2>
+<p><code>⎕DMX</code> is a namespace containing information about the last occuring error. Recent versions of Dyalog can display its contents in a human-readable JSON format:</p>
+<pre><code class="language-APL">      (⎕JSON⍠'Compact' 0)⎕DMX   
+</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Version Warning</p>
+<p>The symbol <code>⍠</code> is not available in Classic Edition, and the Variant operator is instead represented by ⎕U2360. Note too that ⍠ and ⎕OPT are synonymous though only the latter is available in the Classic Edition.<br />
+Neither Variant nor <code>⎕OPT</code> are available in Dyalog version 12.1.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Your code should not assume that the properties in <code>⎕DMX</code> will stay the same across versions of Dyalog. See <a href="https://help.dyalog.com/latest/index.htm#Language/System%20Functions/dmx.htm">the online documentation</a> for more information about <code>⎕DMX</code>.</p>
+</div>
+<p>The system function <code>⎕SIGNAL</code> can be used to generate errors. Errors may be signalled without a guilty expression, or custom error codes and messages may be signalled.</p>
+<p>Monadic <code>⎕SIGNAL</code> can be used to provide custom values for <code>⎕DMX</code>.</p>
+<pre><code class="language-APL">      ⎕SIGNAL⊂('EN' 666)('Message' 'The Devil''s Error')('Vendor' 'Satan')
+</code></pre>
+<p>Dyadic <code>⎕SIGNAL</code> can be used to conveniently set the event message and event number. Slightly confusingly, the <code>⎕EM</code> event message is different from the error message member of the <strong>D</strong>iagnostic <strong>M</strong>essage <strong>Extended</strong>: <code>⎕DMX.Message</code> .</p>
+<pre><code class="language-APL">      'Yo!'⎕SIGNAL 42
+      ⎕EM
+      ⎕DMX.Message
 </code></pre>
 <h2 id="trap">⎕TRAP</h2>
 <p>Before <code>:Trap</code> and other similar control structures were introduced, <code>⎕TRAP</code> was the way to set error trapping behaviour. Nowadays, most people will use control structures for visual clarity in their new code. However, <code>⎕TRAP</code> is still used to maintain style in existing code bases, and for certain behaviours that are not possible with <code>:Trap</code>.</p>
@@ -960,11 +842,11 @@ Names.va←({2 6 11::0 ⋄ ⍎(⎕UCS ⍵),'←',⍕⍵}¨⍳1E4)~0   ⍝ Valid 
 </code></pre>
 <pre><code>Silly!
 </code></pre>
+<p>Not only does the trap execute custom code when a <code>LENGTH ERROR</code> occurs, but it also prevents the tracer from automatically opening when such an error occurs in a function.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Some errors, such as <code>SYSTEM ERROR</code>, are not trappable.</p>
 </div>
-<p>Not only does the trap execute custom code when a <code>LENGTH ERROR</code> occurs, but it also prevents the tracer from automatically opening when such an error occurs in a function.</p>
 <pre><code class="language-APL">
      ∇ r←l Lerror r
 [1]    l+r         
@@ -988,32 +870,8 @@ Names.va←({2 6 11::0 ⋄ ⍎(⎕UCS ⍵),'←',⍕⍵}¨⍳1E4)~0   ⍝ Valid 
 <p>The 2nd element of an item in <code>⎕TRAP</code> determines what happens to the call stack (this cannot be achieved with <code>:Trap</code>):</p>
 <p><strong>E</strong>: execute expression named in the 3rd element</p>
 <p><strong>C</strong>: cut back the stack to where <code>⎕TRAP</code> is localised and then execute expression named in the 3rd element</p>
-<pre><code class="language-APL">      ⎕TRAP←11 'C' '(↑⎕DM)'
-      Foo
-</code></pre>
-<pre><code>DOMAIN ERROR
-Foo[1] 1÷0  
-        ∧   
-</code></pre>
-<hr />
-<pre><code class="language-APL">      0∊⍴⎕SI
-</code></pre>
-<pre><code>1
-</code></pre>
 <p><strong>N</strong>: next - skip this error (no 3rd element)</p>
-<p>This is only meaningful if there is a trap 0 higher up the stack. It can be used for trapping every error except a specific one:</p>
-<pre><code class="language-APL">     ∇ Trap6 x;⎕TRAP                   
-[1]   ⍝ Handle all but value errors    
-[2]    ⎕TRAP←(6 'N')(0 'E' '→ERROR')   
-[3]    ⍎x ⍝ x contains a program to run
-[4]    →0                              
-[5]   ERROR:'Uh oh!'                   
-     ∇    
-</code></pre>
 <p><strong>S</strong>: stop - normal error handling (no 3rd element)</p>
-<p>This is typically used with a debugging switch:</p>
-<pre><code class="language-APL">⎕TRAP←(1+DEBUG)⊃(0 'E' 'Bad')(0 'S')
-</code></pre>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The <strong>E</strong> (execute immediately) action code is very tricky to use and best avoided. Prefer to use <strong>C</strong>, or even better, a <code>:Trap</code> control structure.</p>
@@ -1022,36 +880,6 @@ Foo[1] 1÷0
 <pre><code class="language-APL">      ⎕TRAP⍴⍨←0
 </code></pre>
 <p>In general, you assign a nested vector of 3-element vectors to <code>⎕TRAP</code>, each of the form <code>(numbers 'X' 'string')</code>.</p>
-<h2 id="who-needs-to-know">Who needs to know?</h2>
-<p>Errors can occur due to a mistakenly written piece of code. However, even a perfectly valid function can trigger errors if run with input which is outside of its domain.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>It is best not to rely on error trapping for behaviour, in part because future extensions to the language may introduce valid behaviours in those cases.</p>
-</div>
-<p>You should test inputs explicitly using APL primitives. It can be tempting to use <code>:Trap 0</code> to force alternative behaviour for unexpected inputs. However, trapping all errors should only really be done in order for your application to fail safely for the sake of end users. Best practice is to think carefully about the properties of valid inputs to your functions, and signal errors or otherwise indicate to the user that an invalid input has been attempted.</p>
-<h2 id="pass-it-on">Pass it on</h2>
-<p><code>⎕DMX</code> is a system object containing information about the last occuring error. Recent versions of Dyalog can display its contents in a human-readable JSON format:</p>
-<pre><code class="language-APL">      (⎕JSON⍠'Compact' 0)⎕DMX   
-</code></pre>
-<div class="admonition warning">
-<p class="admonition-title">Version Warning</p>
-<p>The symbol <code>⍠</code> is not available in Classic Edition, and the Variant operator is instead represented by ⎕U2360. Note too that ⍠ and ⎕OPT are synonymous though only the latter is available in the Classic Edition.<br />
-Neither Variant nor <code>⎕OPT</code> are available in Dyalog version 12.1.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Your code should not assume that the properties in <code>⎕DMX</code> will stay the same across versions of Dyalog. See <a href="https://help.dyalog.com/latest/index.htm#Language/System%20Functions/dmx.htm">the online documentation</a> for more information about <code>⎕DMX</code>.</p>
-</div>
-<p>The system function <code>⎕SIGNAL</code> can be used to generate errors. Errors may be signalled without a guilty expression, or custom error codes and messages may be signalled.</p>
-<p>Monadic <code>⎕SIGNAL</code> can be used to provide custom values for <code>⎕DMX</code>.</p>
-<pre><code class="language-APL">      ⎕SIGNAL⊂('EN' 666)('Message' 'The Devil''s Error')('Vendor' 'Satan')
-</code></pre>
-<p>Dyadic <code>⎕SIGNAL</code> can be used to conveniently set the event message and event number. Slightly confusingly, the <code>⎕EM</code> event message is different from the error message member of the <strong>D</strong>iagnostic <strong>M</strong>essage <strong>Extended</strong>: <code>⎕DMX.Message</code> .</p>
-<pre><code class="language-APL">      'Yo!'⎕SIGNAL 42
-      ⎕EM
-      ⎕DMX.Message
-</code></pre>
-<p>Error signalling can be used to provide custom error messages, as well as to prevent the application from suspending in the tracer, which can be confusing for end users of your application who do not know APL. You might prefer that user-facing functions trap and re-signal errors, whereas utilities intended for use by APLers in the session might be left to suspend on error.</p>
 <h2 id="error-number-ranges">Error number ranges</h2>
 <p>Event numbers 1-99 are generated by APL.</p>
 <p>Event numbers 1-999 can be generated by the user.</p>
@@ -1059,9 +887,31 @@ Neither Variant nor <code>⎕OPT</code> are available in Dyalog version 12.1.</p
 <p>Errors 1001-1008 are interrupts (e.g. break).</p>
 <p>Error 1000 means "any interrupt".</p>
 <h2 id="trace">⎕TRACE</h2>
-<p>Specify line numbers within a function or operator to have the results of expressions on those lines output to the session when executed.</p>
+<p>It is something of a joke that novice programmers only debug using print statements. However, another mechanism not too far from this idea is <code>⎕TRACE</code>. Specify line numbers within a function or operator to have the results of expressions on those lines output to the session when executed.</p>
 <p>Attempts to set trace controls in a locked function or operator (see <code>⎕LOCK</code>) are ignored.</p>
-<h2 id="the-stack">The stack</h2>
+<h3 id="to-do">To do</h3>
+<ul>
+<li>avoid cutting back beyond the scope of interest</li>
+<li>avoid accidentally implementing hard-to-predict traps</li>
+<li>Passing information up the stack and across threads</li>
+<li>
+<p>⎕SH
+    ⎕SH'cmd || exit 0'
+    17,1: trapped ⎕SH. non-zero exit is DOMAIN ERRROR with lost info
+        Can look at ⎕DMX
+        ∇foo
+    [1]   :Trap 0
+    [2]   z←⎕SH'exit 6'
+    [3]   :Else
+    [4]   ⎕DMX.Message
+    [5]              :EndTrap
+             ∇</p>
+</li>
+<li>
+<p>more ⎕TRAP?</p>
+</li>
+</ul>
+<h2 id="preventing-build-up-of-the-stack">Preventing build up of the stack</h2>
 <p><strong>The execution stack</strong> (sometimes referred to as just <strong>the stack</strong>) is the accumulation of functions either suspended or currently mid-execution. It can be inspected using <code>)SI</code>, <code>⎕SI</code> and <code>⎕XSI</code>. If you attempt to run or re-run functions without having cleared the stack, then the stack simply builds up until the workspace is full.</p>
 <pre><code class="language-text">      ⎕VR'Foo'
      ∇ Foo
@@ -1082,29 +932,7 @@ Foo[1] 1÷0
 #.Foo[1]*
 #.Foo[1]*
 </code></pre>
-<p>There are a number of system variables to deal with functions on the stack:</p>
-<table>
-    <tr>
-        <td><code>⎕SI</code></td><td>The names of functions on the stack</td>
-    </tr>
-    <tr>
-        <td><code>⎕LC</code></td><td>The line numbers at which each function is suspended</td>
-    </tr>
-    <tr>
-        <td><code>⎕NSI</code></td><td>The namespaces prior to the call as character vectors</td>
-    </tr>
-    <tr>
-        <td><code>⎕RSI</code></td><td>The namespaces prior to the call as scalar references</td>
-    </tr>
-    <tr>
-        <td><code>⎕XSI</code></td><td>The full namespace paths of functions on the stack</td>
-    </tr>
-    <tr>
-        <td><code>⎕STACK</code></td><td>The stack of functions and state descriptions</td>
-    </tr>
-</table>
-
-<p>To get the same diagnostic error messages printed to the session without building up the stack, you can set <code>⎕TRAP</code> to use a custom error reporting function:</p>
+<p>Some people prefer not to work in this way. To get the same diagnostic error messages printed to the session without building up the stack, you can set <code>⎕TRAP</code> to use a custom error reporting function:</p>
 <pre><code class="language-APL">     ∇ Error                                                                             
 [1]    ⎕DMX.(OSError{⍵,2⌽(×≢⊃⍬⍴2⌽⍺,⊂'')/'&quot;) (&quot;',⊃⍬⍴2⌽⊆⍺}Message{⍵,⍺,⍨': '/⍨×≢⍺}⊃⍬⍴DM,⊂'')
 [2]    ↑1↓⎕DMX.DM                                                                        
@@ -1125,21 +953,8 @@ Foo[1] 1÷0
 <p>The long, awkward expression in <code>Error</code> above can be found <a href="https://aplcart.info/?q=print%20error%20message#">in APLcart</a>.</p>
 <h2 id="problem-set-12">Problem set 12</h2>
 <h3 id="help-im-trapped">Help I'm Trapped</h3>
-<p>Here we will write a simple calculator program to divide two vector arguments. When the function fails it should return to the session and leave the stack empty, but the values of <code>⎕DM</code> and <code>⎕EN</code> should change.</p>
-<ol>
-<li>
-<p>Write a program (a tradfn called <code>Divide</code>) which explicitly tests its input and signals an appropriate error for invalid arguments. </p>
-</li>
-<li>
-<p>Rewrite the program as a tradfn called <code>DivideQ</code> which uses <code>⎕TRAP</code> instead of testing its arguments.</p>
-</li>
-<li>
-<p>Rewrite the program as a tradfn called <code>DivideC</code> which uses <code>:Trap</code>.</p>
-</li>
-<li>
-<p>Rewrite the program as a dfn <code>DivideD</code> with error guards.</p>
-</li>
-</ol>
+<p>Here we will write a simple calculator program to divide two vector arguments. </p>
+<p>Your program (a tradfn called <code>Divide</code>) should test its input and signal an appropriate error for invalid arguments. </p>
 <p>Example output:</p>
 <pre><code class="language-APL">      1 2 3 Divide ,5
 0.2 0.4 0.6
@@ -1156,6 +971,7 @@ DOMAIN ERROR: Divide by zero
       1 2 Divide 1 0
           ∧      
 </code></pre>
+<p>Error signalling is used to prevent the application from suspending in the tracer, which can be confusing for end users of your application who do not know APL. You might prefer that user-facing functions trap and re-signal errors, whereas utilities intended for use by APLers in the session might be left to suspend on error.</p>
 <h3 id="prefix-agreement-operator">Prefix agreement operator</h3>
 <p><a href="https://aplwiki.com/wiki/Leading_axis_agreement"><strong>Leading axis agreement</strong></a> is a proposed extension to scalar extension which will automatically apply dyadic functions between cells when the leading axes of two arrays match.</p>
 <pre><code class="language-APL">      2 3 ×_L 2 3⍴⍳6
@@ -1194,138 +1010,30 @@ LEADING AXIS MISMATCH
 <p><a href="https://en.wikipedia.org/wiki/Symmetric_matrix">Symmetic matrices</a></p>
 </li>
 <li>
-<p>In general, you assign a nested vector of 3-element vectors to <code>⎕TRAP</code>, each of the form <code>(numbers 'X' 'string')</code>. </p>
+<pre class="highlight"><code>In general, you assign a nested vector of 3-element vectors to `⎕TRAP`, each of the form `(numbers 'X' 'string')`.
+</code></pre>
 <p>In terms of its structure, what happens to the value of <code>⎕TRAP</code> if you only assign a single 3-element vector?</p>
 </li>
-</ol>
-<h3 id="can-you-fix-it">Can you fix it?</h3>
-<p>This scripted namespace defines a toy app to read a UTF-8 text file and convert its data to hexadecimal representation.</p>
-<pre><code class="language-APL">:Namespace app
-
-    file←'/tmp/file.txt'
-
-    ∇ Main
-      Hex file
-    ∇
-
-    ∇ hex←Hex file;bytes;⎕TRAP
-      bytes←'UTF-8'∘⎕UCS¨⊃⎕NGET file 1
-      hex←↑{,⍉3↑(⎕D,⎕A)[16 16⊤⍵]}¨bytes
-    ∇
-
-:EndNamespace
-</code></pre>
-<p>The author of the function modifies it to exhibit certain error handling behaviours. Unfortunately, their code has bugs. Investigate the following scenarios and try to solve the issues.</p>
-<ol>
 <li>
-<p>The author has set up error trapping. They are aware of a potential <code>FILE NAME ERROR</code>, but have also set up a global trap in case any unexpected errors occur.</p>
-<pre class="highlight"><code>:Namespace app
-
-    file←'/tmp/file.txt'
-
-    ∇ Main;⎕TRAP
-      ⎕TRAP←0 'E' 'Report ⋄ →0'
-      Hex file
-    ∇
-
-    ∇ hex←Hex file;bytes
-      ⎕TRAP←22 'C' '→ERROR'
-      bytes←'UTF-8'∘⎕UCS¨⊃⎕NGET file 1
-      hex←↑{,⍉3↑(⎕D,⎕A)[16 16⊤⍵]}¨bytes
-      →0
-
-     ERROR:
-      Report
-    ∇
-
-    ∇ Report
-      error←↑⎕DM
-      ⎕←'An error occured. See app.error for more information.'
-    ∇
-
-:EndNamespace
-</code></pre>
-<p>Unfortunately, the function suspends with an unexpected <code>VALUE ERROR</code>.</p>
-<pre class="highlight"><code>VALUE ERROR: Undefined name: ERROR
-      →ERROR
-       ∧
-</code></pre>
-<p>After modifying the code, the function should print to the session:</p>
-<pre class="highlight"><code>      app.Main
-An error occured. See app.error for more information.
-</code></pre>
-<p>The variable <code>app.error</code> should be populated:</p>
-<pre class="highlight"><code>      ⎕←app.error
-FILE NAME ERROR                        
-Hex[2] bytes←'UTF-8'∘⎕UCS¨⊃⎕NGET file 1
-                           ∧
-</code></pre>
+<p>The following tradfn has a deliberate fault. </p>
+<p><pre><code class="language-APL">    ∇  QuadTrap arg
+[1]    ⎕TRAP←(5 'C' '→Err')(11 'C' '''Bad arg''')
+[2]    Bar arg
+[3]    ⎕←'Completed successfully'
+[4]    →0
+[5]   Err:⎕TRAP←0 'S'
+[6]    ⎕←'Bad length'
+    ∇  </code></pre></p>
+<p>Experiment with the function and fix the issue.</p>
 </li>
 <li>
-<p>Now that the file name error is handled, they want to test the application using a file. Paste the following into a text editor and save it somewhere. Update <code>app.file</code> to point to the correct location.</p>
-<pre class="highlight"><code>sample text
-</code></pre>
-<p>Running <code>app.Main</code> reveals either 1 or 2 more bugs:</p>
-<ul>
-<li>Running the function now results in an <code>INDEX ERROR</code>.</li>
-<li>The global trap did not catch the <code>INDEX ERROR</code>.</li>
-</ul>
-<p>Fix the remaining bugs. The application should successfully convert the file now:</p>
-<pre class="highlight"><code>      app.Main
-73 61 6D 70 6C 65 20 74 65 78 74
-</code></pre>
+<p>A cut too far</p>
+<p>Set <code>⎕TRAP</code> at multiple levels (functions)
+Use dynamic scope to set up
+Information at inner levels. Set up scenarios where info is lost at each level</p>
 </li>
 <li>
-<p>Finally, the author decides it would be more useful if <code>app.error</code> contained more information about the error, and also that the <code>Report</code> function should display this directly in the session as well.</p>
-<pre class="highlight"><code>:Namespace app
-
-    file←'/tmp/file.txt'
-
-    ∇ Main;⎕TRAP
-      ⎕TRAP←0 'E' 'Report {⍵(⍎⍵)}¨⎕NL¯2 ⋄ →0'
-      Hex file
-    ∇
-
-    ∇ hex←Hex file;bytes
-      ⎕TRAP←22 'C' '→ERROR'
-      bytes←'UTF-8'∘⎕UCS¨⊃⎕NGET file 1
-      hex←↑{,⍉3↑(⎕D,⎕A)[16 16⊤⍵]}¨bytes
-      →0
-
-     ERROR:
-      Report⊂'file' file
-    ∇
-
-    ∇ Report names_values
-      error←⊂↑⎕DM
-      error,←⊂↑names_values
-      ⎕←'An error occured. Error information in app.error:'
-      ⎕←error
-    ∇
-
-:EndNamespace
-</code></pre>
-<ol>
-<li>Turn <code>]box -fns=on</code></li>
-<li>
-<p>Reinstate the <code>FILE NAME ERROR</code> and run <code>app.Main</code> again.</p>
-<pre class="highlight"><code>      app.Main
-An error occured. Error information in app.error:
-┌───────────────────────────────────────┬────────────────────┐
-│FILE NAME ERROR                        │┌────┬─────────────┐│
-│Hex[2] bytes←'UTF-8'∘⎕UCS¨⊃⎕NGET file 1││file│/tmp/file.txt││
-│                           ∧           │└────┴─────────────┘│
-└───────────────────────────────────────┴────────────────────┘
-</code></pre>
-</li>
-<li>
-<p>Reinstate the <code>INDEX ERROR</code> and run <code>app.Main</code> again at least twice. </p>
-<ol>
-<li>What do you notice about <code>app.error</code>?</li>
-<li>Try to solve this issue. There is more than one valid solution.</li>
-</ol>
-</li>
-</ol>
+<p>Dfns guards problem</p>
 </li>
 </ol>
                 
@@ -1343,39 +1051,6 @@ An error occured. Error information in app.error:
       
         
 <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-        <a href="../Quad%20names/" class="md-footer__link md-footer__link--prev" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              Quad Names
-            </div>
-          </div>
-        </a>
-      
-      
-        <a href="../Data/" class="md-footer__link md-footer__link--next" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Data IO
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

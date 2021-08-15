@@ -18,7 +18,7 @@
     
     
       
-        <title>Interpreter internals - APL Course</title>
+        <title>Interpreter Internals - APL Course</title>
       
     
     
@@ -94,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Interpreter internals
+              Interpreter Internals
             
           </span>
         </div>
@@ -339,7 +339,7 @@
   
     <li class="md-nav__item">
       <a href="../Namespaces/" class="md-nav__link">
-        Namespaces and other objects
+        Namespaces and Other Objects
       </a>
     </li>
   
@@ -369,7 +369,7 @@
   
     <li class="md-nav__item">
       <a href="../Ufns/" class="md-nav__link">
-        User-defined functions
+        User-defined Functions
       </a>
     </li>
   
@@ -398,8 +398,23 @@
   
   
     <li class="md-nav__item">
+      <a href="../Quad%20names/" class="md-nav__link">
+        Quad Names
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../Errors/" class="md-nav__link">
-        Error handling basics
+        Error Handling and Debugging
       </a>
     </li>
   
@@ -443,23 +458,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../Quad%20names/" class="md-nav__link">
-        Quad names
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../Interfaces/" class="md-nav__link">
-        External interfaces
+        External Interfaces
       </a>
     </li>
   
@@ -474,7 +474,7 @@
   
     <li class="md-nav__item">
       <a href="../Quirks/" class="md-nav__link">
-        Historical quirks
+        Historical Quirks
       </a>
     </li>
   
@@ -488,146 +488,9 @@
   
   
     <li class="md-nav__item">
-      <a href="../Stack/" class="md-nav__link">
-        The call stack
+      <a href="../Interpreter-internals/" class="md-nav__link">
+        Interpreter Internals
       </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Interpreter internals
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        Interpreter internals
-      </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#to-do" class="md-nav__link">
-    to do
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#arrays" class="md-nav__link">
-    Arrays
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#storage" class="md-nav__link">
-    Storage
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#data-types" class="md-nav__link">
-    Data types
-  </a>
-  
-    <nav class="md-nav" aria-label="Data types">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#character" class="md-nav__link">
-    Character
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#number" class="md-nav__link">
-    Number
-  </a>
-  
-    <nav class="md-nav" aria-label="Number">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#comparison-tolerance" class="md-nav__link">
-    Comparison tolerance
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#value-types" class="md-nav__link">
-    Value types
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#reference-types" class="md-nav__link">
-    Reference types
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#floating-point-representation" class="md-nav__link">
-    Floating-point representation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#comparison-tolerance_1" class="md-nav__link">
-    Comparison tolerance
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -641,7 +504,7 @@
   
     <li class="md-nav__item">
       <a href="../Reading/" class="md-nav__link">
-        Further reading
+        Further Reading
       </a>
     </li>
   
@@ -744,6 +607,13 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apl-item-hierarchy" class="md-nav__link">
+    APL item hierarchy
+  </a>
   
 </li>
       
@@ -915,6 +785,9 @@ VALUE ERROR: Undefined name: var
       a.var
 99
 </code></pre>
+<h2 id="apl-item-hierarchy">APL item hierarchy</h2>
+<p>This useful chart shows what operations are valid for different kinds of items.</p>
+<p><img alt="APL item hierarchy" src="../img/APL_Citizens.png" /></p>
 <h2 id="floating-point-representation">Floating-point representation</h2>
 <p>There are also 16-byte decimal floating point numbers available, but you need to enable them with <code>⎕FR</code>.</p>
 <pre><code>      ⎕PP←34
@@ -954,39 +827,6 @@ VALUE ERROR: Undefined name: var
       
         
 <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-        <a href="../Stack/" class="md-footer__link md-footer__link--prev" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              The call stack
-            </div>
-          </div>
-        </a>
-      
-      
-        <a href="../Reading/" class="md-footer__link md-footer__link--next" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Further reading
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

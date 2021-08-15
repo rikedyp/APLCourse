@@ -339,7 +339,7 @@
   
     <li class="md-nav__item">
       <a href="../Namespaces/" class="md-nav__link">
-        Namespaces and other objects
+        Namespaces and Other Objects
       </a>
     </li>
   
@@ -369,7 +369,7 @@
   
     <li class="md-nav__item">
       <a href="../Ufns/" class="md-nav__link">
-        User-defined functions
+        User-defined Functions
       </a>
     </li>
   
@@ -398,8 +398,23 @@
   
   
     <li class="md-nav__item">
+      <a href="../Quad%20names/" class="md-nav__link">
+        Quad Names
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../Errors/" class="md-nav__link">
-        Error handling basics
+        Error Handling and Debugging
       </a>
     </li>
   
@@ -468,8 +483,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#experimenting-with-code" class="md-nav__link">
-    Experimenting with code
+  <a href="#user-commands" class="md-nav__link">
+    User Commands
   </a>
   
 </li>
@@ -497,6 +512,27 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#salt" class="md-nav__link">
+    SALT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fx" class="md-nav__link">
+    ⎕FX
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fix" class="md-nav__link">
+    ⎕FIX
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#link" class="md-nav__link">
     Link
   </a>
@@ -509,8 +545,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#importing-apl-code-from-the-internet" class="md-nav__link">
-    Importing APL code from the internet
+  <a href="#cmd-sh" class="md-nav__link">
+    ⎕CMD ⎕SH
   </a>
   
 </li>
@@ -531,23 +567,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../Quad%20names/" class="md-nav__link">
-        Quad names
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../Interfaces/" class="md-nav__link">
-        External interfaces
+        External Interfaces
       </a>
     </li>
   
@@ -562,7 +583,7 @@
   
     <li class="md-nav__item">
       <a href="../Quirks/" class="md-nav__link">
-        Historical quirks
+        Historical Quirks
       </a>
     </li>
   
@@ -576,23 +597,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../Stack/" class="md-nav__link">
-        The call stack
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../implementation/" class="md-nav__link">
-        Interpreter internals
+      <a href="../Interpreter-internals/" class="md-nav__link">
+        Interpreter Internals
       </a>
     </li>
   
@@ -607,7 +613,7 @@
   
     <li class="md-nav__item">
       <a href="../Reading/" class="md-nav__link">
-        Further reading
+        Further Reading
       </a>
     </li>
   
@@ -646,8 +652,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#experimenting-with-code" class="md-nav__link">
-    Experimenting with code
+  <a href="#user-commands" class="md-nav__link">
+    User Commands
   </a>
   
 </li>
@@ -675,6 +681,27 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#salt" class="md-nav__link">
+    SALT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fx" class="md-nav__link">
+    ⎕FX
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fix" class="md-nav__link">
+    ⎕FIX
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#link" class="md-nav__link">
     Link
   </a>
@@ -687,8 +714,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#importing-apl-code-from-the-internet" class="md-nav__link">
-    Importing APL code from the internet
+  <a href="#cmd-sh" class="md-nav__link">
+    ⎕CMD ⎕SH
   </a>
   
 </li>
@@ -707,10 +734,11 @@
                 
                 
                 <h1 id="importing-exporting-and-distributing-code">Importing, Exporting and Distributing Code</h1>
-<p>We have already learned <a href="/Workspaces">the basics of saving and loading workspaces</a>. Here we address some more specific things like how to use other people's code, how to let other people use your code, and how to distribute your application to users.</p>
+<p>We have already learned <a href="/Workspaces">the basics of saving and loading workspaces</a>. Here we address some more specific things like how to use other people's code, how to let other people use your code, and how to distribute your application to end users.</p>
 <h2 id="installed-libraries">Installed Libraries</h2>
 <p>Dyalog installations come with a suite of libraries with pre-written code utilities and examples.</p>
 <p>Find which ones are available to you now with <code>)lib</code>. </p>
+<p>There is also a <a href="http://docs.dyalog.com/17.1/Code%20Libraries%20Reference%20Guide.pdf"><strong>code libraries reference guide</strong></a> in the documentation.</p>
 <p>You can copy code into the workspace in several ways:</p>
 <ul>
 <li>
@@ -734,48 +762,120 @@ dfns.⎕cy'dfns'</code></pre></p>
 <div class="admonition warning">
 <p class="admonition-title">Version Warning</p>
 <p>In Dyalog version 12.1, you must use a matrix left argument to copy multiple names with <code>⎕CY</code>:<br />
-<pre><code class="language-APL">(⍪↑'cal' 'date' 'days')dfns.⎕cy'dfns'</code></pre>
-The leading <code>⍪</code> ensures that <code>⎕CY</code> does not fail when there is an empty character vector instead of a nested vector of character vectors. If you are dynamically generating this list of names, ensure it is a character matrix when passed to <code>⎕CY</code>.</p>
+<pre><code class="language-APL">(↑'cal' 'date' 'days')dfns.⎕cy'dfns'</code></pre></p>
 </div>
 </li>
 </ul>
-<p>Alongside <a href="https://aplcart.info">APLcart</a>, the <a href="https://dfns.dyalog.com">dfns library</a> (not to be confused with the dfns construct) contains a large number of useful functions for tasks ranging from number theory, graphs and tree data structures and games and graphics.</p>
-<h2 id="experimenting-with-code">Experimenting with code</h2>
-<p>The <code>]Peek</code> user command allows you to try an expression as if it was executed in a saved workspace without having to copy the contents of that workspace.</p>
-<pre><code class="language-APL">      ]peek dfns cal 2021 7
-      ]peek -?
-</code></pre>
+<p>Alongside <a href="https://aplcart.info">APLcart</a>, the <a href="https://dfns.dyalog.com">dfns library</a> (not to be confused with the dfns construct) contains a large number of useful functions for use cases ranging from number theory, graphs and tree data structures to games and graphics.</p>
+<h2 id="user-commands">User Commands</h2>
+<p>Some of these, such as the <code>]box</code> one, have been mentioned already. Commands which begin with a right-square-bracket <code>]</code> are called <a target="_blank" href="https://docs.dyalog.com/latest/User%20Commands%20User%20Guide.pdf">User Commands</a>. These are only used while interacting with the session, but you can customise them and create your own.</p>
+<p>Dyalog webinar: <a target="_blank" href="https://dyalog.tv/Webinar/?v=LWJzRGrOC3k">Creating and Managing your own User Commands</a></p>
+<p>Custom user commands are scripted classes or namespaces containing specific member functions <code>List</code>, <code>Run</code> and <code>Help</code>. They should be saved as plain text <strong>.dyalog</strong>, <strong>.apln</strong> or <strong>.aplc</strong> files and placed in the folder <strong>[HOME]/MyUCMDs</strong> where [HOME] is either <em>/home/user</em> on Unix-like systems or <em>C:\Users\user\Documents</em> on Microsoft Windows.</p>
 <div class="admonition warning">
 <p class="admonition-title">Version Warning</p>
-<p>]WS.Peek is not available in Dyalog version 12.1</p>
+<p>The custom user command system has changed since, and many recent user commands are not available in version 12.1. To see the available user commands use <code>]?</code>.</p>
+<p>Dyalog 12.1 on UNIX does not have a session and user commands are unavailable.</p>
 </div>
+<p>Some particularly useful in-built user commands for getting information about your workspace are mentioned in the section on <a href="../Workspaces">workspaces</a>.</p>
 <h2 id="creating-and-sharing-your-own-utilities">Creating and sharing your own utilities</h2>
-<ul>
-<li>stuff about the UCMD system</li>
-<li>difference between 12.1 and 17.1<ul>
-<li>aSample.dyalog provided</li>
-</ul>
-</li>
-<li>latest: startup.dyalog, myucmds and custom user ⎕SE folder</li>
-</ul>
+<p>The user command system is designed for utilities to help during application development and debugging. It is not intended as a system for programmatic utilities. Due to its terse nature, APL vendors have not really established a full-fledged, public package management system like Python's pip or Node/JavaScript's npm. Usually, the source code is distributed either in code files, workspaces or in text files and copied wholesale into other code bases.</p>
+<p>However, you might find or develop utility functions which you use frequently and that you copy into code bases frequently. In this case, you might like to make such utilities easy to access. One option is to define the function as a member of a custom namespace within the session namespace <code>⎕SE</code>.</p>
+<p>Here is an example of using this technique so that you don't have to write such a long function reference to use <code>repObj</code>.</p>
+<pre><code class="language-APL">      'X'⎕SE.⎕NS⍬
+      ⎕SE.X.rep←⎕SE.Dyalog.Utils.repObj
+</code></pre>
+<p>Once your custom name (function, variable etc.) has been defined within ⎕SE, save the session file. In the Microsoft Windows IDE, go to <strong>Session → Save</strong> to overwrite the default session file. In general, the expression for saving the session file is </p>
+<pre><code class="language-APL">{2⎕NQ⎕SE'FileWrite'⊣⎕SE⎕WS'File'⍵}
+</code></pre>
+<p>which can also be <a href="https://aplcart.info/?q=save%20session%20configuration#">found on APLcart</a>.</p>
+<p>Of course, you might instead define <code>rep</code> in the root namespace when starting an exploratory coding session, for covenience.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Remember that others running your code base might not have comparable environments to that in which which you developed the code. Best practice is to ensure that all necessary code and data is contained locally within your application. </p>
+<p>Your organisation might also have rules relating to the types and locations of custom items that prevent you from using such techniques.</p>
+</div>
 <h2 id="code-in-component-files">Code in component files</h2>
-<ul>
-<li><code>⎕CR</code> (can you do ⎕OR?) in component files</li>
-</ul>
+<p>The <strong>object representation</strong> <code>⎕OR</code> of an APL function or operator can be used to store code in component files. These can then be fixed (defined) with <code>⎕FX</code> upon loading.</p>
 <h2 id="source-code-in-text-files">Source code in text files</h2>
-<ul>
-<li>Used to be WS only</li>
-<li>SALT</li>
-</ul>
+<p>Until recently, while it was possible to print source code as text for use in articles and tutorials, generally code was distributed in binary workspaces. The exact format and file extension varies between <a href="https://aplwiki.com/wiki/List_of_language_developers">APL implementations</a>, but for Dyalog these are <strong>.dws</strong> files.</p>
+<p>Nowadays, Unicode has enabled the widespread ability to represent characters other than just ASCII. Source code management systems, such as Git and SVN, have encouraged the use of Unicode text files as source code representation.</p>
+<p>Dyalog provides mechanisms for importing text source into the active workspace, and vice versa, including the ability to associate text files with names in the workspace such that changing one will affect the other.</p>
+<h3 id="salt">SALT</h3>
+<p>The <strong>S</strong>imple <strong>A</strong>PL <strong>L</strong>ibrary <strong>T</strong>oolkit allows you to store APL source code as text files with the extension <strong>.dyalog</strong></p>
+<pre><code class="language-APL">      Foo←{3×⍵}
+      ]save Foo /tmp/Foo
+\tmp\Foo.dyalog
+
+      ]load /tmp/Foo
+Foo
+</code></pre>
+<p>If the full file path is not specified, SALT will look in a configurable collection of folders on the file system for Dyalog source files. The source folders can be viewed and configured in <strong>Options → Configure → SALT</strong>.</p>
+<p>Read <a href="https://www.dyalog.com/uploads/documents/MasteringDyalogAPL.pdf#%5B%7B%22num%22%3A1305%2C%22gen%22%3A0%7D%2C%7B%22name%22%3A%22XYZ%22%7D%2C175%2C640%2C0%5D">Chapter R of Mastering Dyalog APL</a> and the
+<a href="https://docs.dyalog.com/latest/SALT%20User%20Guide.pdf">SALT User Guide</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Version Warning</p>
+<p>SALT is not available in Dyalog version 12.1 for UNIX</p>
+</div>
+<h3 id="fx">⎕FX</h3>
+<p>The <code>⎕FX</code> system function can be used to define functions or operators from various forms of source code.</p>
+<h3 id="fix">⎕FIX</h3>
+<p>The <code>⎕FIX</code> system function can be used to define various APL items (functions, operators, namespaces etc.) from scripts.</p>
+<div class="admonition warning">
+<p class="admonition-title">Version Warning</p>
+<p>In Dyalog version 12.1, <code>⎕FIX</code> is only able to fix class and namespace scripts, and does not associate names in the workspace with files on the file system.</p>
+</div>
+<p>If <code>2⎕FIX</code> is used and changes are made to the APL name using the Dyalog editor, the system will give you the option to save those changes to the text source file at the same time. </p>
+<p>If changes are made to the text file outside of Dyalog, using a standard text editor, then opening that name for editing within Dyalog will give the option to update the code in the active workspace using the modified external source.</p>
+<p>Using <a href="../Data/#downloading-data-from-the-internet">HttpCommand</a> together with <code>⎕FIX</code> is a way to import code from the internet.</p>
 <h3 id="link">Link</h3>
-<ul>
-<li>Maybe mention it briefly here</li>
-</ul>
-<h2 id="importing-apl-code-from-the-internet">Importing APL code from the internet</h2>
-<ul>
-<li>]Httpcommand</li>
-<li>]Get</li>
-</ul>
+<p>For newer applications, we encourage you to try using the <a href="https://github.com/dyalog/link">Link</a> system which supercedes <a href="#salt">SALT</a> and associates namespaces in the active workspace with folders in the file system. Using Link, you do not have to remember to <code>)SAVE</code> your workspace, changes in the workspace are automatically reflected on the file system.</p>
+<h2 id="cmd-sh">⎕CMD ⎕SH</h2>
+<p>These two functions are used to run command prompt commands (Microsoft Windows) and shell commands (Linux/macOS). For example, try <code>⎕CMD'whoami'</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>You should take caution when using <code>⎕SH</code>, as a non-zero exit code from the command line can cause a <code>DOMAIN ERROR</code> and the system error code to be lost.
+<pre><code class="language-APL">      ⎕←r←⎕SH'exit 3'
+DOMAIN ERROR: Command interpreter returned failure code 3
+      ⎕←r←⎕SH'exit 3'
+          ∧
+      r
+VALUE ERROR: Undefined name: r
+      r
+      ∧</code></pre>
+See the <a href="http://help.dyalog.com/latest/#UNIX_IUG/Calling UNIX commands.htm">documentation for ⎕SH</a> for more information.</p>
+</div>
+<p>While these are quick-and-easy functions to use for those familar with the command lines on particular operating systems, on some systems they can be slower than the more integrated alternatives. For example, reading a file using <code>⎕SH</code> can be significantly slower than using <code>⎕N...</code> system functions on some machines.</p>
+<p>Checking if a file exists:</p>
+<pre><code>      ⍎⊃⎕SH'if test -f /tmp/text; then echo 1; else echo 0; fi'
+1
+      ⎕NEXISTS'/tmp/text'
+1
+</code></pre>
+<p>Reading a text file:</p>
+<pre><code>      ⍴↑':'(≠⊆⊢)¨⎕sh'cat /etc/passwd'
+44 7
+      ⍴↑':'(≠⊆⊢)¨(⎕ucs 10 13)((~∊⍨)⊆⊢)⊃⎕nget'/etc/passwd'
+44 7
+      ⍴⎕CSV⍠'Separator' ':'⊢'/etc/passwd'
+44 7
+</code></pre>
+<p>Listing the contents of a directory:</p>
+<pre><code>      ⍴↑⎕sh'ls -l /tmp'
+14 127
+      ⍴↑⊃0⎕NINFO⍠1⊢'/tmp/*'
+19 85
+</code></pre>
+<p>Searching within a file:</p>
+<pre><code>      ↑':'(≠⊆⊢)¨⎕SH'awk -F'';'' ''$1 ~ /games/ { print $0 }'' /etc/passwd'
+┌─────┬─┬─┬──┬─────┬──────────┬─────────────────┐
+│games│x│5│60│games│/usr/games│/usr/sbin/nologin│
+└─────┴─┴─┴──┴─────┴──────────┴─────────────────┘
+
+      {⍵⌷⍨⊂⍸'games'∘≡¨⍵[;1]}⎕CSV⍠'Separator' ':'⊢'/etc/passwd'
+┌─────┬─┬─┬──┬─────┬──────────┬─────────────────┐
+│games│x│5│60│games│/usr/games│/usr/sbin/nologin│
+└─────┴─┴─┴──┴─────┴──────────┴─────────────────┘
+</code></pre>
                 
               
               
@@ -809,13 +909,13 @@ The leading <code>⍪</code> ensures that <code>⎕CY</code> does not fail when 
         </a>
       
       
-        <a href="../Quad%20names/" class="md-footer__link md-footer__link--next" rel="next">
+        <a href="../Interfaces/" class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Quad names
+              External Interfaces
             </div>
           </div>
           <div class="md-footer__button md-icon">

@@ -11,14 +11,14 @@
       
       
       
-        <link rel="canonical" href="https://dyalog.com/data-structures/">
+        <link rel="canonical" href="https://dyalog.com/Error-trapping-and-signalling/">
       
       <link rel="icon" href="../img/favicon-32.png">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.6">
     
     
       
-        <title>Array-oriented data structures - APL Course</title>
+        <title>Error Trapping and Signalling - APL Course</title>
       
     
     
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#array-oriented-data-structures" class="md-skip">
+        <a href="#error-trapping-and-signalling" class="md-skip">
           Skip to content
         </a>
       
@@ -94,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Array-oriented data structures
+              Error Trapping and Signalling
             
           </span>
         </div>
@@ -529,95 +529,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#there-are-two-data-structures" class="md-nav__link">
-    There are two data structures
-  </a>
-  
-    <nav class="md-nav" aria-label="There are two data structures">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#rectangles" class="md-nav__link">
-    Rectangles
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#trees" class="md-nav__link">
-    Trees
-  </a>
-  
-    <nav class="md-nav" aria-label="Trees">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#nested-vector" class="md-nav__link">
-    Nested vector
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#json-object" class="md-nav__link">
-    JSON object
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#parent-depth-vector" class="md-nav__link">
-    Parent-depth vector
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-do-i-represent-x" class="md-nav__link">
-    How do I represent X?
-  </a>
-  
-    <nav class="md-nav" aria-label="How do I represent X?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#graph" class="md-nav__link">
-    Graph
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -629,40 +540,7 @@
               
                 
                 
-                <h1 id="array-oriented-data-structures">Array-oriented data structures</h1>
-<p>I hope you have begun to feel the freedom of a very dynamically typed language. Occasionally it's important to know the difference between <code>'1'</code> and <code>1</code>, but mostly it's nice to be fairly sure that numbers and numbers and characters are characters (except for that pesky <a href="../implementation#comparison-tolerance">floating point arithmetic</a>).</p>
-<h2 id="there-are-two-data-structures">There are two data structures</h2>
-<p>The programming world is rife with special . It is also said that "algorithms + data structures = programs" as a broad answer to the question "what is programming?" in a similar way that "grammar + vocabulary = language". There are also countless tutorials about things called arrays, structs, dicts, linked lists, strings and many more data structures with specific algorithms written to suit specific types of problems with both reasonable computational efficiency and efficacy of expression.</p>
-<p>APLers like to believe that it is a bit easier to just have a few types of things and to have a useful set of composable.</p>
-<p>It is with this that I would like to posit that as there are really only 2 data types, there are also only 2 data structures.</p>
-<h3 id="rectangles">Rectangles</h3>
-<p>APL loves rectangles. Computers love rectangles. The rectangular, homogeneous (same type) array is the most efficient data type for storing and accessing data both linearly (<code>⎕A[3+⍳10]</code>) and randomly (<code>⎕A[1 4 22 4 6</code>).</p>
-<h3 id="trees">Trees</h3>
-<h4 id="nested-vector">Nested vector</h4>
-<h4 id="json-object">JSON object</h4>
-<h4 id="parent-depth-vector">Parent-depth vector</h4>
-<ul>
-<li>ASCII graph</li>
-<li>Insert</li>
-<li>Delete</li>
-<li>Update</li>
-<li>Index / traverse</li>
-</ul>
-<h2 id="how-do-i-represent-x">How do I represent X?</h2>
-<p>Any way which you think is appropriate. Firstly choose a representation which you find easy to understand and to describe and explain to other people. If you are quite unlucky you might have chosen a representation on which your necessary computations are slow. If this is the case, there will be alternative representations which offer performance improvements. However, it is always best to consider readability and maintainability above all else. How long will it take your future self to recognise and remember the functions and structures you chose to use?</p>
-<h3 id="graph">Graph</h3>
-<p>A small directed graph might be well represented as a list of edges from one node to another:</p>
-<ul>
-<li>Undirected graph</li>
-<li>Directed graph</li>
-<li>
-<p>Graph with loops</p>
-</li>
-<li>
-<p>Fast search boggle board?</p>
-</li>
-</ul>
-<h3 id="_1"></h3>
+                <h1 id="error-trapping-and-signalling">Error Trapping and Signalling</h1>
                 
               
               
