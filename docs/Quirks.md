@@ -150,7 +150,7 @@ You can set the local search path for names using `⎕PATH`. For example, if you
 ...
 ```
 
-However, some users think that `⎕PATH`, `:With` and `⎕CS` simply make applications more difficult to debug when something goes wrong. In large functions, debugging can become difficult if namespaces and search paths are altered far from where an error occurs. This is especially problematic in tradfns with dynamic scope, if you forget to localist `⎕PATH` within a function.
+However, some users think that `⎕PATH`, `:With` and `⎕CS` simply make applications more difficult to debug when something goes wrong. In large functions, debugging can become difficult if namespaces and search paths are altered far from where an error occurs. This is especially problematic in tradfns with dynamic scope, if you forget to localise `⎕PATH` within a function.
 
 One recommendation is to assign a reference to a long namespace path at the top of a function or namespace:
 

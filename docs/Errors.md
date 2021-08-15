@@ -442,7 +442,7 @@ Use the documentation and your own knowledge to find expressions to test for the
 1. Singleton values
 1. Namespace references
 1. Namespace names as character arrays
-1. [Symmetic matrices](https://en.wikipedia.org/wiki/Symmetric_matrix)
+1. [Symmetric matrices](https://en.wikipedia.org/wiki/Symmetric_matrix)
 
 
 1.  
@@ -498,7 +498,7 @@ The author of the function modifies it to exhibit certain error handling behavio
 	    
 	        ∇ Report
 	          error←↑⎕DM
-	          ⎕←'An error occured. See app.error for more information.'
+	          ⎕←'An error occurred. See app.error for more information.'
 	        ∇
 	    
 	    :EndNamespace
@@ -512,7 +512,7 @@ The author of the function modifies it to exhibit certain error handling behavio
 	After modifying the code, the function should print to the session:
 	
 	          app.Main
-	    An error occured. See app.error for more information.
+	    An error occurred. See app.error for more information.
 	
 	The variable `app.error` should be populated:
 	
@@ -565,7 +565,7 @@ The author of the function modifies it to exhibit certain error handling behavio
 	        ∇ Report names_values
 	          error←⊂↑⎕DM
 	          error,←⊂↑names_values
-	          ⎕←'An error occured. Error information in app.error:'
+	          ⎕←'An error occurred. Error information in app.error:'
 	          ⎕←error
 	        ∇
 	    
@@ -575,7 +575,7 @@ The author of the function modifies it to exhibit certain error handling behavio
 	1. Reinstate the `FILE NAME ERROR` and run `app.Main` again.
 		
 		          app.Main
-		    An error occured. Error information in app.error:
+		    An error occurred. Error information in app.error:
 		    ┌───────────────────────────────────────┬────────────────────┐
 		    │FILE NAME ERROR                        │┌────┬─────────────┐│
 		    │Hex[2] bytes←'UTF-8'∘⎕UCS¨⊃⎕NGET file 1││file│/tmp/file.txt││

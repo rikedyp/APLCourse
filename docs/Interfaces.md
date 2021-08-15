@@ -4,7 +4,7 @@ In an ideal world, we'd spend our entire lives blissfully in the warm comfort of
 In the real world, we must interface with external systems. After all, the entire point of learning this tool is to use it to solve real world problems.
 
 ## Name Association
-Sufficiently knowledgable programmers can interface directly between APL and a compiled library using `⎕NA`. Input and output data types must be explicitly declared. For more information see [the online documentation about ⎕NA](http://help.dyalog.com/latest/#Language/System%20Functions/na.htm).
+Sufficiently knowledgeable programmers can interface directly between APL and a compiled library using `⎕NA`. Input and output data types must be explicitly declared. For more information see [the online documentation about ⎕NA](http://help.dyalog.com/latest/#Language/System%20Functions/na.htm).
 
 ## APL as a Shared Library
 It is also possible to bundle an APL application as a compiled native shared or static object (.dll, .dylib or .so) which exposes APL functions and makes them accessible via another programming language or application's [foreign function interface](https://en.wikipedia.org/wiki/Foreign_function_interface). 

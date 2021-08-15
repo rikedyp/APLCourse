@@ -1,7 +1,7 @@
 # Shape Reshape
 
 ## Array basics
-1. Expermient with the expressions in the following block to gain an understanding of the functions used. 
+1. Experiment with the expressions in the following block to gain an understanding of the functions used. 
 1. Write a brief definition in English for each expression.  
 	For example: `{2×⍳⍵}   ⍝ Even integers from 2 to 2×⍵ inclusive`. 
 1. Use the language bar to discover the names of unfamiliar functions.

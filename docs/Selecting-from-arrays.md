@@ -191,7 +191,7 @@ Iverson's [dictionary of APL](https://www.jsoftware.com/papers/APLDictionary1.ht
 ### Search, sort, slice and select
 1. Write two indexing expressions which apply to a scalar and return that scalar
 
-1. Write a function `IRep` which is equivalent to `⍺/⍵` but uses indexing instead of replicat	e.
+1. Write a function `IRep` which is equivalent to `⍺/⍵` but uses indexing instead of replicate.
 
 1. `NVec ← '' '34' 'donut' ⍬` is a four-element nested vector. Use a single pick `⍺⊃⍵` to obtain the sub-item `'o'`.
 

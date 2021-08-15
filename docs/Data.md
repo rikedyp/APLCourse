@@ -131,7 +131,7 @@ Comma separated values are a very common and convenient . While we encourage you
 - Read data chunks at a time so as to not fill the workspace, using the "Records" variant option.
 
 ### ⎕JSON
-JSON is not only a convenient way to represent nested data structures, but also a convenient data representation for the modern web since it is natively handled by JavaScript. `⎕JSON` converts between APL arrays, including namespaces and text vector representions of JSON.
+JSON is not only a convenient way to represent nested data structures, but also a convenient data representation for the modern web since it is natively handled by JavaScript. `⎕JSON` converts between APL arrays, including namespaces and text vector representations of JSON.
 
 ```APL
       'ns'⎕NS⍬
@@ -342,7 +342,7 @@ The data contains the total measured monthly rain fall in millimeters for `30` r
 1. What was the total rainfall in Punjab in 1995?
 1. Which month in which region had the highest rainfall?
 1. Use a least squares linear fit to estimate the total rainfall in all 30 regions in 2018
-1. Use a least squares linear fit to estimate the total rainfall in Pubjab in 2018
+1. Use a least squares linear fit to estimate the total rainfall in Punjab in 2018
 
 	??? Hint
 		No one would expect you to derive an expression for the least squares linear fit with little APL experience. If you have done it, kudos to you. The expression `Mv(⊢⌹1,∘⍪⊣)Nv` from [APLcart](https://aplcart.info/?q=linear%20regression#) will compute coefficients of a least squares linear fit given a vector of X values `Mv` and a vector of Y values `Nv`.

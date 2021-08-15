@@ -66,7 +66,7 @@ Once your custom name (function, variable etc.) has been defined within ⎕SE, s
 
 which can also be [found on APLcart](https://aplcart.info/?q=save%20session%20configuration#).
 
-Of course, you might instead define `rep` in the root namespace when starting an exploratory coding session, for covenience.
+Of course, you might instead define `rep` in the root namespace when starting an exploratory coding session, for convenience.
 
 !!! Warning
 	Remember that others running your code base might not have comparable environments to that in which which you developed the code. Best practice is to ensure that all necessary code and data is contained locally within your application. 

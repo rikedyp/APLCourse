@@ -1,7 +1,7 @@
 # Operators
 
 ## About
-Dyalog APL is not a functional programming language, but those familiar with funcitonal languages will recognise APL's operators as [higher-order functions](https://en.wikipedia.org/wiki/Higher-order_function). Operators in Dyalog can be:
+Dyalog APL is not a functional programming language, but those familiar with functional languages will recognise APL's operators as [higher-order functions](https://en.wikipedia.org/wiki/Higher-order_function). Operators in Dyalog can be:
 
 - monadic (take a single left operand as in `F/`)
 - dyadic (take a left and a right operand as in `F⍤k`)
@@ -139,7 +139,7 @@ The definite integral of a real valued function can be interpreted as the area u
 Contrary to what introductory courses in calculus might lead you to believe, symbolic integration is not in general feasible. The function you want to integrate might not have an antiderivative in closed form (expressed in terms of “standard” mathematical functions; and even if it does, it might be too hard to find), or the function itself might not be given in closed form, but rather as the result of some measurement, simulation, or something similar. In such cases, numerical methods must be employed. There are several such methods, three of which we will implement in this problem set as APL user-defined operators.
 
 #### Trapezoid Rule
-In the trapezoid rule, the integral of a function $f$ over an interal $[a,b]$ is estimated by dividing $[a,b]$ into $n$ sub-intervals of size $\Delta x=(b-a)/n$, and approximating $f$ by a straight line within each (see the figure above). This means that $f$ only needs to be evaluated in the $n+1$ points ${x_i}=a+i\Delta x$. Putting it all together we get:
+In the trapezoid rule, the integral of a function $f$ over an interval $[a,b]$ is estimated by dividing $[a,b]$ into $n$ sub-intervals of size $\Delta x=(b-a)/n$, and approximating $f$ by a straight line within each (see the figure above). This means that $f$ only needs to be evaluated in the $n+1$ points ${x_i}=a+i\Delta x$. Putting it all together we get:
 
 ${T_n}={{\Delta x}\over{2}}(f(x_0)+2f(x_1)+2f(x_2)+\cdots+2f(x_{n-1})+f(x_n))$
 

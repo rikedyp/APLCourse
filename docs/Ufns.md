@@ -11,7 +11,7 @@ So far, we have been reading and writing [dfns](https://aplwiki.com/wiki/Dfn).
  Fn ← {⍺⍵}                 ⍝ We can give functions names
 ```
 
-It is also possible to name functions which do not explicity refer to their arguments. This is called [tacit](https://aplwiki.com/wiki/Tacit_programming) or *point-free* programming.
+It is also possible to name functions which do not explicitly refer to their arguments. This is called [tacit](https://aplwiki.com/wiki/Tacit_programming) or *point-free* programming.
 
 ```APL
       Plus ← +
@@ -109,7 +109,7 @@ A tradfn header reflects the calling syntax of the function.
 
 1. Try calling `TradFn` with one and two arguments. How can the result be made to display to the session? 
 1. Inspect the variable `global` after calling `TradFn` with different arguments.
-1. Step through the function using `Ctrl+Enter`. Inpect `⎕NC'optional'` when `TradFn` is called with one argument and when it is called with two arguments.
+1. Step through the function using `Ctrl+Enter`. Inspect `⎕NC'optional'` when `TradFn` is called with one argument and when it is called with two arguments.
 
 Here is the smallest tradfn:
 ```APL
@@ -372,7 +372,7 @@ You were led to produce some function or expression similar to the following:
 
 This is an array-oriented solution to this problem. However, if a human was manually grading test scores, they might take one scored paper at a time and decide on which letter grade to write by reading each score.
 
-Procedural [psuedocode](https://en.wikipedia.org/wiki/Pseudocode):
+Procedural [pseudocode](https://en.wikipedia.org/wiki/Pseudocode):
 
 ```pseudocode
 scores = 93,85,45,10,70,16,93,63,41,7,95,45,76
