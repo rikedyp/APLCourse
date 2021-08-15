@@ -247,7 +247,7 @@ Errors can occur due to a mistakenly written piece of code. However, even a perf
 You should test inputs explicitly using APL primitives. It can be tempting to use `:Trap 0` to force alternative behaviour for unexpected inputs. However, trapping all errors should only really be done in order for your application to fail safely for the sake of end users. Best practice is to think carefully about the properties of valid inputs to your functions, and signal errors or otherwise indicate to the user that an invalid input has been attempted.
 
 ## Pass it on
-`⎕DMX` is a namespace containing information about the last occuring error. Recent versions of Dyalog can display its contents in a human-readable JSON format:
+`⎕DMX` is a system object containing information about the last occuring error. Recent versions of Dyalog can display its contents in a human-readable JSON format:
 
 ```APL
       (⎕JSON⍠'Compact' 0)⎕DMX   
@@ -452,26 +452,136 @@ Use the documentation and your own knowledge to find expressions to test for the
 	In terms of its structure, what happens to the value of `⎕TRAP` if you only assign a single 3-element vector?
 
 ### Can you fix it?
+This scripted namespace defines a toy app to read a UTF-8 text file and convert its data to hexadecimal representation.
 
-**TO DO**
+```APL
+:Namespace app
 
-1. The following tradfn has a deliberate fault. 
+    file←'/tmp/file.txt'
+
+    ∇ Main
+      Hex file
+    ∇
+
+    ∇ hex←Hex file;bytes;⎕TRAP
+      bytes←'UTF-8'∘⎕UCS¨⊃⎕NGET file 1
+      hex←↑{,⍉3↑(⎕D,⎕A)[16 16⊤⍵]}¨bytes
+    ∇
+
+:EndNamespace
+```
+
+The author of the function modifies it to exhibit certain error handling behaviours. Unfortunately, their code has bugs. Investigate the following scenarios and try to solve the issues.
+
+1.  
 	
-	<pre><code class="language-APL">    ∇  QuadTrap arg
-	[1]    ⎕TRAP←(5 'C' '→Err')(11 'C' '''Bad arg''')
-	[2]    Bar arg
-	[3]    ⎕←'Completed successfully'
-	[4]    →0
-	[5]   Err:⎕TRAP←0 'S'
-	[6]    ⎕←'Bad length'
-	    ∇  </code></pre>
-
-	Experiment with the function and fix the issue.
-
-1. A cut too far
+	The author has set up error trapping. They are aware of a potential `FILE NAME ERROR`, but have also set up a global trap in case any unexpected errors occur.
 	
-	Set `⎕TRAP` at multiple levels (functions)
-	Use dynamic scope to set up
-	Information at inner levels. Set up scenarios where info is lost at each level
+	    :Namespace app
+	    
+	        file←'/tmp/file.txt'
+	    
+	        ∇ Main;⎕TRAP
+	          ⎕TRAP←0 'E' 'Report ⋄ →0'
+	          Hex file
+	        ∇
+	    
+	        ∇ hex←Hex file;bytes
+	          ⎕TRAP←22 'C' '→ERROR'
+	          bytes←'UTF-8'∘⎕UCS¨⊃⎕NGET file 1
+	          hex←↑{,⍉3↑(⎕D,⎕A)[16 16⊤⍵]}¨bytes
+	          →0
+	          
+	         ERROR:
+	          Report
+	        ∇
+	    
+	        ∇ Report
+	          error←↑⎕DM
+	          ⎕←'An error occured. See app.error for more information.'
+	        ∇
+	    
+	    :EndNamespace
+	
+	Unfortunately, the function suspends with an unexpected `VALUE ERROR`.
+		
+	    VALUE ERROR: Undefined name: ERROR
+	          →ERROR
+	           ∧
+	
+	After modifying the code, the function should print to the session:
+	
+	          app.Main
+	    An error occured. See app.error for more information.
+	
+	The variable `app.error` should be populated:
+	
+	          ⎕←app.error
+	    FILE NAME ERROR                        
+	    Hex[2] bytes←'UTF-8'∘⎕UCS¨⊃⎕NGET file 1
+	                               ∧           
+	
 
-1. Dfns guards problem
+1.  
+	
+	Now that the file name error is handled, they want to test the application using a file. Paste the following into a text editor and save it somewhere. Update `app.file` to point to the correct location.
+	
+	    sample text
+	
+	Running `app.Main` reveals either 1 or 2 more bugs:
+	
+	- Running the function now results in an `INDEX ERROR`.
+	- The global trap did not catch the `INDEX ERROR`.
+	
+	Fix the remaining bugs. The application should successfully convert the file now:
+	
+	          app.Main
+	    73 61 6D 70 6C 65 20 74 65 78 74 
+	
+
+1.  
+	
+	Finally, the author decides it would be more useful if `app.error` contained more information about the error, and also that the `Report` function should display this directly in the session as well.
+	
+	    :Namespace app
+	    
+	        file←'/tmp/file.txt'
+	    
+	        ∇ Main;⎕TRAP
+	          ⎕TRAP←0 'E' 'Report {⍵(⍎⍵)}¨⎕NL¯2 ⋄ →0'
+	          Hex file
+	        ∇
+	    
+	        ∇ hex←Hex file;bytes
+	          ⎕TRAP←22 'C' '→ERROR'
+	          bytes←'UTF-8'∘⎕UCS¨⊃⎕NGET file 1
+	          hex←↑{,⍉3↑(⎕D,⎕A)[16 16⊤⍵]}¨bytes
+	          →0
+	          
+	         ERROR:
+	          Report⊂'file' file
+	        ∇
+	    
+	        ∇ Report names_values
+	          error←⊂↑⎕DM
+	          error,←⊂↑names_values
+	          ⎕←'An error occured. Error information in app.error:'
+	          ⎕←error
+	        ∇
+	    
+	    :EndNamespace
+	
+	1. Turn `]box -fns=on`
+	1. Reinstate the `FILE NAME ERROR` and run `app.Main` again.
+		
+		          app.Main
+		    An error occured. Error information in app.error:
+		    ┌───────────────────────────────────────┬────────────────────┐
+		    │FILE NAME ERROR                        │┌────┬─────────────┐│
+		    │Hex[2] bytes←'UTF-8'∘⎕UCS¨⊃⎕NGET file 1││file│/tmp/file.txt││
+		    │                           ∧           │└────┴─────────────┘│
+		    └───────────────────────────────────────┴────────────────────┘
+	
+	1. Reinstate the `INDEX ERROR` and run `app.Main` again at least twice. 
+		1. What do you notice about `app.error`?
+		1. Try to solve this issue. There is more than one valid solution.

@@ -73,6 +73,14 @@ Square brackets have a magic trick up their sleeve. Simple indexing with square 
       (2 3 4⍴⎕A)[(1 1 1)(2 1 4)(1 3 4)]
 ```
 
+An interesting relationship appears between indices into an array and indices into its ravel when `⎕IO←0`:
+
+```APL
+      ⎕IO←0
+      (2 3 4⍴⎕A)[↓[0]2 3 4⊤0 15 11]
+      ⎕A⌷⍨⊂2 3 4⊥↑[0](0 0 0)(1 0 3)(0 2 3)
+```
+
 ### Reach indexing
 Indexing into an array will retrieve some cell of an array. If it is a nested array, then selecting a scalar will return an enclosed array. Sometimes what you actually want is the item inside of that scalar.
 

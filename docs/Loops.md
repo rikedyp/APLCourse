@@ -103,7 +103,7 @@ We can express this with the **power** operator:
 ## Primitive iterations are still loops
 You might have noticed this already, but it is important to know that the rank operator `F⍤j k l` is conceptually a loop. It just happens to be that certain operations are parallelisable, and some of those are parallelised within the Dyalog interpreter.
 
-We will give some details later in [the section on performance](../performance.md).
+We will give some details later in [the section on performance](../Interpreter-internals/#performance).
 
 ## Reduction is a loop
 Primitive reductions are often optimised. For example, **plus-reduction** `+/` is able to take advantage of [vector instructions](https://dyalog.tv/Dyalog19/?v=TqmpSP8Knvg) on certain machines and **and-reduction** `∧/` can quit early if a zero is found in the array.

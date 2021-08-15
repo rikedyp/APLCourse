@@ -35,15 +35,15 @@ nav:
   - Loops and Recursion: Loops.md
   - Extra Assignment: Assignment.md
   - Workspace Basics: Workspaces.md
-  - Namespaces and other objects: Namespaces.md
+  - Namespaces and Other Objects: Namespaces.md
   - Getting Help: Help.md
-  - User-defined functions: Ufns.md
+  - User-defined Functions: Ufns.md
   - Operators: Operators.md
-  - Quad names: Quad names.md
+  - Quad Names: Quad names.md
   - Error Handling and Debugging: Errors.md
   - Data IO: Data.md
   - Code IO: Code.md
-  - External interfaces: Interfaces.md
-  - Historical quirks: Quirks.md
-  - Interpreter internals: Interpreter-internals.md
-  - Further reading: Reading.md
+  - External Interfaces: Interfaces.md
+  - Historical Quirks: Quirks.md
+  - Interpreter Internals: Interpreter-internals.md
+  - Further Reading: Reading.md
