@@ -1191,7 +1191,7 @@ LEADING AXIS MISMATCH
 <li>Namespace references</li>
 <li>Namespace names as character arrays</li>
 <li>
-<p><a href="https://en.wikipedia.org/wiki/Symmetric_matrix">Symmetic matrices</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Symmetric_matrix">Symmetric matrices</a></p>
 </li>
 <li>
 <p>In general, you assign a nested vector of 3-element vectors to <code>⎕TRAP</code>, each of the form <code>(numbers 'X' 'string')</code>. </p>
@@ -1240,7 +1240,7 @@ LEADING AXIS MISMATCH
 
     ∇ Report
       error←↑⎕DM
-      ⎕←'An error occured. See app.error for more information.'
+      ⎕←'An error occurred. See app.error for more information.'
     ∇
 
 :EndNamespace
@@ -1252,7 +1252,7 @@ LEADING AXIS MISMATCH
 </code></pre>
 <p>After modifying the code, the function should print to the session:</p>
 <pre class="highlight"><code>      app.Main
-An error occured. See app.error for more information.
+An error occurred. See app.error for more information.
 </code></pre>
 <p>The variable <code>app.error</code> should be populated:</p>
 <pre class="highlight"><code>      ⎕←app.error
@@ -1299,7 +1299,7 @@ Hex[2] bytes←'UTF-8'∘⎕UCS¨⊃⎕NGET file 1
     ∇ Report names_values
       error←⊂↑⎕DM
       error,←⊂↑names_values
-      ⎕←'An error occured. Error information in app.error:'
+      ⎕←'An error occurred. Error information in app.error:'
       ⎕←error
     ∇
 
@@ -1310,7 +1310,7 @@ Hex[2] bytes←'UTF-8'∘⎕UCS¨⊃⎕NGET file 1
 <li>
 <p>Reinstate the <code>FILE NAME ERROR</code> and run <code>app.Main</code> again.</p>
 <pre class="highlight"><code>      app.Main
-An error occured. Error information in app.error:
+An error occurred. Error information in app.error:
 ┌───────────────────────────────────────┬────────────────────┐
 │FILE NAME ERROR                        │┌────┬─────────────┐│
 │Hex[2] bytes←'UTF-8'∘⎕UCS¨⊃⎕NGET file 1││file│/tmp/file.txt││

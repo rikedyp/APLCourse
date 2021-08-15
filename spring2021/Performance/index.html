@@ -526,6 +526,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -534,14 +536,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#performance" class="md-nav__link">
-    Performance
-  </a>
-  
-    <nav class="md-nav" aria-label="Performance">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#flat-array-techniques" class="md-nav__link">
     Flat array techniques
   </a>
@@ -560,51 +554,39 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#loop-sometimes" class="md-nav__link">
     Loop sometimes
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#rank-in-general" class="md-nav__link">
     Rank in general
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#reduction-in-general" class="md-nav__link">
     Reduction in general
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#scan-in-general" class="md-nav__link">
     Scan in general
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#idioms" class="md-nav__link">
     Idioms
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#philosophical-tangent" class="md-nav__link">
-    Philosophical tangent
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -621,40 +603,17 @@
               
                 
                 
-                  <h1>Performance</h1>
-                
-                <h2 id="performance">Performance</h2>
+                <h1 id="performance">Performance</h1>
 <p>This course is intended to teach not only the symbols, syntax and system interactions of Dyalog APL, but also to try and teach you <em>the APL way</em>. This is a combination of array-oriented problem solving and deft ability to combine primitives to solve all manner of problems using computers.</p>
-<p>There are some inherent benefits to APL, such as the fact that exploring with APL can often lead you to optimal solutions to particular types of problems. Not only this, but the terseness makes it very easy to experiment and play with different approaches to the same problem.</p>
+<p>There are some inherent benefits to APL, such as the fact that exploring with APL can often lead you to optimal solutions to particular types of problems. Not only this, but the terseness makes it very easy to play with different approaches to the same problem, usually to improve readability or performance.</p>
 <p>Besides APL itself, however, there are particular techniques, considerations, and special optimisations within the Dyalog interpreter that you should be aware of in case you find a performance bottleneck in your application and are wondering how to solve it.</p>
-<h3 id="flat-array-techniques">Flat array techniques</h3>
-<h4 id="peppery-code">Peppery code</h4>
-<p>One of the code smells in APL is large amounts of code to achieve something relatively simple. This is usually (but not always!) an indication that the problem can be thought of in a different way to achieve a more elegant and efficient solution.</p>
-<p>Another code smell is when a solution is littered with the each operator <code>F¨</code> . These are explicit looping operations and often suggest that the code can be re-written to take advantage of the implicit iteration and potential parallelisation of the core primitives acting on flat arrays.</p>
-<pre><code class="language-APL">      arg←?5 3⍴10
-
-      ]runtime -c &quot;{⌊0.5+(+⌿÷≢)⍉⍵}arg&quot; &quot;{⌊0.5+(+/⍵)÷⊃⌽⍴⍵}arg&quot; &quot;{⌊0.5+¨(+/¨s)÷c←≢¨s←↓⍵}arg&quot;
-</code></pre>
-<pre><code>
-  {⌊0.5+(+⌿÷≢)⍉⍵}arg         → 1.1E¯6 |   0% ⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕                
-  {⌊0.5+(+/⍵)÷⊃⌽⍴⍵}arg       → 8.6E¯7 | -25% ⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕                      
-  {⌊0.5+¨(+/¨s)÷c←≢¨s←↓⍵}arg → 1.8E¯6 | +60% ⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕⎕ 
-</code></pre>
-<h3 id="loop-sometimes">Loop sometimes</h3>
-<p>Some types of algorithms really aren't amenable to parallelisation and array-oriented techniques. These are usually problems with heavy dependence on intermediate results. Sometimes they can be encoded in a custom scan or reduction, but the overall algorithm isn't able to take advantage of parallelisation that primitive scans and reductions can.</p>
-<p>Another consideration is that sometimes an elegant-looking solution in APL is quite inefficient. Take the prime number filter we saw early on:</p>
-<pre><code class="language-APL">Primes ← {⍸2=+⌿0=∘.|⍨⍳⍵}</code></pre>
-
-<p>An alternative coding uses the multiplication table:</p>
-<pre><code class="language-APL">Primes ← {i~∘.×⍨i←1↓⍳⍵}</code></pre>
-
-<p>Of course, the outer product <code>∘.F</code> indicates that the number of calculations to compute both of these solutions increases with the square of the input size. We say they have a computational complexity "<em>of order n squared</em>" or <span class="arithmatex">\(O(n^2)\)</span> in <a href="https://en.wikipedia.org/wiki/Big_O_notation">big-O notation</a>. This is a very inefficient way to find prime numbers.</p>
-<p>To see discussions around more efficient ways to compute prime numbers in APL, see <a href="https://dfns.dyalog.com/n_pco.htm">the dfns page on prime numbers</a>.</p>
-<p>Put simply, the fastest algorithm in general is the one which performs the fewest computations. Sometimes there are solutions in APL which use a relatively large amount of memory but are fast in time due to optimised primitives. However, sometimes the domain of the problem grows so large that even these solutions are outperformed by a scalar looping solution. When this is the case, if performance is very important for this part of your application, it can be a good idea to search for pre-existing high performance solutions, or to write the solution in a lower level language, and use <code>⎕NA</code> to integrate it with your APL code.</p>
-<h3 id="rank-in-general">Rank in general</h3>
-<h3 id="reduction-in-general">Reduction in general</h3>
-<h3 id="scan-in-general">Scan in general</h3>
-<h3 id="idioms">Idioms</h3>
+<h2 id="flat-array-techniques">Flat array techniques</h2>
+<h3 id="peppery-code">Peppery code</h3>
+<h2 id="loop-sometimes">Loop sometimes</h2>
+<h2 id="rank-in-general">Rank in general</h2>
+<h2 id="reduction-in-general">Reduction in general</h2>
+<h2 id="scan-in-general">Scan in general</h2>
+<h2 id="idioms">Idioms</h2>
 <p>APL idioms are short expressions to perform certain tasks. <a href="https://aplcart.info">APLcart</a> is a comprehensive, searchable list of idioms. Some of these include slightly obscure but performant versions of particular tasks, especially those related to <a href="">partitioned functions</a>.</p>
 <p>In Dyalog APL, there are also "idioms" which are specially recognised phrases, or combinations of characters, which are treated as individual tokens and executed with special code, rather than parsed symbol-by-symbol and executed function-at-a-time. These offer significant performance improvements for particular tasks, and are all listed:</p>
 <ul>
@@ -662,10 +621,6 @@
 <li><a href="https://docs.dyalog.com/17.1/CheatSheet%20-%20Idioms.pdf">17.1</a></li>
 <li><a href="https://help.dyalog.com/12.1/index.html?page=html%2Fidiom%20list.htm">12.1</a></li>
 </ul>
-<h3 id="philosophical-tangent">Philosophical tangent</h3>
-<p>In an ideal world, programmers could focus on writing purely the "most readable" or "most maintainable" versions of their code. Or, in some sense, simply write "whatever feels right" and the interpreter or compiler could analyse the program and determine the optimal. This is part of what compilers hope to achieve. However, even in one the strongest attempts at this so far, Julia, they emphasise that you still need to learn to write "idiomatic Julia" code. This means understanding how the language works both in terms of semantics and which constructs can be written in a particular way to lead to high performance.</p>
-<p>In Dyalog APL, one example of this is in the primitive operators.</p>
-<p>The key operator <code>F⌸</code> applies its operand function <code>F</code> to grouped major cells of its argument array. An alternative approach is to have a function <code>{⊂⍵}⌸</code> perform the grouping first and then to apply using each <code>F¨{⊂⍵}⌸</code> . The end result of the computation is the same, but by having an operator, the interpreter implementors can use especially efficient special code for certain operand functions.</p>
                 
               
               

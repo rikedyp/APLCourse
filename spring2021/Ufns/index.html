@@ -807,7 +807,7 @@
       {⍵&gt;0:⍵,∇ ⍵-1 ⋄ ⍵}5   ⍝ Guard is : (colon). The function itself is ∇ (del)
  Fn ← {⍺⍵}                 ⍝ We can give functions names
 </code></pre>
-<p>It is also possible to name functions which do not explicity refer to their arguments. This is called <a href="https://aplwiki.com/wiki/Tacit_programming">tacit</a> or <em>point-free</em> programming.</p>
+<p>It is also possible to name functions which do not explicitly refer to their arguments. This is called <a href="https://aplwiki.com/wiki/Tacit_programming">tacit</a> or <em>point-free</em> programming.</p>
 <pre><code class="language-APL">      Plus ← +
       IndicesTo ← ⍳
       _Reduce ← /      
@@ -887,7 +887,7 @@ To use the partition function in version 12.1 (represented by <code>⍺⊆⍵</c
 <ol>
 <li>Try calling <code>TradFn</code> with one and two arguments. How can the result be made to display to the session? </li>
 <li>Inspect the variable <code>global</code> after calling <code>TradFn</code> with different arguments.</li>
-<li>Step through the function using <code>Ctrl+Enter</code>. Inpect <code>⎕NC'optional'</code> when <code>TradFn</code> is called with one argument and when it is called with two arguments.</li>
+<li>Step through the function using <code>Ctrl+Enter</code>. Inspect <code>⎕NC'optional'</code> when <code>TradFn</code> is called with one argument and when it is called with two arguments.</li>
 </ol>
 <p>Here is the smallest tradfn:</p>
 <pre><code class="language-APL">      ∇ T
@@ -1103,7 +1103,7 @@ If you need global constants, it is a good idea to create them in a function in 
       Grade 95 65 92 77
 </code></pre>
 <p>This is an array-oriented solution to this problem. However, if a human was manually grading test scores, they might take one scored paper at a time and decide on which letter grade to write by reading each score.</p>
-<p>Procedural <a href="https://en.wikipedia.org/wiki/Pseudocode">psuedocode</a>:</p>
+<p>Procedural <a href="https://en.wikipedia.org/wiki/Pseudocode">pseudocode</a>:</p>
 <pre><code class="language-pseudocode">scores = 93,85,45,10,70,16,93,63,41,7,95,45,76
 For each score in scores:
   If score is greater than 80:

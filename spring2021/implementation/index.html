@@ -18,7 +18,7 @@
     
     
       
-        <title>Interpreter Internals - APL Course</title>
+        <title>Implementation details - APL Course</title>
       
     
     
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#interpreter-internals" class="md-skip">
+        <a href="#implementation-details" class="md-skip">
           Skip to content
         </a>
       
@@ -94,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Interpreter Internals
+              Implementation details
             
           </span>
         </div>
@@ -536,96 +536,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#to-do" class="md-nav__link">
-    to do
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#arrays" class="md-nav__link">
-    Arrays
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#storage" class="md-nav__link">
-    Storage
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#data-types" class="md-nav__link">
-    Data types
-  </a>
-  
-    <nav class="md-nav" aria-label="Data types">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#character" class="md-nav__link">
-    Character
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#number" class="md-nav__link">
-    Number
-  </a>
-  
-    <nav class="md-nav" aria-label="Number">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#comparison-tolerance" class="md-nav__link">
-    Comparison tolerance
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#value-types" class="md-nav__link">
-    Value types
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#reference-types" class="md-nav__link">
-    Reference types
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#apl-item-hierarchy" class="md-nav__link">
-    APL item hierarchy
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#floating-point-representation" class="md-nav__link">
-    Floating-point representation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#comparison-tolerance_1" class="md-nav__link">
     Comparison tolerance
   </a>
   
@@ -644,174 +555,9 @@
               
                 
                 
-                <h1 id="interpreter-internals">Interpreter Internals</h1>
+                <h1 id="implementation-details">Implementation details</h1>
 <p>Just some of the nitty-gritty under the covers. Not too much.</p>
-<h2 id="to-do">to do</h2>
-<ul>
-<li>configuration parameters, registry settings and environment variables</li>
-</ul>
-<h2 id="arrays">Arrays</h2>
-<p>In Dyalog, arrays can have up to 15 dimensions. This is a technical limitation that might be increased in the future.</p>
-<h2 id="storage">Storage</h2>
-<p>Memory allocated to store an array needs space for:</p>
-<ul>
-<li>Each element of the array (which could be a reference to another array)</li>
-<li><code>8×≢⍴array</code> bytes for the shape (<code>4×</code> in 32-bit)</li>
-<li>4 bytes for the type/rank</li>
-</ul>
-<p>For a reference, the object requires an 8-byte pointer, plus space for the contents of the object.</p>
-<h2 id="data-types">Data types</h2>
-<p>Internally, Dyalog represents data with the following types. As a program runs, occasionally the interpreter will squeeze arrays into the smallest data type that can represent a particular figure, which helps keep memory usage low and may allow the interpreter to use vectorised instructions for certain operations on certain data types.</p>
-<h3 id="character">Character</h3>
-<pre><code>      ⎕DR'APL'           ⍝ 1-byte
-80
-      ⎕DR'配列'           ⍝ 2-byte
-160
-      ⎕DR⎕←⎕UCS 128077   ⍝ 4-byte
-👍
-320
-</code></pre>
-<h3 id="number">Number</h3>
-<pre><code>      ⎕DR 1 0 1 0 1 0   ⍝ 1 bit
-11
-      ⎕DR 42            ⍝ 1 byte
-83
-      ⎕DR 128           ⍝ 2 byte
-163
-      ⎕DR 2*15          ⍝ 4 byte
-323
-      ⎕DR 0J1           ⍝ Complex (2×8 byte double)
-1289
-</code></pre>
-<h4 id="comparison-tolerance">Comparison tolerance</h4>
-<p>APL systems prefer to act like traditional arithmetic where possible. However, the base-2 (binary) representation used by computers is unable to represent certain decimal numbers precisely. Therefore, floating point arithmetic voids certain mathematical properties:</p>
-<p><span class="arithmatex">\({{1}\over{3}} = 3 \times {{5}\over{9}} \div 5\)</span></p>
-<pre><code class="language-APL">      ⎕CT←1e¯14   ⍝ Default comparison tolerance
-      (1÷3)=3×(5÷9)÷5
-</code></pre>
-<pre><code>1
-</code></pre>
-<hr />
-<pre><code class="language-APL">      ⎕CT←0       ⍝ No comparison tolerance
-      (1÷3)=3×(5÷9)÷5
-</code></pre>
-<pre><code>0
-</code></pre>
-<hr />
-<pre><code class="language-APL">      ⎕CT←1E¯14
-      1=1 + 10 * -⎕←⍳16
-</code></pre>
-<pre><code>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 
-0 0 0 0 0 0 0 0 0  0  0  0  0  1  1  1 
-</code></pre>
-<p>For exact comparisons set <code>⎕CT</code> to <code>0</code>, but beware:</p>
-<pre><code class="language-APL">      10=+/100⍴0.1
-</code></pre>
-<pre><code>1
-</code></pre>
-<hr />
-<pre><code class="language-APL">      ⎕CT←0
-      10=+/100⍴0.1
-</code></pre>
-<pre><code>0
-</code></pre>
-<hr />
-<pre><code class="language-APL">      10-+/100⍴0.1
-</code></pre>
-<pre><code>1.953992523E¯14
-</code></pre>
-<p><code>⎕DCT</code> decimal comparison tolerance</p>
-<h3 id="value-types">Value types</h3>
-<p>If more than one name points to the same array value:</p>
-<pre><code>      a←b←1 2 3 4
-</code></pre>
-<p>then there is a reference count internally, and only one copy of the data is stored in memory.</p>
-<p>If one of those arrays is modified:</p>
-<pre><code>      b[2]←99
-</code></pre>
-<p>then a copy of the data is taken at that point so that other arrays are unaffected:</p>
-<pre><code>      a b
-┌───────┬────────┐
-│1 2 3 4│1 99 3 4│
-└───────┴────────┘
-</code></pre>
-<p>For a nested array, however, the elements are separate.</p>
-<pre><code>      a←b←(1 2 3)(4 5)
-</code></pre>
-<p>if one of the elements is modified</p>
-<pre><code>      b[⊂2 1]←99
-</code></pre>
-<p>then the other elements remain shared between names. In this example, the <code>1 2 3</code> array remains shared.</p>
-<h3 id="reference-types">Reference types</h3>
-<p>While APL arrays are pass-by-value, namespaces and other objects are pass-by-reference.</p>
-<pre><code>      nsref←⎕NS⍬
-      jsonref←⎕JSON'{}'
-      ⎕FIX':Class myclass' ':Endclass'
-      ⎕DR¨nsref jsonref myclass
-326 326 326
-</code></pre>
-<p>If two names point to the same namespace, changes made using one name will affect the results of the other.</p>
-<pre><code>      ns1←ns2←⎕NS⍬
-      ns1.var←1 2 3
-      ns2.var
-1 2 3
-</code></pre>
-<p>To create multiple namespaces on the same line using <a href="">strand assignment</a>, make multiple calls to <code>⎕NS</code>:</p>
-<pre><code>      (ns1 ns2)←⎕NS¨2⍴⊂⍬
-      ns1.var←1 2 3
-      ns2.var
-VALUE ERROR: Undefined name: var
-      ns2.var
-          ∧
-
-</code></pre>
-<p>To copy the contents of a namespace so that changes to the new copy do not affect the original, take a <strong>deep copy</strong> using <code>⎕NS</code>:</p>
-<pre><code>      ns1←⎕NS⍬
-      ns1.var←1 2 3
-      ns2←⎕NS ns1
-      ns2.var[2]←99
-      (ns1 ns2).var
-┌─────┬──────┐
-│1 2 3│1 99 3│
-└─────┴──────┘
-</code></pre>
-<p>Although namespaces are pass-by-reference, the references themselves are still values:</p>
-<pre><code>      (ns1 ns2)←⎕NS¨2⍴⊂⍬
-      (ns1 ns2).var←42 99
-      a←ns1
-      a.var
-42
-      a←ns2
-      a.var
-99
-</code></pre>
-<h2 id="apl-item-hierarchy">APL item hierarchy</h2>
-<p>This useful chart shows what operations are valid for different kinds of items.</p>
-<p><img alt="APL item hierarchy" src="../img/APL_Citizens.png" /></p>
-<h2 id="floating-point-representation">Floating-point representation</h2>
-<p>There are also 16-byte decimal floating point numbers available, but you need to enable them with <code>⎕FR</code>.</p>
-<pre><code>      ⎕PP←34
-      ○1
-3.141592653589793
-      ⎕FR←645    ⍝ 64-bit float (default)
-      ○1
-3.141592653589793
-      ⎕FR←1287   ⍝ 128-bit decimal
-      ○1
-3.141592653589793238462643383279503
-</code></pre>
-<h2 id="comparison-tolerance_1">Comparison tolerance</h2>
-<pre><code>      ⎕FR←645 ⋄ ⎕CT
-1E¯14
-      1⍳⍨⎕←1=1+10*-⍳20
-0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1
-14
-      ⎕FR←1287 ⋄ ⎕DCT
-1E¯28
-      20+1⍳⍨⎕←1=1+10*-20+⍳10
-0 0 0 0 0 0 0 1 1 1
-28
-</code></pre>
+<h2 id="comparison-tolerance">Comparison tolerance</h2>
                 
               
               

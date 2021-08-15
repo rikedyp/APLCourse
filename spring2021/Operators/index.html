@@ -897,7 +897,7 @@
                 
                 <h1 id="operators">Operators</h1>
 <h2 id="about">About</h2>
-<p>Dyalog APL is not a functional programming language, but those familiar with funcitonal languages will recognise APL's operators as <a href="https://en.wikipedia.org/wiki/Higher-order_function">higher-order functions</a>. Operators in Dyalog can be:</p>
+<p>Dyalog APL is not a functional programming language, but those familiar with functional languages will recognise APL's operators as <a href="https://en.wikipedia.org/wiki/Higher-order_function">higher-order functions</a>. Operators in Dyalog can be:</p>
 <ul>
 <li>monadic (take a single left operand as in <code>F/</code>)</li>
 <li>dyadic (take a left and a right operand as in <code>F⍤k</code>)</li>
@@ -1033,7 +1033,7 @@
 </center></p>
 <p>Contrary to what introductory courses in calculus might lead you to believe, symbolic integration is not in general feasible. The function you want to integrate might not have an antiderivative in closed form (expressed in terms of “standard” mathematical functions; and even if it does, it might be too hard to find), or the function itself might not be given in closed form, but rather as the result of some measurement, simulation, or something similar. In such cases, numerical methods must be employed. There are several such methods, three of which we will implement in this problem set as APL user-defined operators.</p>
 <h4 id="trapezoid-rule">Trapezoid Rule</h4>
-<p>In the trapezoid rule, the integral of a function <span class="arithmatex">\(f\)</span> over an interal <span class="arithmatex">\([a,b]\)</span> is estimated by dividing <span class="arithmatex">\([a,b]\)</span> into <span class="arithmatex">\(n\)</span> sub-intervals of size <span class="arithmatex">\(\Delta x=(b-a)/n\)</span>, and approximating <span class="arithmatex">\(f\)</span> by a straight line within each (see the figure above). This means that <span class="arithmatex">\(f\)</span> only needs to be evaluated in the <span class="arithmatex">\(n+1\)</span> points <span class="arithmatex">\({x_i}=a+i\Delta x\)</span>. Putting it all together we get:</p>
+<p>In the trapezoid rule, the integral of a function <span class="arithmatex">\(f\)</span> over an interval <span class="arithmatex">\([a,b]\)</span> is estimated by dividing <span class="arithmatex">\([a,b]\)</span> into <span class="arithmatex">\(n\)</span> sub-intervals of size <span class="arithmatex">\(\Delta x=(b-a)/n\)</span>, and approximating <span class="arithmatex">\(f\)</span> by a straight line within each (see the figure above). This means that <span class="arithmatex">\(f\)</span> only needs to be evaluated in the <span class="arithmatex">\(n+1\)</span> points <span class="arithmatex">\({x_i}=a+i\Delta x\)</span>. Putting it all together we get:</p>
 <p><span class="arithmatex">\({T_n}={{\Delta x}\over{2}}(f(x_0)+2f(x_1)+2f(x_2)+\cdots+2f(x_{n-1})+f(x_n))\)</span></p>
 <p>Write an APL operator, <code>_Trapezoid</code>, that:</p>
 <ul>

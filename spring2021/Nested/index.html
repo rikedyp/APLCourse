@@ -540,34 +540,54 @@
     Enclose Enlist
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Enclose Enlist">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#session-toolbelt" class="md-nav__link">
     Session Toolbelt
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#depth" class="md-nav__link">
     Depth
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#each-a-primitive-for-explicit-loops" class="md-nav__link">
-    Each: a primitive for explicit loops
+        
+          <li class="md-nav__item">
+  <a href="#primitive-loops" class="md-nav__link">
+    Primitive Loops
   </a>
   
-    <nav class="md-nav" aria-label="Each: a primitive for explicit loops">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#options" class="md-nav__link">
     Options
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#word-problems" class="md-nav__link">
+    Word Problems
+  </a>
+  
+    <nav class="md-nav" aria-label="Word Problems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rank-practice" class="md-nav__link">
+    Rank Practice
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -609,9 +629,9 @@
 <p class="admonition-title">Version Warning</p>
 <p>The <code>]box</code> user command is not available in version 12.1. Use <code>]disp</code> or <code>]display</code> instead.</p>
 </div>
-<h2 id="session-toolbelt">Session Toolbelt</h2>
+<h3 id="session-toolbelt">Session Toolbelt</h3>
 <p>Dyalog provides a native <a href="">IDE</a> for Microsoft Windows, and the <a href="">Remote IDE</a> for macOS and Linux. As well as the text-editor-like APL session, these provide some additional tools and shortcuts to make working with Dyalog easier. <a href="https://www.dyalog.com/getting-started/tips.htm">Click here</a> to learn about some of these.</p>
-<h2 id="depth">Depth</h2>
+<h3 id="depth">Depth</h3>
 <p>We introduced <a href="https://aplwiki.com/wiki/Strand_notation">stranding</a> to show how it formed vectors before the application of dyadic functions, for example:</p>
 <pre><code class="language-APL">      2 + 2 2 + 2   
       2 + 2 (2 + 2)
@@ -655,7 +675,7 @@
 <p>When does <code>(↑a b)≡a⍪b</code>?</p>
 </li>
 </ol>
-<h2 id="each-a-primitive-for-explicit-loops">Each: a primitive for explicit loops</h2>
+<h3 id="primitive-loops">Primitive Loops</h3>
 <p>Experiment with the following expressions to determine what the each <code>¨</code> and bind <code>∘</code> operators do in this context.</p>
 <pre><code class="language-APL">      's',¨'ong' 'ink' 'and'
       'lph',¨'ong' 'ink' 'and'
@@ -683,12 +703,8 @@
 └───┴────┴───┘
 </code></pre>
 <p>Or as the function <code>Strand2←{⍺⍵}</code>.</p>
-<ol>
-<li>
-<p><strong>Word Problems</strong></p>
+<h3 id="word-problems">Word Problems</h3>
 <p>We are going to do some text processing on a dictionary of words. </p>
-</li>
-</ol>
 <p>If you have access to the internet, the following expressions will download a text file dictionary (917kB in size) and store it as a nested vector of character vectors named <code>words</code>.</p>
 <pre><code class="language-APL">      ]Load HttpCommand
       words ← (⎕UCS 10) {(⍺≠⍵)⊆⍵} (HttpCommand.Get'https://tinyurl.com/y7asendy').Data
@@ -717,32 +733,45 @@
 <p>{:start="5"}
 1. How many palindromes are there in <code>words</code>?</p>
 <ol>
-<li>
-<p>Which palindrome in <code>words</code> is the longest?</p>
-</li>
-<li>
-<p><strong>Model Each</strong><br />
+<li>Which palindrome in <code>words</code> is the longest?</li>
+</ol>
+<h4 id="rank-practice">Rank Practice</h4>
+<ol>
+<li><strong>Model Each</strong><br />
     Write models of the following functions using rank <code>⍤</code> instead of each <code>¨</code>. That is, write <code>IotaEach</code>, <code>SumEach</code> and <code>ReshapeEach</code> as dfns which use the rank operator and do not use the each operator.
-    <pre><code class="language-APL">      IotaEach 1 2 3              ⍝ ⍳¨1 2 3
+    ```APL
+          IotaEach 1 2 3              ⍝ ⍳¨1 2 3
     ┌─┬───┬─────┐
     │1│1 2│1 2 3│
     └─┴───┴─────┘
-    &nbsp;
           SumEach 2 3⍴ IotaEach ⍳6    ⍝ +/¨2 3⍴⍳¨⍳6
      1  3  6
-    10 15 21
-    &nbsp;
-          2 2 ReshapeEach (1 2) 3 4   ⍝ 2 2∘⍴¨(1 2) 3 4
-    ┌───┬───┬───┐
-    │1 2│3 3│4 4│
-    │1 2│3 3│4 4│
-    └───┴───┴───┘</code></pre></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Each <code class='language-APL'>¨</code> will implicitly disclose its arguments. That is, it will retrieve the contents from a nested array. You might need to use enclose <code class='language-APL'>⊂</code> and first <code class='language-APL'>⊃</code> to achieve the desired effect.</p>
-</div>
+    10 15 21<pre class="highlight"><code>  2 2 ReshapeEach (1 2) 3 4   ⍝ 2 2∘⍴¨(1 2) 3 4
+</code></pre>
+<p>┌───┬───┬───┐
+│1 2│3 3│4 4│
+│1 2│3 3│4 4│
+└───┴───┴───┘
+```</p>
 </li>
 </ol>
+<p>{% include hint.html id="modeleach" content="Each <code class='language-APL'>¨</code> will implicitly disclose its arguments. You might need to use enclose <code class='language-APL'>⊂</code> and disclose <code class='language-APL'>⊃</code> to achieve the desired effect." %}</p>
+<p>{:start="2"}
+1. <strong>Split k-cells</strong><br />
+    The <em>split</em> function (monadic <code>↓</code>) splits an array of rank ≥2 by rows, returning an array of shape <code>¯1↓⍴⍵</code>. Use <em>enclose</em> <code>⊂</code> with the rank operator <code>⍤</code> to create a function <code>Split</code> which always splits an array into a nested vector of the major cells of <code>⍵</code>.</p>
+<pre class="highlight"><code>```APL
+      Split 3 2 2 3⍴⍳9
+  ┌─────┬─────┬─────┐
+  │1 2 3│4 5 6│7 8 9│
+  │4 5 6│7 8 9│1 2 3│
+  │     │     │     │
+  │7 8 9│1 2 3│4 5 6│
+  │1 2 3│4 5 6│7 8 9│
+  └─────┴─────┴─────┘
+```
+
+
+</code></pre>
                 
               
               

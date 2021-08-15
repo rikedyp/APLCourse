@@ -996,7 +996,7 @@ Change the expression to produce <strong>YYYY-MM-DD</strong>.</p>
 <li>Read data chunks at a time so as to not fill the workspace, using the "Records" variant option.</li>
 </ul>
 <h3 id="json">⎕<abbr title="JavaScript Object Notation">JSON</abbr></h3>
-<p><abbr title="JavaScript Object Notation">JSON</abbr> is not only a convenient way to represent nested data structures, but also a convenient data representation for the modern web since it is natively handled by JavaScript. <code>⎕JSON</code> converts between APL arrays, including namespaces and text vector representions of <abbr title="JavaScript Object Notation">JSON</abbr>.</p>
+<p><abbr title="JavaScript Object Notation">JSON</abbr> is not only a convenient way to represent nested data structures, but also a convenient data representation for the modern web since it is natively handled by JavaScript. <code>⎕JSON</code> converts between APL arrays, including namespaces and text vector representations of <abbr title="JavaScript Object Notation">JSON</abbr>.</p>
 <pre><code class="language-APL">      'ns'⎕NS⍬
       ns.var←1 2 3
       ns.char←'abc'
@@ -1153,7 +1153,7 @@ Saif
 <li>Which month in which region had the highest rainfall?</li>
 <li>Use a least squares linear fit to estimate the total rainfall in all 30 regions in 2018</li>
 <li>
-<p>Use a least squares linear fit to estimate the total rainfall in Pubjab in 2018</p>
+<p>Use a least squares linear fit to estimate the total rainfall in Punjab in 2018</p>
 <details class="hint"><summary>Hint</summary><p>No one would expect you to derive an expression for the least squares linear fit with little APL experience. If you have done it, kudos to you. The expression <code>Mv(⊢⌹1,∘⍪⊣)Nv</code> from <a href="https://aplcart.info/?q=linear%20regression#">APLcart</a> will compute coefficients of a least squares linear fit given a vector of X values <code>Mv</code> and a vector of Y values <code>Nv</code>.</p>
 </details>
 </li>
